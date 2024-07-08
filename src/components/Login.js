@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './styles.css';
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,36 +18,49 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
+      if (error.code === 'auth/user-not-found') {
+        navigate('/signup'); // מפנה לעמוד ההרשמה אם המשתמש לא קיים
+      } else {
+        setError(error.message);
+      }
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate('/dashboard');
+    } catch (error) {
       setError(error.message);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
+    <div className="auth-container">
+      <h2>התחברות</h2>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleLogin} className="auth-form">
+        <input
+          type="email"
+          placeholder="כתובת דוא״ל"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="סיסמה"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit" className="auth-button">התחבר</button>
       </form>
-      <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
+      <button onClick={handleGoogleLogin} className="google-button">
+        <i className="fab fa-google"></i>
+      </button>
     </div>
   );
-}
+};
 
 export default Login;
