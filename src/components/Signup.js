@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import './styles.css';
 
-function Signup() {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const auth = getAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -20,30 +21,28 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSignup}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Signup</button>
+    <div className="auth-container">
+      <h2>הרשמה</h2>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSignup} className="auth-form">
+        <input
+          type="email"
+          placeholder="כתובת דוא״ל"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="סיסמה"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit" className="auth-button">הירשם</button>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;
