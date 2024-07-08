@@ -1,6 +1,10 @@
+// src/components/Signup.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import './styles.css';
 
 const Signup = () => {
@@ -13,7 +17,12 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      await setDoc(doc(db, 'users', user.uid), {
+        email: user.email,
+        isAdmin: false, // או true אם אתה רוצה להפוך את המשתמש הזה לאדמין
+      });
       navigate('/dashboard');
     } catch (error) {
       setError(error.message);

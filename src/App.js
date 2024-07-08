@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import VolunteerForm from './components/VolunteerForm';
 import VolunteerList from './components/VolunteerList';
-import AddVolunteerOption from './components/AddVolunteerOption';
+import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
 import './styles.css';
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/volunteer" element={<VolunteerForm />} />
           <Route path="/volunteers" element={<VolunteerList />} />
-          <Route path="/add-volunteer-option" element={<AddVolunteerOption />} />
+          <Route path="/add-volunteer-option" element={<AdminAddVolunteerOption />} />
           <Route path="/manage-events" element={<ManageEvents />} />
         </Routes>
       </div>

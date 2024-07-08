@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { auth, db } from '../firebase';
+// src/components/VolunteerForm.js
+
+import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, addDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 
 const VolunteerForm = () => {
     const [user] = useAuthState(auth);
     const [name, setName] = useState('');
     const [email, setEmail] = useState(user ? user.email : '');
     const [volunteerOption, setVolunteerOption] = useState('');
+    const [volunteerOptions, setVolunteerOptions] = useState([]);
+
+    useEffect(() => {
+        const fetchVolunteerOptions = async () => {
+            const volunteerOptionsSnapshot = await getDocs(collection(db, 'volunteerOptions'));
+            const volunteerOptionsList = volunteerOptionsSnapshot.docs.map(doc => doc.data().option);
+            setVolunteerOptions(volunteerOptionsList);
+        };
+
+        fetchVolunteerOptions();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,18 +54,19 @@ const VolunteerForm = () => {
                 required
                 disabled={!!user}
             />
-            <select
-                value={volunteerOption}
-                onChange={(e) => setVolunteerOption(e.target.value)}
-                required
-            >
-                <option value="">Select a volunteer option</option>
-                <option value="Food Packages">Food Packages</option>
-                <option value="Hospital Transportation">Hospital Transportation</option>
-                <option value="Helping with Children">Helping with Children</option>
-                <option value="Volunteering in Classes">Volunteering in Classes</option>
-            </select>
-            <button type="submit">Submit</button>
+            {user && (
+                <select
+                    value={volunteerOption}
+                    onChange={(e) => setVolunteerOption(e.target.value)}
+                    required
+                >
+                    <option value="">Select a volunteer option</option>
+                    {volunteerOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                    ))}
+                </select>
+            )}
+            {user && <button type="submit">Submit</button>}
         </form>
     );
 };
