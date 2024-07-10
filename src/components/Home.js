@@ -12,9 +12,8 @@ const Home = () => {
     return (
         <div className="home-container">
             <header className="home-header">
-                <h1>ברוכים הבאים לעמותת עולים חדשים</h1>
-                <p>תמיכה וסיוע לעולים חדשים בארץ</p>
-                <Link to="/services" className="main-button">גלה עוד</Link>
+                
+               
                 {isAdmin && (
                     <div className="admin-panel">
                         <h3>תפריט אדמין</h3>

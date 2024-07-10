@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Homepage from './components/Homepage'; // If the Navbar is a separate component, otherwise it can be removed
+import Home from './components/Home'; // Ensure this points to the new `homepage.js` file
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Homepage />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
