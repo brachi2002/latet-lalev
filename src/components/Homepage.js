@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import './homepage.css';
 import ContactForm from './ContactForm';
@@ -12,13 +11,12 @@ function Homepage() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-
   const handleDonateClick = () => {
     setShowDonations(true);
   };
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
+    auth.signOut().then(() => {
       console.log('User signed out');
     }).catch((error) => {
       console.error('Error signing out: ', error);
@@ -29,8 +27,6 @@ function Homepage() {
     setShowDonations(false);
     navigate('/');
   };
-  // Check if the user is an admin
-  const isAdmin = user && user.email === 'latetbalev@gmail.com'; // replace with your admin email
 
   return (
     <div className="App">
@@ -52,15 +48,8 @@ function Homepage() {
           </div>
           <nav>
             <ul>
-            <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
-            <li><Link to="/volunteer">Volunteer</Link></li>
-              {user && isAdmin && (
-                <>
-                  <li><Link to="/volunteers">Volunteer List</Link></li>
-                  <li><Link to="/add-volunteer-option">Add Volunteer Option</Link></li>
-                  <li><Link to="/manage-events">Manage Events</Link></li>
-                </>
-              )}
+              <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
+              <li><button onClick={() => navigate('/volunteer')} className="link-button">Volunteer</button></li>
               <li><a href="#">Communities</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Branches</a></li>
@@ -87,7 +76,6 @@ function Homepage() {
               <h2>Search by Service Type</h2>
               <div className="services">
                 <button>Free Ambulance Services</button>
-                {/* Add more buttons as needed */}
               </div>
             </div>
           </div>
@@ -98,7 +86,7 @@ function Homepage() {
           <Donations />
         ) : (
           <>
-            <div style={{ height: '50vh' }}></div> {/* Placeholder to allow scrolling */}
+            <div style={{ height: '50vh' }}></div>
             <ContactForm />
           </>
         )}

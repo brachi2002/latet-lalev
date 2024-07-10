@@ -1,0 +1,54 @@
+.admin-dashboard {
+    padding: 20px;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-header h1 {
+    margin: 0;
+  }
+  
+  .admin-header .user-email {
+    margin-right: 20px;
+  }
+  
+  .admin-header .logout-button {
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .admin-header .logout-button:hover {
+    background-color: #004d40;
+    transform: scale(1.1);
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #00796b;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #004d40;
+  }
+  

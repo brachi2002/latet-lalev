@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
 
@@ -15,8 +17,14 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/dashboard');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      const adminDoc = await getDoc(doc(db, 'admins', user.uid));
+      if (adminDoc.exists()) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       if (error.code === 'auth/user-not-found') {
         navigate('/signup'); // מפנה לעמוד ההרשמה אם המשתמש לא קיים
@@ -28,8 +36,14 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, provider);
-      navigate('/dashboard');
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      const adminDoc = await getDoc(doc(db, 'admins', user.uid));
+      if (adminDoc.exists()) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       setError(error.message);
     }

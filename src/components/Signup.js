@@ -23,7 +23,7 @@ const Signup = () => {
         email: user.email,
         isAdmin: false, // או true אם אתה רוצה להפוך את המשתמש הזה לאדמין
       });
-      navigate('/dashboard');
+      navigate('/AdminDashboard');
     } catch (error) {
       setError(error.message);
     }
