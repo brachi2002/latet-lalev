@@ -1,0 +1,45 @@
+.admin-manage-events {
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .admin-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .admin-header .user-email {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .homepage-button {
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 20px;
+  }
+  
+  .homepage-button:hover {
+    background-color: #004d40;
+    transform: scale(1.1);
+  }
+  

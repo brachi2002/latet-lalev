@@ -1,8 +1,8 @@
-// VolunteerList.js
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const VolunteerList = () => {
     const [user] = useAuthState(auth);
