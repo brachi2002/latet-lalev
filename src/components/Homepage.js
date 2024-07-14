@@ -6,12 +6,12 @@ import { auth } from '../firebase';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
+import { animateScroll as scroll, scroller } from 'react-scroll';
 
 function Homepage() {
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-
 
   const handleDonateClick = () => {
     setShowDonations(true);
@@ -20,6 +20,7 @@ function Homepage() {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       console.log('User signed out');
+      navigate('/'); // חזרה לדף הבית לאחר התנתקות
     }).catch((error) => {
       console.error('Error signing out: ', error);
     });
@@ -29,6 +30,23 @@ function Homepage() {
     setShowDonations(false);
     navigate('/');
   };
+
+  const handleVolunteerClick = () => {
+    if (user) {
+      navigate('/volunteer');
+    } else {
+      navigate('/login', { state: { from: { pathname: '/volunteer' } } });
+    }
+  };
+
+  const handleContactClick = () => {
+    scroller.scrollTo('contact-section', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    });
+  };
+
   // Check if the user is an admin
   const isAdmin = user && user.email === 'latetbalev@gmail.com'; // replace with your admin email
 
@@ -52,8 +70,8 @@ function Homepage() {
           </div>
           <nav>
             <ul>
-            <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
-            <li><Link to="/volunteer">Volunteer</Link></li>
+              <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
+              <li><button onClick={handleVolunteerClick} className="link-button">Volunteer</button></li>
               {user && isAdmin && (
                 <>
                   <li><Link to="/volunteers">Volunteer List</Link></li>
@@ -65,7 +83,7 @@ function Homepage() {
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/branches">Branches</Link></li>
               <li><Link to="/our Story">Our Story</Link></li>
-              <li><Link to="/contact Us">Contact Us</Link></li>
+              <li><button onClick={handleContactClick} className="link-button">Contact Us</button></li>
             </ul>
           </nav>
         </div>
@@ -99,7 +117,9 @@ function Homepage() {
         ) : (
           <>
             <div style={{ height: '50vh' }}></div> {/* Placeholder to allow scrolling */}
-            <ContactForm />
+            <div name="contact-section">
+              <ContactForm />
+            </div>
           </>
         )}
       </main>
