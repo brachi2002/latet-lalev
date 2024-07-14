@@ -1,5 +1,3 @@
-// src/components/AdminAddVolunteerOption.js
-
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '../firebase';
@@ -17,7 +15,12 @@ const AdminAddVolunteerOption = () => {
                 const querySnapshot = await getDocs(q);
                 if (!querySnapshot.empty) {
                     setIsAdmin(true);
+                    console.log("User is admin:", user.uid);
+                } else {
+                    console.log("User is not in admin list:", user.uid);
                 }
+            } else {
+                console.log("No user is logged in");
             }
         };
         checkAdmin();

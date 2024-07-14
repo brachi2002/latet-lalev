@@ -11,10 +11,14 @@ const AdminDashboard = () => {
   const handleSignOut = () => {
     auth.signOut().then(() => {
       console.log('User signed out');
-      navigate('/'); // ניווט לדף הבית לאחר ההתנתקות
+      navigate('/'); // Navigate to home page after sign out
     }).catch((error) => {
       console.error('Error signing out: ', error);
     });
+  };
+
+  const handleGoToHomepage = () => {
+    navigate('/'); // Navigate to home page
   };
 
   return (
@@ -24,17 +28,23 @@ const AdminDashboard = () => {
         {user && (
           <>
             <span className="user-email">{user.email}</span>
-            <button onClick={handleSignOut} className="logout-button">Logout</button>
+          
+            <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
           </>
         )}
       </header>
-      <nav>
-        <ul>
-          <li><Link to="/admin/add-volunteer-option">Add Volunteer Option</Link></li>
-          <li><Link to="/admin/manage-events">Manage Events</Link></li>
-          <li><Link to="/admin/volunteers">View Volunteers</Link></li>
-        </ul>
-      </nav>
+  
+      <div className="cards-container">
+        <div className="card">
+          <Link to="/admin/add-volunteer-option">Add Volunteer Option</Link>
+        </div>
+        <div className="card">
+          <Link to="/admin/manage-events">Manage Events</Link>
+        </div>
+        <div className="card">
+          <Link to="/admin/volunteerList">View Volunteers</Link>
+        </div>
+      </div>
     </div>
   );
 };
