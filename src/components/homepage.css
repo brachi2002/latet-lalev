@@ -33,7 +33,13 @@ body {
     font-size: 16px;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer; /* סמן יד */
+    text-decoration: none; /* ללא קו תחתון */
 }
+
+/* .link-button{
+
+} */
 
 .donate-button:hover, .login-button:hover, .signup-button:hover, .logout-button:hover {
     background-color: #004d40;
@@ -130,3 +136,4 @@ nav ul li a:hover {
 main {
     padding: 20px;
 }
+
