@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import logo from './images/LOGO1.jpg';
+
 
 const Navbar = ({ user, handleSignOut, handleDonateClick, handleHomeClick, handleVolunteerClick, handleContactClick, isAdmin }) => (
   <div className="navbar">
@@ -30,7 +32,10 @@ const Navbar = ({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
         <li><Link to="/events" className="link-button">Events</Link></li>
         <li><Link to="/services" className="link-button">Services</Link></li>
         <li><Link to="/ourStory" className="link-button">Our Story</Link></li>
-        <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
+        <li>
+          <Link to="/" onClick={handleHomeClick}>
+          <img src={logo} alt="Home" className="logo" /></Link>
+        </li>
       </ul>
     </nav>
   </div>

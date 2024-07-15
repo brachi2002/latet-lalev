@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #f4f4f9; /* צבע רקע */
+    color: #333; /* צבע טקסט */
     direction: ltr;
 }
 
@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #ffffff;
+    background-color: #ffffff; /* צבע רקע */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,8 +23,6 @@ body {
     display: flex;
     gap: 10px;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -34,30 +32,47 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin-right: 10px; /* צמצום הרווח בין הלשוניות */
 }
-
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #8a2f2f; /* צבע ראשי */
     font-size: 16px;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #00796b;
+    color: #6b0505; /* צבע משני */
 }
 
 .banner {
-    background: url('./images/Image_20240610_135928.png') no-repeat center center;
+    position: relative;
+    background: url('./images/A.jpg') no-repeat center center;
     background-size: cover;
     padding: 60px 20px;
-    color: #ffffff;
+    color: #ffffff; /* צבע טקסט */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* שכבת הכהיה */
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.banner h1, .search-input, .search-categories {
+    position: relative;
+    z-index: 2;
 }
 
 .banner h1 {
@@ -67,7 +82,7 @@ nav ul li a:hover {
 }
 
 .banner h1:hover {
-    color: #b2dfdb;
+    color: #8a2f2f;
 }
 
 .search-input {
@@ -76,7 +91,7 @@ nav ul li a:hover {
     width: 80%;
     max-width: 400px;
     margin-bottom: 20px;
-    border: 2px solid #00796b;
+    border: 2px solid #8a2f2f; /* צבע ראשי */
     border-radius: 5px;
     transition: box-shadow 0.3s;
 }
@@ -97,8 +112,8 @@ nav ul li a:hover {
 }
 
 .categories button, .services button {
-    background-color: #00796b;
-    color: #ffffff;
+    background-color: #8a2f2f; /* צבע ראשי */
+    color: #ffffff; /* צבע טקסט */
     border: none;
     padding: 10px 20px;
     margin: 5px;
@@ -110,11 +125,11 @@ nav ul li a:hover {
 }
 
 .categories button:hover, .services button:hover {
-    background-color: #004d40;
+    background-color:  #ffffff; /* צבע משני */
     transform: scale(1.1);
+    color: #f8c5c5;
 }
 
 main {
     padding: 20px;
 }
-
