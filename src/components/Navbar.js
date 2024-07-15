@@ -29,7 +29,7 @@ const Navbar = ({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
         <li><button onClick={handleVolunteerClick} className="link-button">Volunteer</button></li>
         <li><Link to="/events" className="link-button">Events</Link></li>
         <li><Link to="/services" className="link-button">Services</Link></li>
-        <li><Link to="/ourStory" className="link-button">Our Story</Link></li>
+        <li><Link to="/about-us" className="link-button">Our Story</Link></li>
         <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
       </ul>
     </nav>
