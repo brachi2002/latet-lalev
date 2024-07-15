@@ -42,7 +42,7 @@ const AdminDashboard = () => {
           <Link to="/admin/manage-events">Manage Events</Link>
         </div>
         <div className="card">
-          <Link to="/admin/volunteerList">View Volunteers</Link>
+          <Link to="/admin/volunteers">View Volunteers</Link>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase'; // ודא שהייבוא נכון
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
+import GoogleButton from './GoogleButton';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const Login = () => {
       const user = userCredential.user;
       const adminDoc = await getDoc(doc(db, 'admins', user.uid));
       if (adminDoc.exists()) {
-        navigate('/admin');
+        navigate('/');
       } else {
         navigate('/');
       }
@@ -39,7 +40,7 @@ const Login = () => {
       const user = result.user;
       const adminDoc = await getDoc(doc(db, 'admins', user.uid));
       if (adminDoc.exists()) {
-        navigate('/admin');
+        navigate('/');
       } else {
         navigate('/');
       }
@@ -69,9 +70,8 @@ const Login = () => {
         />
         <button type="submit" className="auth-button">התחבר</button>
       </form>
-      <button onClick={handleGoogleLogin} className="google-button">
-        <i className="fab fa-google"></i>
-      </button>
+      <div className="or-login-with">or login with:</div>
+      <GoogleButton handleGoogleLogin={handleGoogleLogin} />
     </div>
   );
 };

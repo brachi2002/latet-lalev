@@ -24,27 +24,7 @@ body {
     gap: 10px;
 }
 
-.donate-button, .login-button, .signup-button, .logout-button {
-    background-color: #00796b;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-    cursor: pointer; /* סמן יד */
-    text-decoration: none; /* ללא קו תחתון */
-}
 
-/* .link-button{
-
-} */
-
-.donate-button:hover, .login-button:hover, .signup-button:hover, .logout-button:hover {
-    background-color: #004d40;
-    transform: scale(1.1);
-}
 
 nav ul {
     list-style-type: none;
@@ -56,6 +36,7 @@ nav ul {
 nav ul li {
     margin-right: 20px;
 }
+
 
 nav ul li a {
     text-decoration: none;

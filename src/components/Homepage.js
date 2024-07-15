@@ -6,6 +6,7 @@ import { auth } from '../firebase';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
+import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
 
 function Homepage() {
@@ -47,46 +48,20 @@ function Homepage() {
     });
   };
 
-  // Check if the user is an admin
   const isAdmin = user && user.email === 'latetbalev@gmail.com'; // replace with your admin email
 
   return (
     <div className="App">
+      <Navbar
+        user={user}
+        handleSignOut={handleSignOut}
+        handleDonateClick={handleDonateClick}
+        handleHomeClick={handleHomeClick}
+        handleVolunteerClick={handleVolunteerClick}
+        handleContactClick={handleContactClick}
+        isAdmin={isAdmin}
+      />
       <header className="App-header">
-        <div className="top-bar">
-          <div className="buttons-container">
-            {user ? (
-              <>
-                <button onClick={handleSignOut} className="logout-button">Logout</button>
-                <span className="user-email">{user.email}</span>
-              </>
-            ) : (
-              <>
-                <button className="login-button"><Link to="/login">Login</Link></button>
-                <button className="signup-button"><Link to="/signup">Sign Up</Link></button>
-              </>
-            )}
-            <button className="donate-button" onClick={handleDonateClick}>Donate</button>
-          </div>
-          <nav>
-            <ul>
-              <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
-              <li><button onClick={handleVolunteerClick} className="link-button">Volunteer</button></li>
-              {user && isAdmin && (
-                <>
-                  <li><Link to="/volunteers">Volunteer List</Link></li>
-                  <li><Link to="/add-volunteer-option">Add Volunteer Option</Link></li>
-                  <li><Link to="/manage-events">Manage Events</Link></li>
-                </>
-              )}
-              <li><Link to="/events">Events</Link></li>
-              <li><Link to="/services">Services</Link></li>
-              <li><Link to="/branches">Branches</Link></li>
-              <li><Link to="/our Story">Our Story</Link></li>
-              <li><button onClick={handleContactClick} className="link-button">Contact Us</button></li>
-            </ul>
-          </nav>
-        </div>
         {!showDonations && (
           <div className="banner">
             <h1>How Can We Help You?</h1>

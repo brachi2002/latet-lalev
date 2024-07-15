@@ -8,7 +8,7 @@ function Events() {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const querySnapshot = await getDocs(collection(db, 'events'));
+      const querySnapshot = await getDocs(collection(db, 'EventList'));
       const eventsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setEvents(eventsList);
     };

@@ -1,0 +1,39 @@
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content */
+    width: 100%; /* Full width */
+    max-width: 300px; /* Maximum width */
+    padding: 10px 0; /* Adjust padding for height */
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin: 0 auto; /* Center the button */
+  }
+  
+  .google-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .google-button span {
+    color: #555; /* Text color */
+  }
+  
+  .google-button:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .or-login-with {
+    text-align: center;
+    margin: 20px 0; /* Adjust as needed for spacing */
+    font-size: 16px;
+    color: #555;
+  }
