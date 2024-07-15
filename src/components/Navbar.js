@@ -1,40 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase';
-import { signOut } from 'firebase/auth';
+import './navbar.css';
 
-const Navbar = () => {
-  const [user] = useAuthState(auth);
-
-  const handleSignOut = () => {
-    signOut(auth).then(() => {
-      console.log('User signed out');
-    }).catch((error) => {
-      console.error('Error signing out: ', error);
-    });
-  };
-
-  return (
-    <nav className="navbar">
-      <Link to="/" className="navbar-logo">Your Logo</Link>
-      <ul className="navbar-menu">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/volunteer">Volunteer</Link></li>
-        {user ? (
+const Navbar = ({ user, handleSignOut, handleDonateClick, handleHomeClick, handleVolunteerClick, handleContactClick, isAdmin }) => (
+  <div className="navbar">
+    <div className="buttons-container">
+      {user ? (
+        <>
+          <button onClick={handleSignOut} className="logout-button">Logout</button>
+          <span className="user-email">{user.email}</span>
+        </>
+      ) : (
+        <>
+          <button className="login-button"><Link to="/login" className='navbar-link'>Login</Link></button>
+          <button className="signup-button"><Link to="/signup" className='navbar-link'>Sign Up</Link></button>
+        </>
+      )}
+      <button className="donate-button" onClick={handleDonateClick}>Donate</button>
+    </div>
+    <nav>
+      <ul>
+        {user && isAdmin && (
           <>
-            <li>{user.email}</li>
-            <li><button onClick={handleSignOut}>Sign Out</button></li>
-          </>
-        ) : (
-          <>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/admin">Manage</Link></li>
           </>
         )}
+        <li><button onClick={handleContactClick} className="link-button">Contact Us</button></li>
+        <li><button onClick={handleVolunteerClick} className="link-button">Volunteer</button></li>
+        <li><Link to="/events" className="link-button">Events</Link></li>
+        <li><Link to="/services" className="link-button">Services</Link></li>
+        <li><Link to="/ourStory" className="link-button">Our Story</Link></li>
+        <li><button onClick={handleHomeClick} className="link-button">Home</button></li>
       </ul>
     </nav>
-  );
-};
+  </div>
+);
 
 export default Navbar;

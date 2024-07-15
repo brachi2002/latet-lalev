@@ -7,11 +7,14 @@ import VolunteerForm from './components/VolunteerForm';
 import VolunteerList from './components/VolunteerList';
 import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
+import AdminDashboard from './components/AdminDashboard';
 import AdminDashboard from './components/AdminDashboard'; // ודא שיש לך רכיב כזה
 import ViewUser from './components/ViewUser'; // ייבוא רכיב ViewUser
 import './styles.css';
 import Events from './components/Events';
-import ProtectedRoute from './components/ProtectedRoute'; // ייבוא רכיב ProtectedRoute
+import AboutUs from './components/AboutUs';
+import ProtectedRoute from './components/ProtectedRoute'; // ייבוא ה- ProtectedRoute
+import './styles.css';
 
 function App() {
   return (
@@ -21,31 +24,17 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/volunteer"
-            element={
-              <ProtectedRoute>
-                <VolunteerForm />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
+          <Route path="/volunteer" element={<ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
+          <Route path="/admin/volunteers" element={<VolunteerList />} />
           <Route path="/events" element={<Events />} />
           <Route path="/services" element={<Events />} />
           <Route path="/branches" element={<Events />} />
-          <Route path="/our Story" element={<Events />} />
-          <Route path="/contact Us" element={<Events />} />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/ourStory" element={<AboutUs />} />
+          <Route path="/contactUs" element={<Events />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-          <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
-          <Route path="/admin/manage-events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
+          <Route path="/admin/add-volunteer-option" element={<AdminAddVolunteerOption />} />
+          <Route path="/admin/manage-events" element={<ManageEvents />} />
           <Route path="/admin/volunteer-list" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
         </Routes>
