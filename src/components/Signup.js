@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import './styles.css';
+import './Singup.css';
 import GoogleButton from './GoogleButton';
 
 const Signup = () => {
