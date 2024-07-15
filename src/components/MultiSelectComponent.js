@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { db } from '../firebase'; // ודא שהייבוא נכון
 import { collection, getDocs } from 'firebase/firestore';
+import { useTranslation } from 'react-i18next';//a
 
 const MultiSelectComponent = ({ selected, setSelected }) => {
   const [options, setOptions] = useState([]);
@@ -22,7 +23,7 @@ const MultiSelectComponent = ({ selected, setSelected }) => {
 
     fetchOptions();
   }, []);
-
+  const { t } = useTranslation();//a
   return (
     <MultiSelect
       options={options}

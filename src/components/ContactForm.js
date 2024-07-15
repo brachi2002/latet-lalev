@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ContactForm.css';
+import { useTranslation } from 'react-i18next';//a
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ function ContactForm() {
     // Here you can add the code to handle the form submission
     console.log(formData);
   };
-
+  const { t } = useTranslation();//a
   return (
     <div className="contact-form">
       <h2>Need help? Want to consult? We're here for you</h2>

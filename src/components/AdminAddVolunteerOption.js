@@ -4,8 +4,10 @@ import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './AdminAddVolunteerOption.css';
+import { useTranslation } from 'react-i18next';//a
 
 const AdminAddVolunteerOption = () => {
+    const { t } = useTranslation();//a
     const [option, setOption] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [user] = useAuthState(auth);

@@ -5,6 +5,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './VolunteerForm.css';
 import MultiSelectComponent from './MultiSelectComponent';
+import { useTranslation } from 'react-i18next';//a
 
 const VolunteerForm = () => {
   const [user] = useAuthState(auth);
@@ -41,7 +42,7 @@ const VolunteerForm = () => {
       console.error('Error adding document: ', error);
     }
   };
-
+  const { t } = useTranslation();//a
   return (
     <form onSubmit={handleSubmit}>
       <h2>Want to join us?</h2>

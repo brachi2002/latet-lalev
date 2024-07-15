@@ -1,7 +1,9 @@
 import React from 'react';
 import './AboutUs.css';
+import { useTranslation } from 'react-i18next';//a
 
 const AboutUs = () => {
+  const { t } = useTranslation();//a
   return (
     <div className="about-us">
       <div className="about-us-header">

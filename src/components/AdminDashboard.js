@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './AdminDashboard.css';
+import { useTranslation } from 'react-i18next';//a
 
 const AdminDashboard = () => {
+  const { t } = useTranslation();//a
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 

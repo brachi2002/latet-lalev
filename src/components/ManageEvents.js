@@ -3,6 +3,7 @@ import { collection, addDoc, getDocs, query, where, doc, updateDoc, deleteDoc } 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useTranslation } from 'react-i18next';//a
 
 const ManageEvents = () => {
     const [event, setEvent] = useState({ name: '', description: '', imageUrls: [] });
@@ -100,7 +101,7 @@ const ManageEvents = () => {
             console.error('Error deleting event: ', error);
         }
     };
-
+    const { t } = useTranslation();//a
     return (
         <div>
             {isAdmin ? (

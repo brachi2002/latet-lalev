@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';//a
+import { useTranslation } from 'react-i18next';//a
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Login from './components/Login';
@@ -16,9 +17,25 @@ import ProtectedRoute from './components/ProtectedRoute'; // ייבוא ה- Prot
 import './styles.css';
 
 function App() {
+  //a
+  const { i18n } = useTranslation();
+  const [showLanguageOptions, setShowLanguageOptions] = useState(false);
+
+  useEffect(() => {
+    document.body.dir = i18n.language === 'he' ? 'rtl' : 'ltr';
+  }, [i18n.language]);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const toggleLanguageOptions = () => {
+    setShowLanguageOptions(!showLanguageOptions);
+  };
+  //a
   return (
     <Router>
-      <div className="App">
+       <div className="App">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />

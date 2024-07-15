@@ -6,6 +6,7 @@ import { auth, db } from '../firebase'; // ודא שהייבוא נכון
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
 import GoogleButton from './GoogleButton';
+import { useTranslation } from 'react-i18next';//a
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const Login = () => {
       setError(error.message + 'unable to login google');
     }
   };
-
+  const { t } = useTranslation();//a
   return (
     <div className="auth-container">
       <h2>התחברות</h2>

@@ -9,6 +9,7 @@ import ContactForm from './ContactForm';
 import Donations from './Donations';
 import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
+import { useTranslation } from 'react-i18next';//a
 
 function Homepage() {
   const [showDonations, setShowDonations] = useState(false);
@@ -64,7 +65,7 @@ function Homepage() {
       smooth: 'easeInOutQuart'
     });
   };
-
+  const { t } = useTranslation();//a
   return (
     <div className="App">
       <Navbar

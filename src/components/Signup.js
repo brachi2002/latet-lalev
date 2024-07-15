@@ -5,6 +5,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import './Singup.css';
 import GoogleButton from './GoogleButton';
+import { useTranslation } from 'react-i18next';//a
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -44,7 +45,7 @@ const Signup = () => {
       setError(error.message);
     }
   };
-
+  const { t } = useTranslation();//a
   return (
     <div className="auth-container">
       <h2>הרשמה</h2>

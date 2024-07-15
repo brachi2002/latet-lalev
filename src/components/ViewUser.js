@@ -4,6 +4,7 @@ import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './ViewUser.css';
+import { useTranslation } from 'react-i18next';//a
 
 const ViewUser = () => {
     const [user] = useAuthState(auth);
@@ -16,7 +17,7 @@ const ViewUser = () => {
     const handleGoToAdminDashboard = () => {
         navigate('/admin/dashboard'); // Navigate to admin dashboard page
     };
-
+    const { t } = useTranslation();//a
     return (
         <div className="view-user">
             <header className="admin-header">

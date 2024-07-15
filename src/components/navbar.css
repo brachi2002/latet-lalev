@@ -73,3 +73,65 @@ nav ul {
 nav ul li {
   margin-right: 10px; /* צמצום הרווח בין הלשוניות */
 }
+
+/* סגנונות לכפתור החלפת השפה */
+.language-selector {
+  position: relative;
+}
+
+.language-button {
+  background-color: #f4f8f5; /* צבע רקע לבן */
+  color: #ffffff; /* צבע טקסט לבן */
+  border: none;
+  border-radius: 30%;
+  width: 30px; /* רוחב הכפתור */
+  height: 30px; /* גובה הכפתור */
+  font-size: 30px; /* גודל הטקסט */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.language-button:hover {
+  background-color: #ecf8ec;
+  transform: scale(1.1);
+}
+
+.language-options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px; /* מתאים למיקום של תיבת האפשרויות */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-options button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: #000; /* צבע טקסט */
+}
+
+.language-options button:hover {
+  background-color: #f0f0f0;
+}
+
+/* תמיכה בכיוון ימין לשמאל */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .language-selector {
+  left: unset;
+  right: 10px;
+}

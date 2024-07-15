@@ -4,8 +4,10 @@ import bitQR from './images/qr-nedarim.png';
 import payboxQR from './images/qr-nedarim.png';
 import paypalQR from './images/qr-nedarim.png';
 import nedarimPlusQR from './images/qr-nedarim.png';
+import { useTranslation } from 'react-i18next';//a
 
 const Donations = () => {
+  const { t } = useTranslation();//a
   return (
     <div className="donation-container">
       <h1>Donate to Our Association</h1>

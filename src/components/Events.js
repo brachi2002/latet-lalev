@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import './Events.css';
+import { useTranslation } from 'react-i18next';//a
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -28,7 +29,7 @@ function Events() {
   const handleCloseDetails = () => {
     setSelectedEvent(null);
   };
-
+  const { t } = useTranslation();//a
   return (
     <div className="events">
       <h2>Events</h2>
