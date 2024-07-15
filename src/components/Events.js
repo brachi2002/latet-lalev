@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
+import Navbar from './Navbar';
 import './Events.css';
 
-function Events() {
+function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handleVolunteerClick, handleContactClick, isAdmin }) {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -30,33 +31,49 @@ function Events() {
   };
 
   return (
-    <div className="events">
-      <h2>Events</h2>
-      {selectedEvent ? (
-        <div className="event-details">
-          <button onClick={handleCloseDetails}>Back to Events</button>
-          <h3>{selectedEvent.name}</h3>
-          <p>{selectedEvent.description}</p>
-          <div className="event-images">
-            {selectedEvent.imageUrls && selectedEvent.imageUrls.map((url, index) => (
-              <img key={index} src={url} alt={selectedEvent.name} style={{ maxWidth: '200px', margin: '5px' }} />
-            ))}
+    <div className="App">
+      <Navbar
+        user={user}
+        handleSignOut={handleSignOut}
+        handleDonateClick={handleDonateClick}
+        handleHomeClick={handleHomeClick}
+        handleVolunteerClick={handleVolunteerClick}
+        handleContactClick={handleContactClick}
+        isAdmin={isAdmin}
+      />
+      <div className="events">
+        <h2>Events</h2>
+        {selectedEvent ? (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={handleCloseDetails}>&times;</span>
+              <h3>{selectedEvent.name}</h3>
+              <p>{selectedEvent.description}</p>
+              <div className="event-images">
+                {selectedEvent.imageUrls && selectedEvent.imageUrls.map((url, index) => (
+                  <img key={index} src={url} alt={selectedEvent.name} style={{ maxWidth: '200px', margin: '5px' }} />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <ul>
-          {events.map(event => (
-            <li key={event.id} className="event-item" onClick={() => handleEventClick(event)}>
-              {event.imageUrls && event.imageUrls.length > 0 ? (
-                <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
-              ) : (
-                <div className="placeholder-image">No Image</div>
-              )}
-              <h3>{event.name}</h3>
-            </li>
-          ))}
-        </ul>
-      )}
+        ) : (
+          <ul className="event-list">
+            {events.map(event => (
+              <li key={event.id} className="event-item">
+                <div className="event-card" onClick={() => handleEventClick(event)}>
+                  {event.imageUrls && event.imageUrls.length > 0 ? (
+                    <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
+                  ) : (
+                    <div className="placeholder-image">No Image</div>
+                  )}
+                  <h3>{event.name}</h3>
+                </div>
+                <button className="info-button" onClick={() => handleEventClick(event)}>More Info</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
