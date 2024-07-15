@@ -25,6 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="volunteer" element={<ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
           <Route path="/admin/volunteers" element={<VolunteerList />} />
+          <Route path="/manage-events" element={<ManageEvents />}/>
           <Route path="/events" element={<Events />} />
           <Route path="/services" element={<Events />} />
           <Route path="/branches" element={<Events />} />
