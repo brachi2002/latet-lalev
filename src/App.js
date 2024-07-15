@@ -8,7 +8,6 @@ import VolunteerList from './components/VolunteerList';
 import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
 import AdminDashboard from './components/AdminDashboard';
-import AdminDashboard from './components/AdminDashboard'; // ודא שיש לך רכיב כזה
 import ViewUser from './components/ViewUser'; // ייבוא רכיב ViewUser
 import './styles.css';
 import Events from './components/Events';
@@ -24,7 +23,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/volunteer" element={<ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
+          <Route path="volunteer" element={<ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
           <Route path="/admin/volunteers" element={<VolunteerList />} />
           <Route path="/events" element={<Events />} />
           <Route path="/services" element={<Events />} />
@@ -35,7 +34,7 @@ function App() {
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<AdminAddVolunteerOption />} />
           <Route path="/admin/manage-events" element={<ManageEvents />} />
-          <Route path="/admin/volunteer-list" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
+          {/* <Route path="/admin/volunteer-list" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} /> */}
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
         </Routes>
       </div>
