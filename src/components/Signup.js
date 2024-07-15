@@ -27,6 +27,7 @@ const Signup = () => {
       navigate('/'); // Redirect to homepage or admin dashboard based on your logic
     } catch (error) {
       setError(error.message);
+      console.error("Error during signup:", error);
     }
   };
 
@@ -42,6 +43,7 @@ const Signup = () => {
       navigate('/'); // Redirect to homepage or admin dashboard based on your logic
     } catch (error) {
       setError(error.message);
+      console.error("Error during Google signup:", error);
     }
   };
 
