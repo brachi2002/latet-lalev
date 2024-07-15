@@ -3,6 +3,7 @@ import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import './AdminAddVolunteerOption.css';
 
 const AdminAddVolunteerOption = () => {
     const [option, setOption] = useState('');
@@ -51,38 +52,39 @@ const AdminAddVolunteerOption = () => {
         navigate('/'); // Navigate to home page
     };
 
+    const handleGoToAdminDashboard = () => {
+        navigate('/admin/dashboard'); // Navigate to admin dashboard page
+    };
+
     return (
-    
-      <div className="admin-add-volunteer-option">
-      <header className="admin-header">
-        <h1>Add Volunteer Option</h1>
-        {user && (
-          <>
-            <span className="user-email">{user.email}</span>
-          
-            <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
-          </>
-        )}
-      </header>
-      <div className="add-volunteer-option">
-      {isAdmin ? (
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={option}
-                        name="option"
-                        onChange={(e) => setOption(e.target.value)}
-                        placeholder="Add Volunteer Option"
-                        required
-                    />
-                    <button type="submit">Add Option</button>
-                </form>
-            ) : (
-                <p>You do not have permission to view this page</p>
-            )}
-      </div>
-        
-          
+        <div className="admin-add-volunteer-option">
+            <header className="admin-header">
+                <h1>Add Volunteer Option</h1>
+                {user && (
+                    <>
+                        <span className="user-email">{user.email}</span>
+                        <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
+                        <button onClick={handleGoToAdminDashboard} className="dashboard-button">Go to Admin Home</button>
+                    </>
+                )}
+            </header>
+            <div className="add-volunteer-option">
+                {isAdmin ? (
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            value={option}
+                            name="option"
+                            onChange={(e) => setOption(e.target.value)}
+                            placeholder="Add Volunteer Option"
+                            required
+                        />
+                        <button type="submit">Add Option</button>
+                    </form>
+                ) : (
+                    <p>You do not have permission to view this page</p>
+                )}
+            </div>
         </div>
     );
 };

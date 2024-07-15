@@ -1,4 +1,4 @@
-.admin-add-volunteer-option {
+.volunteer-list {
     padding: 20px;
     background-color: #f5f5f5;
     font-family: 'Arial', sans-serif;
@@ -26,7 +26,7 @@
     color: #777;
 }
 
-.homepage-button, .dashboard-button {
+.homepage-button {
     background-color: #00796b;
     color: #ffffff;
     border: none;
@@ -38,11 +38,7 @@
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.homepage-button:hover, .dashboard-button:hover {
+.homepage-button:hover {
     background-color: #004d40;
     transform: scale(1.1);
-}
-
-.add-volunteer-option {
-    margin-top: 20px;
 }

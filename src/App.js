@@ -8,6 +8,7 @@ import VolunteerList from './components/VolunteerList';
 import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
 import AdminDashboard from './components/AdminDashboard'; // ודא שיש לך רכיב כזה
+import ViewUser from './components/ViewUser'; // ייבוא רכיב ViewUser
 import './styles.css';
 import Events from './components/Events';
 import ProtectedRoute from './components/ProtectedRoute'; // ייבוא רכיב ProtectedRoute
@@ -42,8 +43,11 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
           <Route path="/admin/manage-events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
+          <Route path="/admin/volunteer-list" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
+          <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>

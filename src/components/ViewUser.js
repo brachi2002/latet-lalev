@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import './VolunteerList.css';
+import './ViewUser.css';
 
-const VolunteerList = () => {
-    const [volunteers, setVolunteers] = useState([]);
+const ViewUser = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchVolunteers = async () => {
-            const querySnapshot = await getDocs(collection(db, 'volunteers'));
-            setVolunteers(querySnapshot.docs.map(doc => doc.data()));
-        };
-        fetchVolunteers();
-    }, []);
 
     const handleGoToHomepage = () => {
         navigate('/'); // Navigate to home page
@@ -27,9 +18,9 @@ const VolunteerList = () => {
     };
 
     return (
-        <div className="volunteer-list">
+        <div className="view-user">
             <header className="admin-header">
-                <h1>Volunteer List</h1>
+                <h1>View User</h1>
                 {user && (
                     <>
                         <span className="user-email">{user.email}</span>
@@ -39,17 +30,10 @@ const VolunteerList = () => {
                 )}
             </header>
             <div>
-                <h2>Volunteers:</h2>
-                <ul>
-                    {volunteers.map((volunteer, index) => (
-                        <li key={index}>
-                            {volunteer.firstName} {volunteer.lastName} - {volunteer.email}
-                        </li>
-                    ))}
-                </ul>
+                <p>Here you can see your users.</p>
             </div>
         </div>
     );
 };
 
-export default VolunteerList;
+export default ViewUser;

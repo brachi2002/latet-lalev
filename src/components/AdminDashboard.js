@@ -28,7 +28,7 @@ const AdminDashboard = () => {
         {user && (
           <>
             <span className="user-email">{user.email}</span>
-          
+            <button onClick={handleSignOut} className="logout-button">Logout</button>
             <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
           </>
         )}
@@ -43,6 +43,12 @@ const AdminDashboard = () => {
         </div>
         <div className="card">
           <Link to="/admin/volunteerList">View Volunteers</Link>
+        </div>
+        <div className="card">
+        
+        <Link to="/admin/view-user">View User</Link>
+
+
         </div>
       </div>
     </div>

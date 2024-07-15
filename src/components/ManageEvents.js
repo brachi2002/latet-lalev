@@ -3,6 +3,7 @@ import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import './ManageEvents.css'; // ודא שקיים קובץ CSS מתאים
 
 const ManageEvents = () => {
     const [user] = useAuthState(auth);
@@ -10,6 +11,10 @@ const ManageEvents = () => {
 
     const handleGoToHomepage = () => {
         navigate('/'); // Navigate to home page
+    };
+
+    const handleGoToAdminDashboard = () => {
+        navigate('/admin/dashboard'); // Navigate to admin dashboard page
     };
 
     return (
@@ -20,6 +25,7 @@ const ManageEvents = () => {
                     <>
                         <span className="user-email">{user.email}</span>
                         <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
+                        <button onClick={handleGoToAdminDashboard} className="dashboard-button">Go to Admin Home</button>
                     </>
                 )}
             </header>
