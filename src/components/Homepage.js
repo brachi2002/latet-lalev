@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { signOut } from 'firebase/auth';
-import { auth, db } from '../firebase';
+import { signOut, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
-import Navbar from './Navbar';
+import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
 
 function Homepage() {
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
-  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const checkAdmin = async () => {
       if (user) {
-        const adminDoc = await getDoc(doc(db, 'admins', user.uid));
-        if (adminDoc.exists()) {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists() && userDoc.data().isAdmin) {
           setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
         }
       }
     };
@@ -36,7 +38,7 @@ function Homepage() {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       console.log('User signed out');
-      navigate('/'); // Return to home page after signing out
+      navigate('/'); // חזרה לדף הבית לאחר התנתקות
     }).catch((error) => {
       console.error('Error signing out: ', error);
     });

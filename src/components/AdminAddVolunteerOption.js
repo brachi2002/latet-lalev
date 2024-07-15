@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, doc, getDoc } from 'firebase/firestore'; // Added doc and getDoc imports
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -13,22 +13,24 @@ const AdminAddVolunteerOption = () => {
 
     useEffect(() => {
         const checkAdmin = async () => {
-            if (user) {
-                const q = query(collection(db, 'admins'), where('uid', '==', user.uid));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    setIsAdmin(true);
-                    console.log("User is admin:", user.uid);
-                } else {
-                    console.log("User is not in admin list:", user.uid);
-                }
+          if (user) {
+            const userDoc = await getDoc(doc(db, 'users', user.uid));
+            if (userDoc.exists() && userDoc.data().isAdmin) {
+              setIsAdmin(true);
+              console.log("User is admin:", user.uid);
             } else {
-                console.log("No user is logged in");
+              setIsAdmin(false);
+              console.log("User is not admin:", user.uid);
             }
+          } else {
+            console.log("No user is logged in");
+          }
         };
+    
         checkAdmin();
-    }, [user]);
+      }, [user]);
 
+      
     const handleSubmit = async (e) => {
         e.preventDefault();
 

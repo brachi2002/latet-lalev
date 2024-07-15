@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase'; // ודא שהייבוא נכון
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
@@ -19,18 +19,16 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      const adminDoc = await getDoc(doc(db, 'admins', user.uid));
-      if (adminDoc.exists()) {
-        navigate('/');
-      } else {
-        navigate('/');
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (userDoc.exists()) {
+        if (userDoc.data().isAdmin) {
+          navigate('/admin'); // Redirect to admin dashboard if admin
+        } else {
+          navigate('/'); // Redirect to homepage
+        }
       }
     } catch (error) {
-      if (error.code === 'auth/user-not-found') {
-        navigate('/signup'); // מפנה לעמוד ההרשמה אם המשתמש לא קיים
-      } else {
-        setError(error.message);
-      }
+      setError(error.message);
     }
   };
 
@@ -38,14 +36,23 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      const adminDoc = await getDoc(doc(db, 'admins', user.uid));
-      if (adminDoc.exists()) {
-        navigate('/');
+      console.log('sssss');
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, 'users', user.uid), {
+          email: user.email,
+          isAdmin: false,
+          isVolunteer: 'notVolunteering',
+        });
       } else {
-        navigate('/');
+        if (userDoc.data().isAdmin) {
+          navigate('/admin'); // Redirect to admin dashboard if admin
+        } else {
+          navigate('/'); // Redirect to homepage
+        }
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message + 'unable to login google');
     }
   };
 

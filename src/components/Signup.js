@@ -1,11 +1,10 @@
-// src/components/Signup.js
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import './styles.css';
+import GoogleButton from './GoogleButton';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +12,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -21,9 +21,25 @@ const Signup = () => {
       const user = userCredential.user;
       await setDoc(doc(db, 'users', user.uid), {
         email: user.email,
-        isAdmin: false, // או true אם אתה רוצה להפוך את המשתמש הזה לאדמין
+        isAdmin: false,
+        isVolunteer: 'notVolunteering', // or 'signed' based on your logic
       });
-      navigate('/AdminDashboard');
+      navigate('/'); // Redirect to homepage or admin dashboard based on your logic
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      await setDoc(doc(db, 'users', user.uid), {
+        email: user.email,
+        isAdmin: false,
+        isVolunteer: 'notVolunteering',
+      });
+      navigate('/'); // Redirect to homepage or admin dashboard based on your logic
     } catch (error) {
       setError(error.message);
     }
@@ -50,6 +66,8 @@ const Signup = () => {
         />
         <button type="submit" className="auth-button">הירשם</button>
       </form>
+      <div className="or-login-with">sign up with:</div>
+      <GoogleButton handleGoogleLogin={handleGoogleLogin} />
     </div>
   );
 };
