@@ -49,7 +49,7 @@ const ManageEvents = () => {
 
         try {
             const imageUrls = await Promise.all(files.map(async (file) => {
-                const storageRef = ref(storage, `images/${file.name}`);
+                const storageRef = ref(storage, images/{file,name});//check
                 await uploadBytes(storageRef, file);
                 return await getDownloadURL(storageRef);
             }));

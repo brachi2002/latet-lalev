@@ -1,6 +1,7 @@
 import React from 'react';
 import './AboutUs.css';
-
+import { useTranslation } from 'react-i18next';//a
+import Navbar from './Navbar';
 const AboutUs = () => {
   const { t } = useTranslation();//a
   return (
@@ -8,56 +9,47 @@ const AboutUs = () => {
       <Navbar />
       <div className="about-us">
         <div className="about-us-header">
-          <h1>About Us</h1>
-          <p>Our mission is to help those in need, providing support and love.</p>
+        <h1>{t('about_us')}</h1>
+        <p>{t('our_mission_description')}</p>
         </div>
-
         <div className="about-us-content">
-          <div className="about-us-section">
-            
-            <img src={AboutUs1} alt="Our Mission" />
+          <div className="about-us-section">  
+            <img src="./images/your-image2.jpg" alt={t('our_mission')} />
             <div className="about-us-text">
-              <h2>Our Mission</h2>
-              <p>
-              Since 1999, we have been helping new immigrants and handing out food baskets and shopping cards.
-              New and second-hand clothes, support in finding a job (resumes, jobs), training (English / computers), subsidizing emotional treatments for children.
-              </p>
+            <h2>{t('our_mission')}</h2>
+            <p>{t('our_mission_text')}</p>
             </div>
           </div>
 
           <div className="about-us-section">
-            <img src="./images/your-image2.jpg" alt="Our Team" />
+            <img src="./images/your-image2.jpg" alt={t('our_team')}/>
             <div className="about-us-text">
-              <h2>Our Team</h2>
-              <p>
-                Our team is made up of dedicated professionals and volunteers who work tirelessly to provide support and care to those who need it most.
-              </p>
+            <h2>{t('our_team')}</h2>
+            <p>{t('our_team_text')}</p>
             </div>
           </div>
 
           <div className="about-us-section">
-            <img src="./images/your-image3.jpg" alt="Get Involved" />
+            <img src="./images/your-image3.jpg" alt={t('get_involved')} />
             <div className="about-us-text">
-              <h2>Get Involved</h2>
-              <p>
-                Join us in our mission to make a difference. Whether you want to volunteer, donate, or support us in other ways, your help is invaluable.
-              </p>
+            <h2>{t('get_involved')}</h2>
+            <p>{t('get_involved_text')}</p>
             </div>
           </div>
         </div>
 
         <section className="image-section">
           <div className="image-item">
-            <img src="image1_url" alt="Description 1" />
-            <h3>מחלקות העמותה</h3>
+            <img src="image1_url" alt={t('department_description')} />
+            <h3>{t('departments_of_the_association')}</h3>
           </div>
           <div className="image-item">
-            <img src="image2_url" alt="Description 2" />
-            <h3>Agreements</h3>
+            <img src="image2_url" alt={t('agreements')} />
+            <h3>{t('agreements')}</h3>
           </div>
           <div className="image-item">
-            <img src="image3_url" alt="Description 3" />
-            <h3>The rabbi of the association</h3>
+            <img src="image3_url" alt={t('rabbi_of_the_association')}  />
+            <h3>{t('rabbi_of_the_association')}</h3>
           </div>
         </section>
       </div>

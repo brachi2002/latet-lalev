@@ -8,6 +8,7 @@ import GoogleButton from './GoogleButton';
 import { useTranslation } from 'react-i18next';//a
 
 const Signup = () => {
+  const { t } = useTranslation();//a
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -47,29 +48,28 @@ const Signup = () => {
       console.error("Error during Google signup:", error);
     }
   };
-  const { t } = useTranslation();//a
   return (
     <div className="auth-container">
-      <h2>הרשמה</h2>
+      <h2>{t('signup')}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSignup} className="auth-form">
         <input
           type="email"
-          placeholder="כתובת דוא״ל"
+          placeholder={t('email_address2')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="סיסמה"
+          placeholder={t('password')}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="auth-button">הירשם</button>
+        <button type="submit" className="auth-button">{t('signup')}</button>
       </form>
-      <div className="or-login-with">sign up with:</div>
+      <div className="or-login-with">{t('or_signup_with')}</div>
       <GoogleButton handleGoogleLogin={handleGoogleLogin} />
     </div>
   );

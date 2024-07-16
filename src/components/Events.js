@@ -43,7 +43,7 @@ function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
         isAdmin={isAdmin}
       />
       <div className="events">
-        <h2>Events</h2>
+        <h2>{t('events')}</h2>
         {selectedEvent ? (
           <div className="modal">
             <div className="modal-content">
@@ -65,11 +65,11 @@ function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
                   {event.imageUrls && event.imageUrls.length > 0 ? (
                     <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
                   ) : (
-                    <div className="placeholder-image">No Image</div>
+                    <div className="placeholder-image">{t('no_image')}</div>
                   )}
                   <h3>{event.name}</h3>
                 </div>
-                <button className="info-button" onClick={() => handleEventClick(event)}>More Info</button>
+                <button className="info-button" onClick={() => handleEventClick(event)}>{t('more_info')}</button>
               </li>
             ))}
           </ul>

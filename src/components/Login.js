@@ -9,6 +9,7 @@ import GoogleButton from './GoogleButton';
 import { useTranslation } from 'react-i18next';//a
 
 const Login = () => {
+  const { t } = useTranslation();//a
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -56,29 +57,28 @@ const Login = () => {
       setError(error.message + 'unable to login google');
     }
   };
-  const { t } = useTranslation();//a
   return (
     <div className="auth-container">
-      <h2>התחברות</h2>
+      <h2>{t('login')}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleLogin} className="auth-form">
         <input
           type="email"
-          placeholder="כתובת דוא״ל"
+          placeholder={t('email_address2')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="סיסמה"
+          placeholder={t('password')}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="auth-button">התחבר</button>
+        <button type="submit" className="auth-button">{t('login')}</button>
       </form>
-      <div className="or-login-with">or login with:</div>
+      <div className="or-login-with">{t('or_login_with')}</div>
       <GoogleButton handleGoogleLogin={handleGoogleLogin} />
     </div>
   );
