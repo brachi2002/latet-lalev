@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, query, where, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import './ManageEvents.css';
 
 const ManageEvents = () => {
     const [event, setEvent] = useState({ name: '', description: '', imageUrls: [] });
@@ -49,7 +51,7 @@ const ManageEvents = () => {
 
         try {
             const imageUrls = await Promise.all(files.map(async (file) => {
-                const storageRef = ref(storage, images/{file,name});//check
+                const storageRef = ref(storage, `images/${file.name}`); // Correct the file name reference
                 await uploadBytes(storageRef, file);
                 return await getDownloadURL(storageRef);
             }));
@@ -108,6 +110,18 @@ const ManageEvents = () => {
         } catch (error) {
             console.error('Error deleting event: ', error);
         }
+    };
+
+    const handleGoToHomepage = () => {
+        navigate('/');
+    };
+
+    const handleGoToAdminDashboard = () => {
+        navigate('/admin/dashboard');
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
     };
 
     return (

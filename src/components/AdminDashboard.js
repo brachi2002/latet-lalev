@@ -47,11 +47,12 @@ const AdminDashboard = () => {
           <Link to="/admin/volunteers">View Volunteers</Link>
         </div>
         <div className="card">
-        
-        <Link to="/admin/view-user">View User</Link>
-
-
+          <Link to="/admin/view-user">View User</Link>
+       </div>
+       <div className="card">
+          <Link to="/admin/view-requests">View contacts requests</Link>
         </div>
+
       </div>
     </div>
   );
