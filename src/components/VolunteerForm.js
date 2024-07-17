@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './VolunteerForm.css';
 import MultiSelectComponent from './MultiSelectComponent';
+import { useTranslation } from 'react-i18next';
+import Navbar from './Navbar';
 
 const VolunteerForm = () => {
   const [user] = useAuthState(auth);
@@ -17,12 +19,20 @@ const VolunteerForm = () => {
   const [hasCar, setHasCar] = useState(false);
   const [comments, setComments] = useState('');
   const [volunteerRegularly, setVolunteerRegularly] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (selectedOptions.length === 0) {
+      setError('You must select at least one field of volunteering.');
+      return;
+    }
+
     try {
+      // Add volunteer details to the 'volunteers' collection
       await addDoc(collection(db, 'volunteers'), {
         firstName,
         lastName,
@@ -35,13 +45,20 @@ const VolunteerForm = () => {
         volunteerRegularly,
         createdAt: new Date(),
       });
+
+      // Update user's isVolunteer status to 'signed'
+      const userDocRef = doc(db, 'users', user.uid);
+      await updateDoc(userDocRef, {
+        isVolunteer: 'signed',
+      });
+
       alert('Thank you for volunteering!');
-      navigate('/'); // חזרה לדף הבית לאחר שמירת הנתונים
+      navigate('/'); // Redirect to homepage after saving the data
     } catch (error) {
       console.error('Error adding document: ', error);
     }
   };
-  const { t } = useTranslation();//a
+
   return (
     <div>
       <Navbar />
@@ -129,6 +146,8 @@ const VolunteerForm = () => {
             />
           </div>
         </div>
+
+        {error && <p className="error-message">{error}</p>}
 
         <div className="checkbox-container">
           <label>

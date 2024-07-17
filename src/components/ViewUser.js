@@ -4,7 +4,6 @@ import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './ViewUser.css';
-import { useTranslation } from 'react-i18next';//a
 
 const ViewUser = () => {
   const [users, setUsers] = useState([]);
@@ -45,7 +44,15 @@ const ViewUser = () => {
   };
 
   const handleToggleVolunteerStatus = async (userId, currentStatus) => {
-    const newStatus = currentStatus === 'notVolunteering' ? 'signed' : currentStatus === 'signed' ? 'true' : 'notVolunteering';
+    let newStatus;
+
+    if (currentStatus === 'signed') {
+      newStatus = 'true'; // Accept the volunteer
+    } else if (currentStatus === 'true') {
+      newStatus = 'false'; // Revoke volunteer status
+    } else {
+      return; // If current status is 'notVolunteering', do nothing
+    }
 
     await updateDoc(doc(db, 'users', userId), {
       isVolunteer: newStatus
@@ -58,27 +65,43 @@ const ViewUser = () => {
     navigate('/'); // Navigate to home page
   };
 
-    const handleGoToAdminDashboard = () => {
-        navigate('/admin/dashboard'); // Navigate to admin dashboard page
-    };
+  const handleGoToAdminDashboard = () => {
+    navigate('/admin/dashboard'); // Navigate to admin dashboard page
+  };
 
-    return (
-        <div className="view-user">
-            <header className="admin-header">
-                <h1>View User</h1>
-                {user && (
-                    <>
-                        <span className="user-email">{user.email}</span>
-                        <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
-                        <button onClick={handleGoToAdminDashboard} className="dashboard-button">Go to Admin Home</button>
-                    </>
-                )}
-            </header>
-            <div>
-                <p>Here you can see your users.</p>
-            </div>
-        </div>
-    );
+  return (
+    <div className="view-user">
+      <header className="admin-header">
+        <h1>View User</h1>
+        {user && (
+          <>
+            <span className="user-email">{user.email}</span>
+            <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
+            <button onClick={handleGoToAdminDashboard} className="dashboard-button">Go to Admin Home</button>
+          </>
+        )}
+      </header>
+      <div>
+        <p>Here you can see your users.</p>
+        <ul>
+          {users.map(u => (
+            <li key={u.id}>
+              {u.email} - {u.isAdmin ? "Admin" : "Not Admin"} - {u.isVolunteer}
+              <button onClick={() => handleDeleteUser(u.id)}>Delete</button>
+              <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)}>
+                {u.isAdmin ? "Revoke Admin" : "Make Admin"}
+              </button>
+              {u.isVolunteer !== 'notVolunteering' && (
+                <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)}>
+                  {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : ""}
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default ViewUser;

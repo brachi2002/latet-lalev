@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { db } from '../firebase'; // Ensure this import is correct
+import { collection, addDoc } from 'firebase/firestore';
 import './ContactForm.css';
-import { useTranslation } from 'react-i18next';//a
+import { useTranslation } from 'react-i18next';
 
 function ContactForm() {
   const { t } = useTranslation(); 
@@ -23,11 +25,29 @@ function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can add the code to handle the form submission
-    console.log(formData);
+    try {
+      // Add a new document with a generated id.
+      await addDoc(collection(db, 'contactUsRequests'), formData);
+      alert('Your request has been submitted successfully.');
+      // Reset the form after submission
+      setFormData({
+        name: '',
+        familyName: '',
+        phone: '',
+        email: '',
+        address: '',
+        reason: '',
+        message: '',
+        accept: false,
+      });
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      alert('There was an error submitting your request. Please try again.');
+    }
   };
+
   return (
     <div className="contact-form">
       <h2>{t('need_help')}</h2>
