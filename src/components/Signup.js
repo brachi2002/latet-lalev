@@ -5,12 +5,13 @@ import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import './Singup.css';
 import GoogleButton from './GoogleButton';
-import { useTranslation } from 'react-i18next';//a
+import { useTranslation } from 'react-i18next';
 
 const Signup = () => {
-  const { t } = useTranslation();//a
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
@@ -23,13 +24,13 @@ const Signup = () => {
       const user = userCredential.user;
       await setDoc(doc(db, 'users', user.uid), {
         email: user.email,
+        name,
         isAdmin: false,
-        isVolunteer: 'notVolunteering', // or 'signed' based on your logic
+        isVolunteer: 'notVolunteering',
       });
-      navigate('/'); // Redirect to homepage or admin dashboard based on your logic
+      navigate('/');
     } catch (error) {
       setError(error.message);
-      console.error("Error during signup:", error);
     }
   };
 
@@ -39,20 +40,28 @@ const Signup = () => {
       const user = result.user;
       await setDoc(doc(db, 'users', user.uid), {
         email: user.email,
+        name: user.displayName,
         isAdmin: false,
         isVolunteer: 'notVolunteering',
       });
-      navigate('/'); // Redirect to homepage or admin dashboard based on your logic
+      navigate('/');
     } catch (error) {
       setError(error.message);
-      console.error("Error during Google signup:", error);
     }
   };
+
   return (
     <div className="auth-container">
       <h2>{t('signup')}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSignup} className="auth-form">
+        <input
+          type="text"
+          placeholder={t('name')}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
         <input
           type="email"
           placeholder={t('email_address2')}
