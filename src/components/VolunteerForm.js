@@ -9,9 +9,12 @@ import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
 
 const VolunteerForm = () => {
+  const { t } = useTranslation();
   const [user] = useAuthState(auth);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState(''); 
   const [email, setEmail] = useState(user ? user.email : '');
   const [city, setCity] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -21,7 +24,6 @@ const VolunteerForm = () => {
   const [volunteerRegularly, setVolunteerRegularly] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +40,8 @@ const VolunteerForm = () => {
         lastName,
         email,
         city,
+        age,
+        gender,
         volunteerOptions: selectedOptions.map(option => option.label),
         phone,
         hasCar,
@@ -52,7 +56,7 @@ const VolunteerForm = () => {
         isVolunteer: 'signed',
       });
 
-      alert('Thank you for volunteering!');
+      alert(t('thank_you_for_volunteering'));
       navigate('/'); // Redirect to homepage after saving the data
     } catch (error) {
       console.error('Error adding document: ', error);
@@ -63,15 +67,15 @@ const VolunteerForm = () => {
     <div>
       <Navbar />
       <form onSubmit={handleSubmit}>
-        <h2>Want to join us?</h2>
-        <h3>Fill out the form and join our volunteer team!</h3>
+      <h2>{t('want_to_join_us')}</h2>
+      <h3>{t('fill_out_the_form')}</h3>
         
         <label className="required">
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder="First Name"
+            placeholder={t('first_name2')}
             required
           />
         </label>
@@ -80,16 +84,7 @@ const VolunteerForm = () => {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="Last Name"
-            required
-          />
-        </label>
-        <label className="required">
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="City"
+            placeholder={t('last_name2')}
             required
           />
         </label>
@@ -98,16 +93,45 @@ const VolunteerForm = () => {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone"
+            placeholder={t('phone')}
             required
           />
+        </label>
+        <label className="required">
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder={t('city')}
+            required
+          />
+        </label>
+        <label className="required">
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder={t('age')}
+            required
+          />
+        </label>
+        <label className="required">
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">{t('select_gender')}</option>
+            <option value="male">{t('male')}</option>
+            <option value="female">{t('female')}</option>
+          </select>
         </label>
         <label className="required">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder={t('email')}
             required
             disabled={!!user}
           />
@@ -115,7 +139,7 @@ const VolunteerForm = () => {
 
         <div className="group-container">
           <div className="radio-group">
-            <label>Would you like to volunteer regularly?</label>
+          <label>{t('volunteer_regularly')}</label>
             <label>
               <input
                 type="radio"
@@ -124,7 +148,7 @@ const VolunteerForm = () => {
                 onChange={(e) => setVolunteerRegularly('yes')}
                 required
               />
-              Yes
+             {t('yes')}
             </label>
             <label>
               <input
@@ -134,12 +158,12 @@ const VolunteerForm = () => {
                 onChange={(e) => setVolunteerRegularly('no')}
                 required
               />
-              No
+              {t('no')}
             </label>
           </div>
 
           <div className="multi-select-group">
-            <label>Field of Volunteering - Select at least one</label>
+          <label>{t('field_of_volunteering')}</label>
             <MultiSelectComponent
               selected={selectedOptions}
               setSelected={setSelectedOptions}
@@ -156,15 +180,15 @@ const VolunteerForm = () => {
               checked={hasCar}
               onChange={(e) => setHasCar(e.target.checked)}
             />
-            Do you have a car?
+              {t('have_car')}
           </label>
         </div>
         <label>
-          Comments
+        {t('comments')}
           <textarea
             value={comments}
             onChange={(e) => setComments(e.target.value)}
-            placeholder="Comments"
+            placeholder={t('comments')}
           ></textarea>
         </label>
         <label>
@@ -172,9 +196,9 @@ const VolunteerForm = () => {
             type="checkbox"
             required
           />
-          I agree to receive newsletters and accept the privacy policy.
+          {t('agree_to_receive_newsletters')}
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">{t('submit')}</button>
       </form>
     </div>
   );

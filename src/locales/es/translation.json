@@ -76,6 +76,26 @@
     "email_address2": "Dirección de correo electrónico",
     "password": "Contraseña",
     "or_login_with": "o iniciar sesión con:",
-    "or_signup_with": "Regístrate con:"
+    "or_signup_with": "Regístrate con:",
+    "must_select_field": "Debe seleccionar al menos un campo de voluntariado.",
+    "thank_you_for_volunteering": "¡Gracias por ser voluntario!",
+    "want_to_join_us": "¿Quieres unirte a nosotros?",
+    "fill_out_the_form": "¡Llena el formulario y únete a nuestro equipo de voluntarios!",
+    "first_name2": "Nombre",
+    "last_name2": "Apellido",
+    "city": "Ciudad",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "volunteer_regularly": "¿Te gustaría ser voluntario regularmente?",
+    "yes": "Sí",
+    "no": "No",
+    "field_of_volunteering": "Campo de Voluntariado - Selecciona al menos uno",
+    "have_car": "¿Tienes coche?",
+    "comments": "Comentarios",
+    "age": "Edad",
+  "select_gender": "Seleccione Género",
+  "male": "Masculino",
+  "female": "Femenino",
+    "agree_to_receive_newsletters": "Estoy de acuerdo en recibir boletines y aceptar la política de privacidad."
   }
   

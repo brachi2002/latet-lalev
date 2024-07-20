@@ -76,7 +76,26 @@
     "email_address2": "כתובת דוא״ל",
     "password": "סיסמה",
     "or_login_with": "או התחבר באמצעות:",
-    "or_signup_with": "הרשמה באמצעות:"
+    "or_signup_with": "הרשמה באמצעות:",
+    "must_select_field": "עליך לבחור לפחות תחום התנדבות אחד.",
+    "thank_you_for_volunteering": "!תודה על ההתנדבות",
+    "want_to_join_us": "?רוצים להצטרף אלינו",
+    "fill_out_the_form": "!מלאו את הטופס והצטרפו לצוות המתנדבים שלנו",
+    "first_name2": "שם פרטי",
+    "last_name2": "שם משפחה",
+    "city": "עיר",
+    "phone": "טלפון",
+    "email": "דוא\"ל",
+    "volunteer_regularly": "?האם תרצה להתנדב בקביעות",
+    "yes": "כן",
+    "no": "לא",
+    "field_of_volunteering": "תחום התנדבות - בחר לפחות אחד",
+    "have_car": "?האם יש לך רכב",
+    "comments": "הערות",
+    "age": "גיל",
+    "select_gender": "בחר מגדר",
+    "male": "זכר",
+    "female": "נקבה",
+    "agree_to_receive_newsletters": "אני מסכים לקבל ניוזלטרים ומקבל את מדיניות הפרטיות."
   }
-  
   

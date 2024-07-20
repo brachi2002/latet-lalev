@@ -76,6 +76,26 @@
     "email_address2": "Email Address",
     "password": "Password",
     "or_login_with": "or login with:",
-    "or_signup_with": "Sign up with:"
+    "or_signup_with": "Sign up with:",
+    "must_select_field": "You must select at least one field of volunteering.",
+    "thank_you_for_volunteering": "Thank you for volunteering!",
+    "want_to_join_us": "Want to join us?",
+    "fill_out_the_form": "Fill out the form and join our volunteer team!",
+    "first_name2": "First Name",
+    "last_name2": "Last Name",
+    "city": "City",
+    "phone": "Phone",
+    "email": "Email",
+    "volunteer_regularly": "Would you like to volunteer regularly?",
+    "yes": "Yes",
+    "no": "No",
+    "field_of_volunteering": "Field of Volunteering - Select at least one",
+    "have_car": "Do you have a car?",
+    "comments": "Comments",
+    "age": "Age",
+    "select_gender": "Select Gender",
+    "male": "Male",
+    "female": "Female",
+    "agree_to_receive_newsletters": "I agree to receive newsletters and accept the privacy policy."
   }
   
