@@ -13,7 +13,7 @@ import ViewUser from './components/ViewUser';
 import Events from './components/Events';
 import AboutUs from './components/AboutUs';
 import Donations from './components/Donations';
-import ContactForm from './components/ContactForm';
+import Services from './components/Services';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import './styles.css';
 
@@ -35,10 +35,10 @@ function App() {
           />
           <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
           <Route path="/events" element={<Events />} />
-          <Route path="/services" element={<Events />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/branches" element={<Events />} />
           <Route path="/ourStory" element={<AboutUs />} />
-          <Route path="/contactUs" element={<Events />} />
+          {/* <Route path="/contactUs" element={<Events />} /> */}
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
