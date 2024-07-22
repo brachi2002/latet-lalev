@@ -1,36 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, doc, getDoc } from 'firebase/firestore'; // Added doc and getDoc imports
+import { collection, addDoc, doc, getDoc, deleteDoc, getDocs } from 'firebase/firestore'; // Updated imports
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './AdminAddVolunteerOption.css';
+import { useTranslation } from 'react-i18next';
 
 const AdminAddVolunteerOption = () => {
+    const { t } = useTranslation();
     const [option, setOption] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+    const [options, setOptions] = useState([]); // State to store the volunteer options
 
     useEffect(() => {
         const checkAdmin = async () => {
-          if (user) {
-            const userDoc = await getDoc(doc(db, 'users', user.uid));
-            if (userDoc.exists() && userDoc.data().isAdmin) {
-              setIsAdmin(true);
-              console.log("User is admin:", user.uid);
+            if (user) {
+                const userDoc = await getDoc(doc(db, 'users', user.uid));
+                if (userDoc.exists() && userDoc.data().isAdmin) {
+                    setIsAdmin(true);
+                    console.log("User is admin:", user.uid);
+                } else {
+                    setIsAdmin(false);
+                    console.log("User is not admin:", user.uid);
+                }
             } else {
-              setIsAdmin(false);
-              console.log("User is not admin:", user.uid);
+                console.log("No user is logged in");
             }
-          } else {
-            console.log("No user is logged in");
-          }
         };
-    
-        checkAdmin();
-      }, [user]);
 
-      
+        const fetchOptions = async () => {
+            const querySnapshot = await getDocs(collection(db, 'volunteerOptions'));
+            const optionsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setOptions(optionsList);
+        };
+
+        checkAdmin();
+        fetchOptions();
+    }, [user]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -45,8 +54,21 @@ const AdminAddVolunteerOption = () => {
             });
             alert('Option added successfully');
             setOption('');
+            const querySnapshot = await getDocs(collection(db, 'volunteerOptions'));
+            const optionsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setOptions(optionsList);
         } catch (error) {
             console.error('Error adding option: ', error);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await deleteDoc(doc(db, 'volunteerOptions', id));
+            alert('Option deleted successfully');
+            setOptions(options.filter(option => option.id !== id));
+        } catch (error) {
+            console.error('Error deleting option: ', error);
         }
     };
 
@@ -72,17 +94,30 @@ const AdminAddVolunteerOption = () => {
             </header>
             <div className="add-volunteer-option">
                 {isAdmin ? (
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            value={option}
-                            name="option"
-                            onChange={(e) => setOption(e.target.value)}
-                            placeholder="Add Volunteer Option"
-                            required
-                        />
-                        <button type="submit">Add Option</button>
-                    </form>
+                    <>
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                value={option}
+                                name="option"
+                                onChange={(e) => setOption(e.target.value)}
+                                placeholder="Add Volunteer Option"
+                                required
+                            />
+                            <button type="submit">Add Option</button>
+                        </form>
+                        <h2>Current Volunteer Options</h2>
+                        <div className="current-volunteer-options">
+                            <ul>
+                                {options.map(opt => (
+                                    <li key={opt.id}>
+                                        <span>{opt.option}</span>
+                                        <button onClick={() => handleDelete(opt.id)}>Delete</button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </>
                 ) : (
                     <p>You do not have permission to view this page</p>
                 )}

@@ -8,42 +8,54 @@ import './ViewUser.css';
 const ViewUser = () => {
   const [users, setUsers] = useState([]);
   const [user] = useAuthState(auth);
+  const [volunteerForms, setVolunteerForms] = useState({});
+  const [selectedVolunteer, setSelectedVolunteer] = useState(null); // State for the selected volunteer
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
       const querySnapshot = await getDocs(collection(db, 'users'));
       const usersList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setUsers(usersList.filter(u => u.id !== user.uid)); // Exclude the current user
+      setUsers(usersList.filter(u => u.email !== user.email)); // Exclude the current user
+    };
+
+    const fetchVolunteerForms = async () => {
+      const querySnapshot = await getDocs(collection(db, 'volunteers'));
+      const forms = {};
+      querySnapshot.forEach(doc => {
+        forms[doc.data().email] = doc.data(); // Use email as the key
+      });
+      setVolunteerForms(forms);
     };
 
     fetchUsers();
+    fetchVolunteerForms();
   }, [user]);
 
-  const handleDeleteUser = async (userId) => {
-    if (userId === user.uid) {
+  const handleDeleteUser = async (userEmail) => {
+    if (userEmail === user.email) {
       alert("You cannot delete yourself.");
       return;
     }
 
-    await deleteDoc(doc(db, 'users', userId));
-    setUsers(users.filter(u => u.id !== userId));
+    await deleteDoc(doc(db, 'users', userEmail));
+    setUsers(users.filter(u => u.email !== userEmail));
   };
 
-  const handleToggleAdmin = async (userId, isAdmin) => {
-    if (userId === user.uid) {
+  const handleToggleAdmin = async (userEmail, isAdmin) => {
+    if (userEmail === user.email) {
       alert("You cannot change your own admin status.");
       return;
     }
 
-    await updateDoc(doc(db, 'users', userId), {
+    await updateDoc(doc(db, 'users', userEmail), {
       isAdmin: !isAdmin
     });
 
-    setUsers(users.map(u => u.id === userId ? { ...u, isAdmin: !isAdmin } : u));
+    setUsers(users.map(u => u.email === userEmail ? { ...u, isAdmin: !isAdmin } : u));
   };
 
-  const handleToggleVolunteerStatus = async (userId, currentStatus) => {
+  const handleToggleVolunteerStatus = async (userEmail, currentStatus) => {
     let newStatus;
 
     if (currentStatus === 'signed') {
@@ -54,11 +66,11 @@ const ViewUser = () => {
       return; // If current status is 'notVolunteering', do nothing
     }
 
-    await updateDoc(doc(db, 'users', userId), {
+    await updateDoc(doc(db, 'users', userEmail), {
       isVolunteer: newStatus
     });
 
-    setUsers(users.map(u => u.id === userId ? { ...u, isVolunteer: newStatus } : u));
+    setUsers(users.map(u => u.email === userEmail ? { ...u, isVolunteer: newStatus } : u));
   };
 
   const handleGoToHomepage = () => {
@@ -67,6 +79,14 @@ const ViewUser = () => {
 
   const handleGoToAdminDashboard = () => {
     navigate('/admin/dashboard'); // Navigate to admin dashboard page
+  };
+
+  const handleViewVolunteerForm = (userEmail) => {
+    setSelectedVolunteer(volunteerForms[userEmail]);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedVolunteer(null);
   };
 
   return (
@@ -87,18 +107,35 @@ const ViewUser = () => {
           {users.map(u => (
             <li key={u.id}>
               {u.email} - {u.isAdmin ? "Admin" : "Not Admin"} - {u.isVolunteer}
-              <button onClick={() => handleDeleteUser(u.id)}>Delete</button>
-              <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)}>
+              <button onClick={() => handleDeleteUser(u.email)}>Delete</button>
+              <button onClick={() => handleToggleAdmin(u.email, u.isAdmin)}>
                 {u.isAdmin ? "Revoke Admin" : "Make Admin"}
               </button>
+              <button onClick={() => handleViewVolunteerForm(u.email)}>View Volunteer Form</button>
               {u.isVolunteer !== 'notVolunteering' && (
-                <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)}>
+                <button onClick={() => handleToggleVolunteerStatus(u.email, u.isVolunteer)}>
                   {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : ""}
                 </button>
               )}
             </li>
           ))}
         </ul>
+        {selectedVolunteer && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={handleCloseModal}>&times;</span>
+              <h3>Volunteer Form:</h3>
+              <p><strong>Name:</strong> {selectedVolunteer.firstName} {selectedVolunteer.lastName}</p>
+              <p><strong>Email:</strong> {selectedVolunteer.email}</p>
+              <p><strong>City:</strong> {selectedVolunteer.city}</p>
+              <p><strong>Phone:</strong> {selectedVolunteer.phone}</p>
+              <p><strong>Has Car:</strong> {selectedVolunteer.hasCar ? 'Yes' : 'No'}</p>
+              <p><strong>Comments:</strong> {selectedVolunteer.comments}</p>
+              <p><strong>Volunteer Regularly:</strong> {selectedVolunteer.volunteerRegularly}</p>
+              <p><strong>Volunteer Options:</strong> {selectedVolunteer.volunteerOptions.join(', ')}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

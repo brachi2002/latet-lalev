@@ -46,3 +46,65 @@
 .add-volunteer-option {
     margin-top: 20px;
 }
+
+.current-volunteer-options {
+    margin-top: 40px; /* Increased margin to add more space above the title */
+    text-align: center; /* Center align the title */
+}
+
+.current-volunteer-options h2 {
+    margin-bottom: 20px; /* Optional: Adjust the space below the title if needed */
+}
+
+.current-volunteer-options ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center the list items */
+}
+
+.current-volunteer-options li {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust for three items per row with gap */
+    max-width: calc(33.333% - 20px); /* Adjust for three items per row with gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Add space between rows */
+}
+
+.current-volunteer-options li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.current-volunteer-options span {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.current-volunteer-options button {
+    background-color: #8a2f2f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.current-volunteer-options button:hover {
+    background-color: #841e1e;
+    transform: scale(1.05);
+}
