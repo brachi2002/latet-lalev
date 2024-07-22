@@ -64,10 +64,10 @@
 }
 
 .loading-arrow {
-  width: 50px; /* Adjust size as needed */
-  height: 50px;
-  border: 5px solid transparent;
-  border-top: 5px solid #8a2f2f; /* Arrow color */
+  width: 60px; /* Adjust size as needed */
+  height: 60px;
+  border: 10px solid transparent; /* Increase the width of the border */
+  border-top: 10px solid #8a2f2f; /* Arrow color */
   border-radius: 50%;
   animation: rotate 2s linear infinite;
 }
