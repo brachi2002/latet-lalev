@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
@@ -9,13 +9,32 @@ const Profile = ({ handleSignOut }) => {
   const [user] = useAuthState(auth);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const { t } = useTranslation();
+  const profileMenuRef = useRef(null);
 
   const toggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
   };
 
+  const handleClickOutside = (event) => {
+    if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+      setShowProfileMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showProfileMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showProfileMenu]);
+
   return (
-    <div className="profile-container">
+    <div className="profile-container" ref={profileMenuRef}>
       <button onClick={toggleProfileMenu} className="profile-button">
         <i className="fas fa-user"></i>
       </button>

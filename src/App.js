@@ -44,7 +44,7 @@ function App() {
           <Route path="volunteer" element={<ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
           <Route path="/admin/volunteers" element={<VolunteerList />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/services" element={<Events />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/branches" element={<Events />} />
           <Route path="/ourStory" element={<AboutUs />} />
           <Route path="/contactUs" element={<Events />} />

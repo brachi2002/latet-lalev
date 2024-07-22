@@ -18,8 +18,12 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log('Login form submitted');
+
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log('User logged in:', userCredential.user);
+
       const user = userCredential.user;
       const userDoc = await getDoc(doc(db, 'users', user.uid));
       if (userDoc.exists()) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -12,10 +12,10 @@ import { animateScroll as scroll, scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';//a
 
 function Homepage() {
-  const { t } = useTranslation();//a
+  const { t } = useTranslation(); //a
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
-  const navigate = useNavigate();
+  const location = useLocation(); // Correctly assign useLocation to a variable
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
@@ -33,49 +33,21 @@ function Homepage() {
     checkAdmin();
   }, [user]);
 
-  const handleDonateClick = () => {
-    setShowDonations(true);
-  };
-
-  const handleSignOut = () => {
-    signOut(auth).then(() => {
-      console.log('User signed out');
-      navigate('/'); // חזרה לדף הבית לאחר התנתקות
-    }).catch((error) => {
-      console.error('Error signing out: ', error);
-    });
-  };
-
-  const handleHomeClick = () => {
-    setShowDonations(false);
-    navigate('/');
-  };
-
-  const handleVolunteerClick = () => {
-    if (user) {
-      navigate('/volunteer');
-    } else {
-      navigate('/login', { state: { from: { pathname: '/volunteer' } } });
+  useEffect(() => {
+    if (location.state && location.state.scrollToContact) {
+      scroller.scrollTo('contact-section', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart'
+      });
     }
-  };
+  }, [location]);
 
-  const handleContactClick = () => {
-    scroller.scrollTo('contact-section', {
-      duration: 800,
-      delay: 0,
-      smooth: 'easeInOutQuart'
-    });
-  };
   
   return (
     <div className="App">
       <Navbar
         user={user}
-        handleSignOut={handleSignOut}
-        handleDonateClick={handleDonateClick}
-        handleHomeClick={handleHomeClick}
-        handleVolunteerClick={handleVolunteerClick}
-        handleContactClick={handleContactClick}
         isAdmin={isAdmin}
       />
       <header className="App-header">
