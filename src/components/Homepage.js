@@ -1,42 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
 import { useAuthState } from 'react-firebase-hooks/auth';
-<<<<<<< HEAD
-import { signOut } from 'firebase/auth';
-=======
+import { signOut, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
->>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
 import { auth, db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
-import Navbar from './Navbar';
-<<<<<<< HEAD
-
+import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
-=======
-import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
-import { scroller } from 'react-scroll';
->>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
+import { useTranslation } from 'react-i18next';//a
 
 function Homepage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); //a
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
+  const location = useLocation(); // Correctly assign useLocation to a variable
   const [isAdmin, setIsAdmin] = useState(false);
-<<<<<<< HEAD
-  const navigate = useNavigate();
-=======
-  const location = useLocation();
->>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
 
   useEffect(() => {
     const checkAdmin = async () => {
       if (user) {
-        const adminDoc = await getDoc(doc(db, 'admins', user.uid));
-        if (adminDoc.exists()) {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists() && userDoc.data().isAdmin) {
           setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
         }
       }
     };
@@ -44,31 +33,6 @@ function Homepage() {
     checkAdmin();
   }, [user]);
 
-<<<<<<< HEAD
-  const handleDonateClick = () => {
-    setShowDonations(true);
-  };
-
-  const handleSignOut = () => {
-    signOut(auth).then(() => {
-      console.log('User signed out');
-      navigate('/'); // Return to home page after signing out
-    }).catch((error) => {
-      console.error('Error signing out: ', error);
-    });
-  };
-
-  const handleHomeClick = () => {
-    setShowDonations(false);
-    navigate('/');
-  };
-
-  const handleVolunteerClick = () => {
-    if (user) {
-      navigate('/volunteer');
-    } else {
-      navigate('/login', { state: { from: { pathname: '/volunteer' } } });
-=======
   useEffect(() => {
     if (location.state && location.state.scrollToContact) {
       scroller.scrollTo('contact-section', {
@@ -76,9 +40,9 @@ function Homepage() {
         delay: 0,
         smooth: 'easeInOutQuart'
       });
->>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
     }
   }, [location]);
+
   
   return (
     <div className="App">
@@ -92,7 +56,7 @@ function Homepage() {
             <h1>{t('how_can_we_help_you')}</h1>
             <input type="text" placeholder={t('search')} className="search-input" />
             <div className="search-categories">
-              <h2>{t('search_by_community_type')}</h2>
+            <h2>{t('search_by_community_type')}</h2>
               <div className="categories">
                 <button>{t('volunteers')}</button>
                 <button>{t('seniors')}</button>
@@ -105,6 +69,7 @@ function Homepage() {
               <h2>{t('search_by_service_type')}</h2>
               <div className="services">
                 <button>{t('free_ambulance_services')}</button>
+                {/* Add more buttons as needed */}
               </div>
             </div>
           </div>
@@ -115,7 +80,7 @@ function Homepage() {
           <Donations />
         ) : (
           <>
-            <div style={{ height: '50vh' }}></div>
+            <div style={{ height: '50vh' }}></div> {/* Placeholder to allow scrolling */}
             <div name="contact-section">
               <ContactForm />
             </div>

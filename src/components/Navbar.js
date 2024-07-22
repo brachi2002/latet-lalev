@@ -16,8 +16,7 @@ const Navbar = ({ user, isAdmin }) => {
   const { t, i18n } = useTranslation();
   const [showLanguageOptions, setShowLanguageOptions] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-
+  const location = useLocation(); // Correctly assign useLocation to a variable
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setShowLanguageOptions(false);
@@ -59,15 +58,7 @@ const Navbar = ({ user, isAdmin }) => {
   };
 
   const handleContactClick = () => {
-    if (location.pathname === '/') {
-      scroller.scrollTo('contact-section', {
-        duration: 800,
-        delay: 0,
-        smooth: 'easeInOutQuart'
-      });
-    } else {
-      navigate('/', { state: { scrollToContact: true } });
-    }
+    navigate('/', { state: { scrollToContact: true } });
   };
   
 
