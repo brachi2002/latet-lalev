@@ -80,7 +80,7 @@ const Messages = () => {
   return (
     <div className="messages">
       <header className="admin-header">
-        <h1>Language Support</h1>
+        <h1>messages Support</h1>
         {authUser && (
           <>
             <span className="user-email">{authUser.email}</span>
