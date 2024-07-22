@@ -32,15 +32,28 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
 
   const handleAcceptMission = async (messageId) => {
     if (authUser) {
+    //   const userDoc = await getDoc(doc(db, 'volunteers', authUser.uid));
+    //   const volunteerDetails = userDoc.exists() ? userDoc.data() : {};
+      
       await addDoc(collection(db, 'missions'), {
         messageId,
         userId: authUser.uid,
         userEmail: authUser.email,
         status: 'pending',
         createdAt: new Date(),
+        // ...volunteerDetails, // Include volunteer details
       });
+
       alert('You have accepted the mission. Await admin approval.');
     }
+  };
+
+  const formatDate = (timestamp) => {
+    if (timestamp && timestamp.seconds) {
+      const date = new Date(timestamp.seconds * 1000);
+      return date.toLocaleString();
+    }
+    return '';
   };
 
   if (loading) return <div>Loading...</div>;
@@ -54,11 +67,12 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
           <div className="popup-content">
             <button className="close-popup" onClick={() => setShowPopup(false)}>X</button>
             <h3>Volunteer Messages</h3>
-            <ul>
+            <ul className="messages-list">
               {messages.map(msg => (
-                <li key={msg.id}>
+                <li key={msg.id} className="message-item">
                   <p>{msg.content}</p>
-                  <button onClick={() => handleAcceptMission(msg.id)}>Accept Mission</button>
+                  <p><small>{formatDate(msg.createdAt)}</small></p>
+                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>Accept Mission</button>
                 </li>
               ))}
             </ul>

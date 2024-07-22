@@ -1,0 +1,159 @@
+.messages {
+    margin: 40px;
+    font-family: Arial, sans-serif;
+  }
+  
+
+  
+  .user-email {
+    margin-right: 20px;
+  }
+  
+  .homepage-button,
+  .dashboard-button {
+    margin-left: 10px;
+  }
+  
+  .message-input {
+    display: flex;
+    margin-bottom: 0px;
+  }
+  
+  .new-message-textarea {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    margin: 20px;
+    margin-right: 0;
+    height: 40px;
+  }
+  
+  .send-button {
+    padding: 10px 20px;
+    margin: 30px;
+    margin-left:-90px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+
+  }
+  
+  .send-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .message-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+  }
+  
+  .message-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .message-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .delete-button,
+  .expand-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .expand-button {
+    background-color: #007bff;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .expand-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .accepted-users {
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  .accepted-users ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .accepted-users li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .view-form-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .view-form-button:hover {
+    background-color: #218838;
+  }
+  
+  .volunteer-form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .volunteer-form-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .close-popup {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  .close-popup:hover {
+    background-color: #c82333;
+  }
+  

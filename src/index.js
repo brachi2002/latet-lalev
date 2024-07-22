@@ -2,6 +2,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ProtectedApp from './ProtectedApp';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 const container = document.getElementById('root');
