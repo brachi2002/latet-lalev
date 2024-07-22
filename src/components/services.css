@@ -1,0 +1,67 @@
+/* services.css */
+
+.services {
+    padding: 40px;
+    background-color: #f8eaea;
+    font-family: 'Arial', sans-serif;
+}
+
+.services h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 700px;
+    width: 100%;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.service-item img {
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-title {
+    font-size: 24px;
+    color: #a72828;
+    margin-bottom: 10px;
+}
+
+.service-description ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.service-description p, .service-description ul {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
