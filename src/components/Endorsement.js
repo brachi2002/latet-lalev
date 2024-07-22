@@ -31,7 +31,7 @@ const Endorsement = ({ isAdmin }) => {
       <Navbar user={user} isAdmin={isAdmin} />
       <div className="endorsement-page">
         <div className="endorsement-header">
-          <h1>{t('endorsements')}</h1>
+          <h1>{t('agreements')}</h1>
         </div>
         <div className="endorsement-content">
           <div className="endorsement-item" onClick={() => openModal(endorsement1)}>
