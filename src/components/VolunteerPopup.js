@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, getDocs, addDoc, getDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, getDoc, doc, query, where } from 'firebase/firestore';
 import './VolunteerPopup.css';
 
 const VolunteerPopup = ({ showPopup, setShowPopup }) => {
@@ -21,7 +21,15 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
 
     const fetchMessages = async () => {
       const querySnapshot = await getDocs(collection(db, 'messages'));
-      setMessages(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      const allMessages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      
+      // Filter out messages that have been accepted by the current user
+      const acceptedMessagesQuery = query(collection(db, 'missions'), where('userId', '==', authUser.uid));
+      const acceptedMessagesSnapshot = await getDocs(acceptedMessagesQuery);
+      const acceptedMessageIds = acceptedMessagesSnapshot.docs.map(doc => doc.data().messageId);
+
+      const filteredMessages = allMessages.filter(msg => !acceptedMessageIds.includes(msg.id));
+      setMessages(filteredMessages);
     };
 
     if (authUser) {
@@ -32,19 +40,18 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
 
   const handleAcceptMission = async (messageId) => {
     if (authUser) {
-    //   const userDoc = await getDoc(doc(db, 'volunteers', authUser.uid));
-    //   const volunteerDetails = userDoc.exists() ? userDoc.data() : {};
-      
       await addDoc(collection(db, 'missions'), {
         messageId,
         userId: authUser.uid,
         userEmail: authUser.email,
         status: 'pending',
         createdAt: new Date(),
-        // ...volunteerDetails, // Include volunteer details
       });
 
       alert('You have accepted the mission. Await admin approval.');
+
+      // Remove the accepted message from the list
+      setMessages(messages.filter(msg => msg.id !== messageId));
     }
   };
 
@@ -65,7 +72,7 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <button className="close-popup" onClick={() => setShowPopup(false)}>X</button>
+            <button className="close-popup" onClick={() => setShowPopup(false)}></button>
             <h3>Volunteer Messages</h3>
             <ul className="messages-list">
               {messages.map(msg => (
