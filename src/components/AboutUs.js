@@ -1,12 +1,19 @@
 import React from 'react';
 import './AboutUs.css';
 import { useTranslation } from 'react-i18next';//a
+import {auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Navbar from './Navbar';
-const AboutUs = () => {
+const AboutUs = ({isAdmin}) => {
   const { t } = useTranslation();//a
+  const [user] = useAuthState(auth);
+
   return (
     <div>
-      <Navbar />
+      <Navbar
+        user={user}
+        isAdmin={isAdmin}
+      />
       <div className="about-us">
         <div className="about-us-header">
         <h1>{t('about_us')}</h1>
