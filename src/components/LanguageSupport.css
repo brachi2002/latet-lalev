@@ -1,0 +1,132 @@
+/* Global styles */
+body {
+    background-color: #f8c5c5; /* צבע רקע אחיד */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+.language-support {
+  padding: 20px;
+  background-color: transparent; /* עדכון רקע דף ניהול */
+  font-family: 'Arial', sans-serif;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* צבע רקע לבן */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #8a2f2f; /* צבע ראשי */
+}
+
+.admin-header .user-email {
+  margin-right: 20px;
+  font-size: 16px;
+  color: #8a2f2f; /* צבע ראשי */
+}
+
+/* Language list styles */
+.languages-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.languages-list button {
+  background-color: #8a2f2f; /* Primary color */
+  color: #ffffff; /* Text color */
+  padding: 15px 30px; /* Larger buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between flag and text */
+}
+
+.languages-list button img {
+  width: 24px; /* Size of the flag */
+  height: 24px;
+}
+
+.languages-list button:hover {
+  background-color: #ffffff; /* Background color */
+  color: #8a2f2f; /* Primary color */
+  transform: scale(1.05);
+}
+
+/* Language form styles */
+.language-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.language-form h2 {
+  text-align: center;
+  color: #8a2f2f; /* Primary color */
+}
+
+.language-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.language-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.language-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #8a2f2f; /* Primary color */
+  color: #ffffff; /* Text color */
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+}
+
+.language-form button:hover {
+  background-color: #ffffff; /* Background color */
+  color: #8a2f2f; /* Primary color */
+}
+
+.language-form .cancel-button {
+  background-color: #e0e0e0; /* Light grey */
+  color: #333; /* Text color */
+}
+
+.language-form .cancel-button:hover {
+  background-color: #ccc; /* Slightly darker grey */
+}
+
+/* Error message styles */
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
+}

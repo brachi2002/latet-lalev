@@ -50,6 +50,9 @@ const AdminDashboard = () => {
         <Link to="/admin/view-requests" className="card">
         View contacts requests
         </Link>
+        <Link to="/admin/language-support" className="card">
+        language support
+        </Link>
       </div>
     </div>
   );
