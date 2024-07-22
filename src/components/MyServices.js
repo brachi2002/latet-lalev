@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import './services.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 
 const servicesData = [
     { 
@@ -38,7 +38,7 @@ const servicesData = [
     },
 ];
 
-function Services({ isAdmin }) {
+function MyServices({ isAdmin }) {
     const { t } = useTranslation();
     const [user, loading, error] = useAuthState(auth);
 
@@ -74,7 +74,7 @@ function Services({ isAdmin }) {
                 </ul>
             </div>
         </div>
-    );
-}
-
-export default Services;
+      );
+    }
+    
+    export default MyServices;

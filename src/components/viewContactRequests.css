@@ -1,0 +1,84 @@
+body {
+    background-color: #f8c5c5; /* צבע רקע אחיד */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .view-Requests {
+    padding: 20px;
+    background-color: transparent; /* עדכון רקע דף ניהול */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* צבע רקע לבן */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .admin-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #8a2f2f; /* צבע ראשי */
+  }
+  
+  .admin-header .user-email {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #8a2f2f; /* צבע ראשי */
+  }
+  
+  .button {
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    margin: 10px 0; /* רווח אנכי בין הכפתורים */
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .button:hover {
+    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+    transform: scale(1.05);
+  }
+  
+  .requests-list ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .requests-list li {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 25px; /* עיגול פינות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust for three items per row with gap */
+    max-width: calc(33.333% - 20px); /* Adjust for three items per row with gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .requests-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .requests-list p {
+    margin: 10px 0;
+    text-align: center;
+  }
+  

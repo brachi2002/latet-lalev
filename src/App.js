@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import LanguageSupport from './components/LanguageSupport';
 import VolunteerForm from './components/VolunteerForm';
-import VolunteerList from './components/VolunteerList';
+import AdminEditAboutUs from './components/AdminEditAboutUs';
 import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
 import ContactRequests from './components/ContactRequests';
@@ -13,13 +14,18 @@ import ViewUser from './components/ViewUser';
 import Events from './components/Events';
 import AboutUs from './components/AboutUs';
 import Donations from './components/Donations';
+import MyServices from './components/MyServices';
+import initTranslations from './i18n';
 import Services from './components/Services';
 import Endorsement from './components/Endorsement';
 import Rabbi from './components/Rabbi';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import './styles.css';
 
+
+
 function App() {
+ 
   return (
     <Router>
       <div className="App">
@@ -35,15 +41,18 @@ function App() {
               </ProtectedRoute>
             } 
           />
-          <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
+          {/* <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} /> */}
+
           <Route path="/events" element={<Events />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<MyServices />} />
           <Route path="/branches" element={<Events />} />
           <Route path="/ourStory" element={<AboutUs />} />
           {/* <Route path="/contactUs" element={<Events />} /> */}
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
+          <Route path="/admin/language-support" element={<ProtectedRoute><LanguageSupport /></ProtectedRoute>} />
+          <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />
           <Route path="/admin/manage-events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
           <Route path="/admin/view-requests" element={<ProtectedRoute><ContactRequests /></ProtectedRoute>} />
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
@@ -51,6 +60,8 @@ function App() {
           <Route path="/endorsement" element={<Endorsement />} />
           <Route path="/rabbi" element={<Rabbi />} />
         </Routes>
+        
+     
       </div>
     </Router>
   );

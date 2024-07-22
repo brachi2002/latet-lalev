@@ -1,6 +1,12 @@
+body {
+  background-color: #f8c5c5; /* צבע רקע אחיד */
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
 .admin-dashboard {
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: transparent; /* עדכון רקע דף ניהול */
   font-family: 'Arial', sans-serif;
 }
 
@@ -8,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #ffffff; /* צבע רקע לבן */
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -17,46 +23,31 @@
 .admin-header h1 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: #8a2f2f; /* צבע ראשי */
 }
 
 .admin-header .user-email {
   margin-right: 20px;
   font-size: 16px;
-  color: #777;
+  color: #8a2f2f; /* צבע ראשי */
 }
 
-.admin-header .logout-button {
-  background-color: #00796b;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.admin-header .logout-button:hover {
-  background-color: #004d40;
-  transform: scale(1.1);
-}
-
+.admin-header .logout-button,
 .admin-header .homepage-button {
-  background-color: #00796b;
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 5px;
-  margin-left: 20px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
   transition: background-color 0.3s, transform 0.3s;
 }
 
+.admin-header .logout-button:hover,
 .admin-header .homepage-button:hover {
-  background-color: #004d40;
-  transform: scale(1.1);
+  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  transform: scale(1.05);
 }
 
 .cards-container {
@@ -68,30 +59,37 @@
 }
 
 .card {
-  background-color: #00796b;
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 50%; /* צורת עיגול */
+  transition: background-color 0.3s, transform 0.3s;
   width: 200px;
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(188, 183, 183, 0.1);
   transition: transform 0.3s;
-  color: #ffffff;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  transform: scale(1.05);
 }
 
 .card a {
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: none; /* הורדת קו תחתון */
   font-size: 18px;
   text-align: center;
   display: block;
 }
 
 .card a:hover {
-  color: #e0f2f1;
+  color: #fee2e2; /* צבע משני */
+  text-decoration: none; /* הורדת קו תחתון בעת ריחוף */
 }

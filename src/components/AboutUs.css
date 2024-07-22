@@ -1,8 +1,14 @@
+body {
+  background-color: #f8c5c5; /* צבע רקע אחיד */
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
 .about-us {
   font-family: Arial, sans-serif;
   color: #333;
   padding: 20px;
-  background-color: #f4f4f9;
+  background-color: transparent; /* עדכון רקע דף ניהול */
 }
 
 .about-us-header {
@@ -45,7 +51,7 @@
 
 .about-us-section img {
   width: 50%;
-  border-radius: 8px;
+  border-radius: 25px; /* עיגול פינות כמו הכפתורים */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -82,7 +88,7 @@
 
 .image-item img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 25px; /* עיגול פינות כמו הכפתורים */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
 }
@@ -119,4 +125,21 @@
 .image-item a {
   text-decoration: none;
   display: inline-block;
+}
+
+.update-button {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px; /* הוספת מרווח עליון */
+}
+
+.update-button:hover {
+  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתור בעת ריחוף */
+  transform: scale(1.05);
 }

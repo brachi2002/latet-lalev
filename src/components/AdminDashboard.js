@@ -33,24 +33,26 @@ const AdminDashboard = () => {
           </>
         )}
       </header>
-  
-      <div className="cards-container">
-        <div className="card">
-          <Link to="/admin/add-volunteer-option">Add Volunteer Option</Link>
-        </div>
-        <div className="card">
-          <Link to="/admin/manage-events">Manage Events</Link>
-        </div>
-        <div className="card">
-          <Link to="/admin/volunteers">View Volunteers</Link>
-        </div>
-        <div className="card">
-          <Link to="/admin/view-user">View User</Link>
-       </div>
-       <div className="card">
-          <Link to="/admin/view-requests">View contacts requests</Link>
-        </div>
 
+      <div className="cards-container">
+        <Link to="/admin/add-volunteer-option" className="card">
+          Add Volunteer Option
+        </Link>
+        <Link to="/admin/manage-events" className="card">
+          Manage Events
+        </Link>
+        <Link to="/admin/edit-about-us" className="card">
+          Edit About Us
+        </Link>
+        <Link to="/admin/view-user" className="card">
+          View User
+        </Link>
+        <Link to="/admin/view-requests" className="card">
+        View contacts requests
+        </Link>
+        <Link to="/admin/language-support" className="card">
+        language support
+        </Link>
       </div>
     </div>
   );
