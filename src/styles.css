@@ -4,11 +4,6 @@
   padding: 0;
 }
 
-
-
-
-
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -50,3 +45,29 @@
 .home p {
   font-size: 1.2em;
 } */
+/* Keyframes for rotating animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f8c5c5; /* Background color */
+}
+
+.loading-arrow {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  border: 5px solid transparent;
+  border-top: 5px solid #8a2f2f; /* Arrow color */
+  border-radius: 50%;
+  animation: rotate 2s linear infinite;
+}
