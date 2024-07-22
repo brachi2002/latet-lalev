@@ -13,8 +13,6 @@ const Home = () => {
     return (
         <div className="home-container">
             <header className="home-header">
-                
-               
                 {isAdmin && (
                     <div className="admin-panel">
                         <h3>תפריט אדמין</h3>
