@@ -1,0 +1,83 @@
+.endorsement-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    background-color: #f4f4f9;
+  }
+  
+  .endorsement-header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f6d9d9; /* צבע משני */
+  }
+  
+  .endorsement-header h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #8a2f2f; /* צבע ראשי */
+  }
+  
+  .endorsement-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .endorsement-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    cursor: pointer; /* להפוך את האלמנט לניתן ללחיצה */
+  }
+  
+  .endorsement-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #f6d9d9; /* צבע משני */
+  }
+  
+  .endorsement-item p {
+    padding: 15px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* עיצוב מודאל */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+  
+  .close-button {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .modal-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain; /* שמירת יחס התמונה המקורי */
+    border-radius: 8px; /* פינות מעוגלות למסגרת */
+  }
+  

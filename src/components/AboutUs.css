@@ -71,7 +71,7 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px; /* רווח בין הכפתורים */
 }
 
 .image-item {
@@ -90,4 +90,33 @@
 .image-item h3 {
   font-size: 1.2rem;
   color: #8a2f2f; /* צבע ראשי */
+  margin-bottom: 10px;
+}
+
+.image-item button {
+  background-color: #8a2f2f; /* צבע ראשי */
+  color: #ffffff;
+  border: none;
+  padding: 20px 40px; /* גודל הכפתורים */
+  cursor: pointer;
+  font-size: 25px; /* גודל הטקסט */
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 0px; /* מרווח בין הכפתורים */
+  width: 400px; /* רוחב אחיד */
+  height: 100px; /* גובה אחיד */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.image-item button:hover {
+  background-color: #f8c5c5; /* צבע משני */
+  transform: scale(1.1);
+}
+
+.image-item a {
+  text-decoration: none;
+  display: inline-block;
 }

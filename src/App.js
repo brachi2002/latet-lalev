@@ -14,6 +14,8 @@ import Events from './components/Events';
 import AboutUs from './components/AboutUs';
 import Donations from './components/Donations';
 import Services from './components/Services';
+import Endorsement from './components/Endorsement';
+import Rabbi from './components/Rabbi';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import './styles.css';
 
@@ -46,6 +48,8 @@ function App() {
           <Route path="/admin/view-requests" element={<ProtectedRoute><ContactRequests /></ProtectedRoute>} />
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
           <Route path="/donate" element={<Donations />} />
+          <Route path="/endorsement" element={<Endorsement />} />
+          <Route path="/rabbi" element={<Rabbi />} />
         </Routes>
       </div>
     </Router>

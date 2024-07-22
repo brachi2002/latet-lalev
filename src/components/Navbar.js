@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './navbar.css';
 import logo from './images/logoNew.jpg';
@@ -16,9 +16,7 @@ const Navbar = ({ user, isAdmin }) => {
   const { t, i18n } = useTranslation();
   const [showLanguageOptions, setShowLanguageOptions] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const languageMenuRef = useRef(null);
-
+  const location = useLocation(); // Correctly assign useLocation to a variable
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setShowLanguageOptions(false);
@@ -62,24 +60,7 @@ const Navbar = ({ user, isAdmin }) => {
   const handleContactClick = () => {
     navigate('/', { state: { scrollToContact: true } });
   };
-
-  const handleClickOutside = (event) => {
-    if (languageMenuRef.current && !languageMenuRef.current.contains(event.target)) {
-      setShowLanguageOptions(false);
-    }
-  };
-
-  useEffect(() => {
-    if (showLanguageOptions) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showLanguageOptions]);
+  
 
   return (
     <div className="navbar">
@@ -125,27 +106,27 @@ const Navbar = ({ user, isAdmin }) => {
         </ul>
       </nav>
       <div className="right-container">
-        <div className="language-selector" ref={languageMenuRef}>
+        <div className="language-selector">
           <button className="language-button" onClick={toggleLanguageOptions}>🌐</button>
           {showLanguageOptions && (
             <div className="language-options">
-              <button onClick={() => changeLanguage('en')}>
-                <img src={en} alt="English" className="flag-icon" />
-                English
-              </button>
-              <button onClick={() => changeLanguage('he')}>
-                <img src={iw} alt="עברית" className="flag-icon" />
-                עברית
-              </button>
-              <button onClick={() => changeLanguage('es')}>
-                <img src={es} alt="Español" className="flag-icon" />
-                Español
-              </button>
-              <button onClick={() => changeLanguage('ru')}>
-                <img src={ru} alt="Русский" className="flag-icon" />
-                Русский
-              </button>
-            </div>
+            <button onClick={() => changeLanguage('en')}>
+              <img src={en} alt="English" className="flag-icon" />
+              English
+            </button>
+            <button onClick={() => changeLanguage('he')}>
+              <img src={iw} alt="עברית" className="flag-icon" />
+              עברית
+            </button>
+            <button onClick={() => changeLanguage('es')}>
+              <img src={es} alt="Español" className="flag-icon" />
+              Español
+            </button>
+            <button onClick={() => changeLanguage('ru')}>
+              <img src={ru} alt="Русский" className="flag-icon" />
+              Русский
+            </button>
+          </div>
           )}
         </div>
         <Profile user={user} handleSignOut={handleSignOut} />
