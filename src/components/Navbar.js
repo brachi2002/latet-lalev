@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './navbar.css';
-import logo from './images/LOGO1.jpg';
+import logo from './images/logoNew.jpg';
 import { useTranslation } from 'react-i18next';
 import Profile from './Profile';
 import { signOut } from 'firebase/auth';
