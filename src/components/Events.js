@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
+import {auth, db } from '../firebase';
 import Navbar from './Navbar';
 import './Events.css';
-import { useTranslation } from 'react-i18next';//a
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useTranslation } from 'react-i18next';
 
-function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handleVolunteerClick, handleContactClick, isAdmin }) {
+function Events({isAdmin }) {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const { t } = useTranslation();
+  const [user] = useAuthState(auth);
+
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'EventList'));
         const eventsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setEvents(eventsList.reverse()); // reverse the list to show the latest events at the top
+        setEvents(eventsList.reverse());
       } catch (error) {
         console.error('Error fetching events: ', error);
       }
@@ -30,16 +34,11 @@ function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
   const handleCloseDetails = () => {
     setSelectedEvent(null);
   };
-  const { t } = useTranslation();//a
+
   return (
     <div className="App">
       <Navbar
         user={user}
-        handleSignOut={handleSignOut}
-        handleDonateClick={handleDonateClick}
-        handleHomeClick={handleHomeClick}
-        handleVolunteerClick={handleVolunteerClick}
-        handleContactClick={handleContactClick}
         isAdmin={isAdmin}
       />
       <div className="events">

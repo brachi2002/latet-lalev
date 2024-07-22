@@ -26,4 +26,3 @@ function Services({isAdmin }) {
     }
     
     export default Services;
-    
