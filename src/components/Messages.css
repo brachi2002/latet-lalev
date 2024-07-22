@@ -32,8 +32,9 @@
   
   .send-button {
     padding: 10px 20px;
-    margin: 30px;
-    margin-left:-90px;
+    margin: 20px;
+    margin-left:0px;
+    margin-right: 10px;
     border: none;
     background-color: #007bff;
     color: white;
