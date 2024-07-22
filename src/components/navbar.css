@@ -103,6 +103,7 @@
   transform: scale(1.1);
 }
 
+
 .language-options {
   display: flex;
   flex-direction: column;
@@ -117,12 +118,19 @@
 }
 
 .language-options button {
+  display: flex;
+  align-items: center; /* יישור תמונות הדגל והטקסט */
   background-color: transparent;
   border: none;
   padding: 10px;
   cursor: pointer;
   text-align: left;
   color: #000;
+}
+.language-options button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px; /* רווח בין הדגל לטקסט */
 }
 
 .language-options button:hover {

@@ -7,6 +7,10 @@ import Profile from './Profile';
 import { signOut } from 'firebase/auth';
 import { scroller } from 'react-scroll';
 import { auth } from '../firebase';
+import en from './images/en.png';
+import iw from './images/iw.png';
+import es from './images/es.png';
+import ru from './images/ru.png';
 
 const Navbar = ({ user, isAdmin }) => {
   const { t, i18n } = useTranslation();
@@ -112,16 +116,26 @@ const Navbar = ({ user, isAdmin }) => {
       </nav>
       <div className="right-container">
         <div className="language-selector">
-          <button className="language-button" onClick={toggleLanguageOptions}>
-            🌐
-          </button>
+          <button className="language-button" onClick={toggleLanguageOptions}>🌐</button>
           {showLanguageOptions && (
             <div className="language-options">
-              <button onClick={() => changeLanguage('en')}>English</button>
-              <button onClick={() => changeLanguage('he')}>עברית</button>
-              <button onClick={() => changeLanguage('es')}>Español</button>
-              <button onClick={() => changeLanguage('ru')}>Русский</button>
-            </div>
+            <button onClick={() => changeLanguage('en')}>
+              <img src={en} alt="English" className="flag-icon" />
+              English
+            </button>
+            <button onClick={() => changeLanguage('he')}>
+              <img src={iw} alt="עברית" className="flag-icon" />
+              עברית
+            </button>
+            <button onClick={() => changeLanguage('es')}>
+              <img src={es} alt="Español" className="flag-icon" />
+              Español
+            </button>
+            <button onClick={() => changeLanguage('ru')}>
+              <img src={ru} alt="Русский" className="flag-icon" />
+              Русский
+            </button>
+          </div>
           )}
         </div>
         <Profile user={user} handleSignOut={handleSignOut} />
