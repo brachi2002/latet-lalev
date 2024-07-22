@@ -6,7 +6,7 @@ import './services.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useTranslation } from 'react-i18next';
 
-function Services({isAdmin }) {
+function MyServices({isAdmin }) {
     const { t } = useTranslation();
     const [user] = useAuthState(auth);
 
@@ -25,4 +25,4 @@ function Services({isAdmin }) {
       );
     }
     
-    export default Services;
+    export default MyServices;

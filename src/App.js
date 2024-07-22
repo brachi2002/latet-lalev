@@ -13,11 +13,15 @@ import ViewUser from './components/ViewUser';
 import Events from './components/Events';
 import AboutUs from './components/AboutUs';
 import Donations from './components/Donations';
-import Services from './components/Services';
+import MyServices from './components/MyServices';
+import initTranslations from './i18n';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import './styles.css';
 
+
+
 function App() {
+ 
   return (
     <Router>
       <div className="App">
@@ -35,7 +39,7 @@ function App() {
           />
           <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
           <Route path="/events" element={<Events />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<MyServices />} />
           <Route path="/branches" element={<Events />} />
           <Route path="/ourStory" element={<AboutUs />} />
           {/* <Route path="/contactUs" element={<Events />} /> */}
@@ -47,6 +51,8 @@ function App() {
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
           <Route path="/donate" element={<Donations />} />
         </Routes>
+        
+     
       </div>
     </Router>
   );
