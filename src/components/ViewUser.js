@@ -114,8 +114,8 @@ const ViewUser = () => {
         {user && (
           <>
             <span className="user-email">{user.email}</span>
-            <button onClick={handleGoToHomepage} className="homepage-button">Go to Homepage</button>
-            <button onClick={handleGoToAdminDashboard} className="dashboard-button">Go to Admin Home</button>
+            <button onClick={handleGoToHomepage} className="button homepage-button">Go to Homepage</button>
+            <button onClick={handleGoToAdminDashboard} className="button dashboard-button">Go to Admin Home</button>
           </>
         )}
       </header>
@@ -125,18 +125,20 @@ const ViewUser = () => {
           {users.map(u => (
             <li key={u.id}>
               {u.email} - {u.isAdmin ? "Admin" : "Not Admin"} - {u.isVolunteer}
-              <button onClick={() => handleDeleteUser(u.id)}>Delete</button>
-              <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)}>
-                {u.isAdmin ? "Revoke Admin" : "Make Admin"}
-              </button>
-              {volunteerForms[u.email] && (
-                <button onClick={() => handleViewVolunteerForm(u.email)}>View Volunteer Form</button>
-              )}
-              {u.isVolunteer !== 'notVolunteering' && (
-                <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)}>
-                  {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : "Restore Volunteer Status"}
+              <div className="button-container">
+                <button onClick={() => handleDeleteUser(u.id)} className="button delete-button">Delete</button>
+                <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
+                  {u.isAdmin ? "Revoke Admin" : "Make Admin"}
                 </button>
-              )}
+                {volunteerForms[u.email] && (
+                  <button onClick={() => handleViewVolunteerForm(u.email)} className="button action-button">View Volunteer Form</button>
+                )}
+                {u.isVolunteer !== 'notVolunteering' && (
+                  <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
+                    {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : "Restore Volunteer Status"}
+                  </button>
+                )}
+              </div>
             </li>
           ))}
         </ul>
