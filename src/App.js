@@ -4,7 +4,7 @@ import Homepage from './components/Homepage';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import VolunteerForm from './components/VolunteerForm';
-import VolunteerList from './components/VolunteerList';
+import AdminEditAboutUs from './components/AdminEditAboutUs';
 import AdminAddVolunteerOption from './components/AdminAddVolunteerOption';
 import ManageEvents from './components/ManageEvents';
 import ContactRequests from './components/ContactRequests';
@@ -33,7 +33,8 @@ function App() {
               </ProtectedRoute>
             } 
           />
-          <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} />
+          {/* <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} /> */}
+
           <Route path="/events" element={<Events />} />
           <Route path="/services" element={<Services />} />
           <Route path="/branches" element={<Events />} />
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
+          <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />
           <Route path="/admin/manage-events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
           <Route path="/admin/view-requests" element={<ProtectedRoute><ContactRequests /></ProtectedRoute>} />
           <Route path="/admin/view-user" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
