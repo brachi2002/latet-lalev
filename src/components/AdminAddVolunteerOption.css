@@ -1,71 +1,94 @@
-.admin-add-volunteer-option {
-    padding: 20px;
-    background-color: #f5f5f5;
+body {
+    background-color: #f8c5c5; /* צבע רקע אחיד */
+    margin: 0;
     font-family: 'Arial', sans-serif;
-}
-
-.admin-header {
+  }
+  
+  .admin-add-volunteer-option {
+    padding: 20px;
+    background-color: transparent; /* עדכון רקע דף ניהול */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #ffffff; /* צבע רקע לבן */
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-}
-
-.admin-header h1 {
+  }
+  
+  .admin-header h1 {
     margin: 0;
     font-size: 24px;
-    color: #333;
-}
-
-.admin-header .user-email {
+    color: #8a2f2f; /* צבע ראשי */
+  }
+  
+  .admin-header .user-email {
     margin-right: 20px;
     font-size: 16px;
-    color: #777;
-}
-
-.homepage-button, .dashboard-button {
-    background-color: #00796b;
+    color: #8a2f2f; /* צבע ראשי */
+  }
+  
+  .homepage-button, .dashboard-button, .add-option-button {
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
     margin-left: 20px;
     transition: background-color 0.3s, transform 0.3s;
-}
-
-.homepage-button:hover, .dashboard-button:hover {
-    background-color: #004d40;
-    transform: scale(1.1);
-}
-
-.add-volunteer-option {
+  }
+  
+  .homepage-button:hover, .dashboard-button:hover, .add-option-button:hover {
+    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+    transform: scale(1.05);
+  }
+  
+  .add-volunteer-option {
     margin-top: 20px;
-}
-
-.current-volunteer-options {
+    text-align: center; /* מרכז את הכפתור */
+  }
+  
+  .add-volunteer-option button {
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתור */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .add-volunteer-option button:hover {
+    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתור בעת ריחוף */
+    transform: scale(1.05);
+  }
+  
+  .current-volunteer-options {
     margin-top: 40px; /* Increased margin to add more space above the title */
     text-align: center; /* Center align the title */
-}
-
-.current-volunteer-options h2 {
+  }
+  
+  .current-volunteer-options h2 {
     margin-bottom: 20px; /* Optional: Adjust the space below the title if needed */
-}
-
-.current-volunteer-options ul {
+  }
+  
+  .current-volunteer-options ul {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center; /* Center the list items */
-}
-
-.current-volunteer-options li {
+  }
+  
+  .current-volunteer-options li {
     background-color: #ffffff;
     padding: 15px;
     border-radius: 10px;
@@ -78,33 +101,34 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px; /* Add space between rows */
-}
-
-.current-volunteer-options li:hover {
+  }
+  
+  .current-volunteer-options li:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.current-volunteer-options span {
+  }
+  
+  .current-volunteer-options span {
     font-size: 16px;
     color: #333;
     text-align: center;
     margin-bottom: 10px;
-}
-
-.current-volunteer-options button {
-    background-color: #8a2f2f;
+  }
+  
+  .current-volunteer-options button {
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     color: #ffffff;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
     transition: background-color 0.3s, transform 0.3s;
     width: 100%;
-}
-
-.current-volunteer-options button:hover {
-    background-color: #841e1e;
+  }
+  
+  .current-volunteer-options button:hover {
+    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
     transform: scale(1.05);
-}
+  }
+  
