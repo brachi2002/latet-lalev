@@ -22,7 +22,6 @@ const MultiSelectComponent = ({ selected, setSelected }) => {
 
     fetchOptions();
   }, []);
-
   return (
     <MultiSelect
       options={options}

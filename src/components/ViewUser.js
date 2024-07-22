@@ -44,7 +44,15 @@ const ViewUser = () => {
   };
 
   const handleToggleVolunteerStatus = async (userId, currentStatus) => {
-    const newStatus = currentStatus === 'notVolunteering' ? 'signed' : currentStatus === 'signed' ? 'true' : 'notVolunteering';
+    let newStatus;
+
+    if (currentStatus === 'signed') {
+      newStatus = 'true'; // Accept the volunteer
+    } else if (currentStatus === 'true') {
+      newStatus = 'false'; // Revoke volunteer status
+    } else {
+      return; // If current status is 'notVolunteering', do nothing
+    }
 
     await updateDoc(doc(db, 'users', userId), {
       isVolunteer: newStatus
@@ -83,9 +91,11 @@ const ViewUser = () => {
               <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)}>
                 {u.isAdmin ? "Revoke Admin" : "Make Admin"}
               </button>
-              <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)}>
-                {u.isVolunteer === 'notVolunteering' ? "Sign Up as Volunteer" : u.isVolunteer === 'signed' ? "Confirm Volunteer" : "Revoke Volunteer Status"}
-              </button>
+              {u.isVolunteer !== 'notVolunteering' && (
+                <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)}>
+                  {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : ""}
+                </button>
+              )}
             </li>
           ))}
         </ul>

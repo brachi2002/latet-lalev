@@ -26,6 +26,8 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"],
+form input[type="number"], /* הוספת הגדרה לשדה מספר */
+form select, /* הוספת הגדרה לשדה בחירה */
 form textarea {
   width: 100%;
   padding: 10px;
@@ -40,6 +42,8 @@ form textarea {
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="tel"]:focus,
+form input[type="number"]:focus, /* הוספת הגדרה לשדה מספר */
+form select:focus, /* הוספת הגדרה לשדה בחירה */
 form textarea:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-color: #8a2f2f; /* צבע ראשי */

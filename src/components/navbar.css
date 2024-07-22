@@ -1,27 +1,56 @@
-/* navbar.css */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff; /* צבע רקע */
+  background-color: #ffffff;
   padding: 10px 20px;
-  position: sticky; /* שומר את הניווט בחלק העליון */
-  top: 0; /* מצמיד לחלק העליון */
-  width: 100%; /* רוחב מלא */
-  max-width: 1200px; /* רוחב מקסימלי */
-  margin: 0 auto; /* מרכז את ה-navbar בעמוד */
-  z-index: 1000; /* שומר על העליונות על פני תוכן אחר */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* הוספת צל */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.buttons-container {
+.left-container {
   display: flex;
-  gap: 10px;
+  align-items: center;
 }
 
-.donate-button, .login-button, .signup-button, .logout-button {
-  background-color: #8a2f2f; /* צבע ראשי */
+.center-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links li {
+  margin-right: 10px;
+}
+
+.link-button, .navbar-link {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.link-button:hover, .navbar-link:hover {
+  color: #8a2f2f;
+}
+
+.donate-button {
+  background-color: #8a2f2f;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -29,47 +58,83 @@
   font-size: 16px;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
-  text-decoration: none; /* ללא קו תחתון */
 }
 
-.donate-button:hover, .login-button:hover, .signup-button:hover, .logout-button:hover {
-  background-color: #f8c5c5; /* צבע משני */
+.donate-button:hover {
+  background-color: #f8c5c5;
   transform: scale(1.1);
 }
 
-.link-button, .navbar-link {
-  text-decoration: none; /* מסיר את הקו התחתון */
-  color:black; /* צבע הכיתוב */
-  font-size: 16px; /* גודל הפונט */
-  transition: color 0.3s; /* אפקט מעבר לשינוי צבע */
-  background: none; /* אין רקע */
-  border: none; /* מסיר את הגבול */
-  padding: 10px 20px; /* הוספת רווח פנימי שווה למעלה ולמטה */
-  cursor: pointer; /* הופך את הסמן לסמן כאשר המשתמש מרחף מעל */
-}
-
-.link-button:hover, .navbar-link:hover {
-  color: #8a2f2f; /* צבע ראשי */
+.right-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
 }
 
 .logo {
   height: auto;
-  width: 100px; /* הגדלת הרוחב של התמונה */
+  width: 100px;
   transition: transform 0.3s;
+  cursor: pointer;
+  padding-right: 20px;
 }
 
 .logo:hover {
   transform: scale(1.1);
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center; /* ממרכז את הלשוניות אנכית */
+.language-selector {
+  position: relative;
 }
 
-nav ul li {
-  margin-right: 10px; /* צמצום הרווח בין הלשוניות */
+.language-button {
+  background-color: transparent;
+  color: #000; /* Black color for the language icon */
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.language-button:hover {
+  transform: scale(1.1);
+}
+
+.language-options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-options button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: #000;
+}
+
+.language-options button:hover {
+  background-color: #f0f0f0;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .language-selector {
+  left: unset;
+  right: 10px;
 }

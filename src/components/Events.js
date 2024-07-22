@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
+import {auth, db } from '../firebase';
 import Navbar from './Navbar';
 import './Events.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useTranslation } from 'react-i18next';
 
-function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handleVolunteerClick, handleContactClick, isAdmin }) {
+function Events({isAdmin }) {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const { t } = useTranslation();
+  const [user] = useAuthState(auth);
+
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'EventList'));
         const eventsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setEvents(eventsList.reverse()); // reverse the list to show the latest events at the top
+        setEvents(eventsList.reverse());
       } catch (error) {
         console.error('Error fetching events: ', error);
       }
@@ -34,15 +39,10 @@ function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
     <div className="App">
       <Navbar
         user={user}
-        handleSignOut={handleSignOut}
-        handleDonateClick={handleDonateClick}
-        handleHomeClick={handleHomeClick}
-        handleVolunteerClick={handleVolunteerClick}
-        handleContactClick={handleContactClick}
         isAdmin={isAdmin}
       />
       <div className="events">
-        <h2>Events</h2>
+        <h2>{t('events')}</h2>
         {selectedEvent ? (
           <div className="modal">
             <div className="modal-content">
@@ -64,11 +64,11 @@ function Events({ user, handleSignOut, handleDonateClick, handleHomeClick, handl
                   {event.imageUrls && event.imageUrls.length > 0 ? (
                     <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
                   ) : (
-                    <div className="placeholder-image">No Image</div>
+                    <div className="placeholder-image">{t('no_image')}</div>
                   )}
                   <h3>{event.name}</h3>
                 </div>
-                <button className="info-button" onClick={() => handleEventClick(event)}>More Info</button>
+                <button className="info-button" onClick={() => handleEventClick(event)}>{t('more_info')}</button>
               </li>
             ))}
           </ul>

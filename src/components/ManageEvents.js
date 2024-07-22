@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, query, where, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -51,7 +51,7 @@ const ManageEvents = () => {
 
         try {
             const imageUrls = await Promise.all(files.map(async (file) => {
-                const storageRef = ref(storage, `images/${file.name}`);
+                const storageRef = ref(storage, `images/${file.name}`); // Correct the file name reference
                 await uploadBytes(storageRef, file);
                 return await getDownloadURL(storageRef);
             }));
@@ -112,19 +112,16 @@ const ManageEvents = () => {
         }
     };
 
-    const handleCloseModal = () => {
-        setShowModal(false);
-        setEditMode(false);
-        setEditEventId(null);
-        setEvent({ name: '', description: '', imageUrls: [] });
-    };
-
     const handleGoToHomepage = () => {
-        navigate('/'); // Navigate to home page
+        navigate('/');
     };
 
     const handleGoToAdminDashboard = () => {
-        navigate('/admin/dashboard'); // Navigate to admin dashboard page
+        navigate('/admin/dashboard');
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
     };
 
     return (

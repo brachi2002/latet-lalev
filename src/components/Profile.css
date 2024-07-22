@@ -1,0 +1,52 @@
+.profile-container {
+    position: relative;
+  }
+  
+  .profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #8a2f2f; /* Primary color */
+    transition: transform 0.3s;
+  }
+  
+  .profile-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .profile-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 200px;
+  }
+  
+  .profile-menu p {
+    margin: 0 0 10px;
+    color: #8a2f2f; /* Primary color */
+  }
+  
+  .profile-menu-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border: none;
+    background: #8a2f2f; /* Primary color */
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-menu-button:hover {
+    background-color: #f8c5c5; /* Secondary color */
+  }
+  
