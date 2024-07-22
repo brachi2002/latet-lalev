@@ -34,7 +34,7 @@ const VolunteerForm = ({ isAdmin }) => {
   useEffect(() => {
     if (!loading && !authUser) {
       console.log('User is not authenticated. Redirecting to /login');
-      navigate('/login');
+      navigate('/login', { state: { from: '/volunteer' } }); // Pass the intended destination in state
     }
   }, [authUser, loading, navigate]);
 

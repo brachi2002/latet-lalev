@@ -1,30 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+<<<<<<< HEAD
+import { signOut } from 'firebase/auth';
+=======
 import { doc, getDoc } from 'firebase/firestore';
+>>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
 import { auth, db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
 import Navbar from './Navbar';
+<<<<<<< HEAD
+
+import { animateScroll as scroll, scroller } from 'react-scroll';
+=======
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { scroller } from 'react-scroll';
+>>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
 
 function Homepage() {
   const { t } = useTranslation();
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
   const [isAdmin, setIsAdmin] = useState(false);
+<<<<<<< HEAD
+  const navigate = useNavigate();
+=======
   const location = useLocation();
+>>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
 
   useEffect(() => {
     const checkAdmin = async () => {
       if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists() && userDoc.data().isAdmin) {
+        const adminDoc = await getDoc(doc(db, 'admins', user.uid));
+        if (adminDoc.exists()) {
           setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
         }
       }
     };
@@ -32,6 +44,31 @@ function Homepage() {
     checkAdmin();
   }, [user]);
 
+<<<<<<< HEAD
+  const handleDonateClick = () => {
+    setShowDonations(true);
+  };
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      console.log('User signed out');
+      navigate('/'); // Return to home page after signing out
+    }).catch((error) => {
+      console.error('Error signing out: ', error);
+    });
+  };
+
+  const handleHomeClick = () => {
+    setShowDonations(false);
+    navigate('/');
+  };
+
+  const handleVolunteerClick = () => {
+    if (user) {
+      navigate('/volunteer');
+    } else {
+      navigate('/login', { state: { from: { pathname: '/volunteer' } } });
+=======
   useEffect(() => {
     if (location.state && location.state.scrollToContact) {
       scroller.scrollTo('contact-section', {
@@ -39,6 +76,7 @@ function Homepage() {
         delay: 0,
         smooth: 'easeInOutQuart'
       });
+>>>>>>> 80121cec52d9ca98e1920c9de0f39b023874fe35
     }
   }, [location]);
   
