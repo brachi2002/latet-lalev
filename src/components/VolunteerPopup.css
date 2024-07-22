@@ -1,0 +1,35 @@
+.popup {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .close-popup {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .show-popup {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  

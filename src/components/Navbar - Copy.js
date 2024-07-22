@@ -103,8 +103,6 @@ const Navbar = ({ user, isAdmin }) => {
               </Link>
             </li>
           )}
-          
-         
         </ul>
       </nav>
       <div className="right-container">

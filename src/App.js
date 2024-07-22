@@ -20,7 +20,10 @@ import Services from './components/Services';
 import Endorsement from './components/Endorsement';
 import Rabbi from './components/Rabbi';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import Popup from './components/VolunteerPopup'; // Import the ProtectedRoute component
 import './styles.css';
+import VolunteerPopup from './components/VolunteerPopup';
+import Messages from './components/Messages';
 
 
 
@@ -44,12 +47,14 @@ function App() {
           {/* <Route path="/admin/volunteers" element={<ProtectedRoute><VolunteerList /></ProtectedRoute>} /> */}
 
           <Route path="/events" element={<Events />} />
+          <Route path="/popup" element={<VolunteerPopup />} />
           <Route path="/services" element={<MyServices />} />
           <Route path="/branches" element={<Events />} />
           <Route path="/ourStory" element={<AboutUs />} />
           {/* <Route path="/contactUs" element={<Events />} /> */}
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
           <Route path="/admin/language-support" element={<ProtectedRoute><LanguageSupport /></ProtectedRoute>} />
           <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />

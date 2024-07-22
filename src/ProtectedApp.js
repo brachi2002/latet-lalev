@@ -1,4 +1,3 @@
-// ProtectedApp.js
 import React, { useState, useEffect, Suspense } from 'react';
 import App from './App';
 import { auth } from './firebase';
@@ -40,6 +39,7 @@ const ProtectedApp = () => {
   if (isAuthenticated === null || !translationsLoaded) {
     return<div className="loading-container">
       <div className="loading-arrow"></div>
+      
   </div>;
   }
 

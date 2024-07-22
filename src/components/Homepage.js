@@ -10,6 +10,8 @@ import Donations from './Donations';
 import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';//a
+import VolunteerPopup from './VolunteerPopup'; // Import VolunteerPopup
+
 
 function Homepage() {
   const { t } = useTranslation(); //a
@@ -18,19 +20,36 @@ function Homepage() {
   const location = useLocation(); // Correctly assign useLocation to a variable
   const [isAdmin, setIsAdmin] = useState(false);
 
+
+  const [isVolunteer, setIsVolunteer] = useState(false); // Add state to track if user is a volunteer
+  const [showPopup, setShowPopup] = useState(false); // Add state to control popup visibility
+
+  // useEffect(() => {
+  //   const checkAdmin = async () => {
+  //     if (user) {
+  //       const userDoc = await getDoc(doc(db, 'users', user.uid));
+  //       if (userDoc.exists() && userDoc.data().isAdmin) {
+  //         setIsAdmin(true);
+  //       } else {
+  //         setIsAdmin(false);
+  //       }
+  //     }
+  //   };
+
+  //   checkAdmin();
+  // }, [user]);
+
   useEffect(() => {
-    const checkAdmin = async () => {
+    const checkAdminAndVolunteer = async () => {
       if (user) {
         const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists() && userDoc.data().isAdmin) {
-          setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
+        if (userDoc.exists()) {
+          setIsAdmin(userDoc.data().isAdmin);
+          setIsVolunteer(userDoc.data().isVolunteer === 'true'); // Check if user is a volunteer
         }
       }
     };
-
-    checkAdmin();
+    checkAdminAndVolunteer();
   }, [user]);
 
   useEffect(() => {
@@ -86,6 +105,18 @@ function Homepage() {
             </div>
           </>
         )}
+
+
+       {isVolunteer && (
+          <button className="show-popup" onClick={() => setShowPopup(true)}>
+            View Volunteer Messages
+          </button>
+        )
+        }
+        <VolunteerPopup showPopup={showPopup} setShowPopup={setShowPopup} />
+
+
+
       </main>
     </div>
   );

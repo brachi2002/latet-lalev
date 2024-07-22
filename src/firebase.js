@@ -20,3 +20,4 @@ const storage = getStorage(app);  // אתחול ה-Storage
 
 
 export { auth, db, storage };
+
