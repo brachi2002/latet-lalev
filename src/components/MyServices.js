@@ -38,7 +38,7 @@ const servicesData = [
     },
 ];
 
-function Services({ isAdmin }) {
+function MyServices({ isAdmin }) {
     const { t } = useTranslation();
     const [user, loading, error] = useAuthState(auth);
 
@@ -70,7 +70,7 @@ function Services({ isAdmin }) {
                 </div>
             </div>
         </div>
-    );
-}
-
-export default Services;
+      );
+    }
+    
+    export default MyServices;
