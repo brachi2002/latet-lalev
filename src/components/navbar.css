@@ -92,9 +92,9 @@
 
 .language-button {
   background-color: transparent;
-  color: #000; /* Black color for the language icon */
+  color:  #8a2f2f; /* Black color for the language icon */
   border: none;
-  font-size: 30px;
+  font-size:medium;
   cursor: pointer;
   display: flex;
   align-items: center;
