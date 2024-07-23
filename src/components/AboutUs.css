@@ -50,7 +50,9 @@ body {
 }
 
 .about-us-section img {
-  width: 32%;
+  width: 400px; /* רוחב אחיד */
+  height: 300px; /* גובה אחיד */
+  object-fit: cover; /* חיתוך התמונה כדי להתאים לגודל */
   border-radius: 25px; /* עיגול פינות כמו הכפתורים */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
