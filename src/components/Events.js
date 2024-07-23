@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import './Events.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet';
+
 
 function Events({isAdmin }) {
   const [events, setEvents] = useState([]);
@@ -37,6 +39,9 @@ function Events({isAdmin }) {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Events | Latet lalev</title>
+      </Helmet>
       <Navbar
         user={user}
         isAdmin={isAdmin}

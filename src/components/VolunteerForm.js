@@ -7,6 +7,8 @@ import './VolunteerForm.css';
 import MultiSelectComponent from './MultiSelectComponent';
 import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
+import { Helmet } from 'react-helmet';
+
 
 const VolunteerForm = ({ isAdmin }) => {
   const { t } = useTranslation();
@@ -85,6 +87,9 @@ const VolunteerForm = ({ isAdmin }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>Volunteer | Latet lalev</title>
+      </Helmet>
        <Navbar user={authUser} isAdmin={isAdmin} />
       <form onSubmit={handleSubmit}>
         <h2>{t('want_to_join_us')}</h2>

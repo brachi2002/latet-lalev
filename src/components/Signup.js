@@ -6,6 +6,8 @@ import { db } from '../firebase';
 import './Singup.css';
 import GoogleButton from './GoogleButton';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet';
+
 
 const Signup = () => {
   const { t } = useTranslation();
@@ -54,6 +56,9 @@ const Signup = () => {
 
   return (
     <div className="auth-container">
+      <Helmet>
+        <title>Signup | Latet lalev</title>
+      </Helmet>
       <h2>{t('signup')}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSignup} className="auth-form">

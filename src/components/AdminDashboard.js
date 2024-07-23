@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './AdminDashboard.css';
+import { Helmet } from 'react-helmet';
+
 
 const AdminDashboard = () => {
   const [user] = useAuthState(auth);
@@ -23,6 +25,9 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard">
+      <Helmet>
+        <title>Admin | Latet lalev</title>
+      </Helmet>
       <header className="admin-header">
         <h1>Admin Dashboard</h1>
         {user && (

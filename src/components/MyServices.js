@@ -6,6 +6,7 @@ import { auth } from '../firebase';
 import { useTranslation } from 'react-i18next'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faBriefcase, faChild, faTshirt, faAmbulance, faBabyCarriage } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet';
 
 const servicesData = [
     { 
@@ -60,6 +61,9 @@ function Services({ isAdmin }) {
 
     return (
         <div className="services-container">
+             <Helmet>
+        <title>Services | Latet lalev</title>
+      </Helmet>
             <Navbar user={user} isAdmin={isAdmin} />
             <div className="services">
                 <div className="services-icons">

@@ -7,6 +7,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
 import GoogleButton from './GoogleButton';
 import { useTranslation } from 'react-i18next';//a
+import { Helmet } from 'react-helmet';
+
 
 const Login = () => {
   const { t } = useTranslation();//a
@@ -64,6 +66,9 @@ const Login = () => {
   };
   return (
     <div className="auth-container">
+      <Helmet>
+        <title>Login | Latet lalev</title>
+      </Helmet>
       <h2>{t('login')}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleLogin} className="auth-form">
