@@ -1,8 +1,8 @@
 .contact-form {
-  background: linear-gradient(135deg, #f8c5c5, #e0f7fa); /* עדכון הצבעים לגרדיאנט */
+  background:#f8c5c5; /* עדכון הצבעים לגרדיאנט */
   padding: 40px;
   border-radius: 8px;
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  
   max-width: 800px;
   margin: 20px auto;
   font-family: Courier New;
@@ -13,7 +13,7 @@
 .contact-form h2 {
   margin-bottom: 20px;
   font-size: 1.8rem;
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  background: #f8c5c5; /* גרדיאנט לכפתורים */
   border-radius: 25px
 }
 
