@@ -82,3 +82,68 @@ body {
     text-align: center;
   }
   
+
+  .read {
+    background-color: #f0f0f0;
+}
+
+.new {
+    background-color: #fff;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.new-label {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.read-label {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons{
+  display: flex;
+}
+
+.mark-read-button, .delete-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mark-read-button {
+    background-color: rgb(10, 97, 114);
+    color: white;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+}

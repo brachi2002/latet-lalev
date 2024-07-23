@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,26 @@ const ContactRequests = () => {
         navigate('/admin/dashboard'); // Navigate to admin dashboard page
     };
 
+    const handleMarkAsRead = async (id) => {
+        try {
+            const requestRef = doc(db, 'contactUsRequests', id);
+            await updateDoc(requestRef, { read: true });
+            setRequests(requests.map(req => req.id === id ? { ...req, read: true } : req));
+        } catch (error) {
+            console.error('Error marking request as read:', error);
+        }
+    };
+
+    const handleDeleteRequest = async (id) => {
+        try {
+            const requestRef = doc(db, 'contactUsRequests', id);
+            await deleteDoc(requestRef);
+            setRequests(requests.filter(req => req.id !== id));
+        } catch (error) {
+            console.error('Error deleting request:', error);
+        }
+    };
+
     return (
         <div className="view-Requests">
             <header className="admin-header">
@@ -46,7 +66,14 @@ const ContactRequests = () => {
                 {requests.length > 0 ? (
                     <ul>
                         {requests.map((request) => (
-                            <li key={request.id}>
+                            <li key={request.id} className={request.read ? 'read' : 'new'}>
+                                <div className="request-header">
+                                    {request.read ? (
+                                        <span className="label read-label">✔ {t('read_message')}</span>
+                                    ) : (
+                                        <span className="label new-label">{t('new_message')}</span>
+                                    )}
+                                </div>
                                 <p><strong>{t('name')}:</strong> {request.name} {request.familyName}</p>
                                 <p><strong>{t('phone_number')}:</strong> {request.phone}</p>
                                 <p><strong>{t('email_address')}:</strong> {request.email}</p>
@@ -54,6 +81,16 @@ const ContactRequests = () => {
                                 <p><strong>{t('reason_for_contacting')}:</strong> {request.reason}</p>
                                 <p><strong>{t('message')}:</strong> {request.message}</p>
                                 <p><strong>{t('accept_policy')}:</strong> {request.accept ? t('yes') : t('no')}</p>
+                                <div class = "buttons">
+                                    {!request.read && (
+                                    <button onClick={() => handleMarkAsRead(request.id)} className="mark-read-button">
+                                        {t('mark as read')}
+                                    </button>
+                                )}
+                                <button onClick={() => handleDeleteRequest(request.id)} className="delete-button">
+                                    {t('delete')}
+                                </button>
+                                </div>
                             </li>
                         ))}
                     </ul>
