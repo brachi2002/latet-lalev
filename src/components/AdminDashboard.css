@@ -137,47 +137,60 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.background-image-update {
+/* Updated styles for the "Change Background" section */
+.background-file-update {
   margin-top: 20px;
-  text-align: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.background-image-update h2 {
+.background-file-update h2 {
   margin-bottom: 20px;
+  color: #8a2f2f;
 }
 
-.background-image-update input[type="file"] {
+.background-file-update input[type="file"] {
   display: none;
 }
 
-.background-image-update label {
+.background-file-update label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #e53935;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.background-image-update label i {
+.background-file-update label:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.background-file-update label i {
   margin-right: 8px;
 }
 
-.background-image-update button {
+.background-file-update button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #e53935;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.background-image-update button:hover {
-  background-color: #45a049;
+.background-file-update button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
 }
