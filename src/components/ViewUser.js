@@ -9,21 +9,21 @@ const ViewUser = () => {
   const [users, setUsers] = useState([]);
   const [user] = useAuthState(auth);
   const [volunteerForms, setVolunteerForms] = useState({});
-  const [selectedVolunteer, setSelectedVolunteer] = useState(null); // State for the selected volunteer
+  const [selectedUser, setSelectedUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
       const querySnapshot = await getDocs(collection(db, 'users'));
       const usersList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setUsers(usersList.filter(u => u.id !== user.uid && u.email !== user.email)); // Exclude the current user
+      setUsers(usersList.filter(u => u.id !== user.uid)); // Exclude the current user
     };
 
     const fetchVolunteerForms = async () => {
       const querySnapshot = await getDocs(collection(db, 'volunteers'));
       const forms = {};
       querySnapshot.forEach(doc => {
-        forms[doc.data().email] = doc.data(); // Use email as the key
+        forms[doc.id] = doc.data(); // Use user ID as the key
       });
       setVolunteerForms(forms);
     };
@@ -99,12 +99,28 @@ const ViewUser = () => {
     navigate('/admin/dashboard'); // Navigate to admin dashboard page
   };
 
-  const handleViewVolunteerForm = (email) => {
-    setSelectedVolunteer(volunteerForms[email]);
+  const handleSelectUser = async (userId) => {
+    if (!userId) {
+      console.error('Invalid userId:', userId);
+      return;
+    }
+
+    try {
+      const userDoc = await getDoc(doc(db, 'volunteers', userId));
+      if (userDoc.exists()) {
+        setSelectedUser(userDoc.data());
+      } else {
+        console.log('No such document!');
+        setSelectedUser(null);
+      }
+    } catch (error) {
+      console.error('Error fetching user document:', error);
+      setSelectedUser(null);
+    }
   };
 
   const handleCloseModal = () => {
-    setSelectedVolunteer(null);
+    setSelectedUser(null);
   };
 
   return (
@@ -130,31 +146,31 @@ const ViewUser = () => {
                 <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
                   {u.isAdmin ? "Revoke Admin" : "Make Admin"}
                 </button>
-                {volunteerForms[u.email] && (
-                  <button onClick={() => handleViewVolunteerForm(u.email)} className="button action-button">View Volunteer Form</button>
+                {volunteerForms[u.id] && (
+                  <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
                 )}
                 {u.isVolunteer !== 'notVolunteering' && (
                   <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
-                    {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Revoke Volunteer Status" : "Restore Volunteer Status"}
+                    {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Approve volunteer" : "Reject a volunteer"}
                   </button>
                 )}
               </div>
             </li>
           ))}
         </ul>
-        {selectedVolunteer && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={handleCloseModal}>&times;</span>
-              <h3>Volunteer Form:</h3>
-              <p><strong>Name:</strong> {selectedVolunteer.firstName} {selectedVolunteer.lastName}</p>
-              <p><strong>Email:</strong> {selectedVolunteer.email}</p>
-              <p><strong>City:</strong> {selectedVolunteer.city}</p>
-              <p><strong>Phone:</strong> {selectedVolunteer.phone}</p>
-              <p><strong>Has Car:</strong> {selectedVolunteer.hasCar ? 'Yes' : 'No'}</p>
-              <p><strong>Comments:</strong> {selectedVolunteer.comments}</p>
-              <p><strong>Volunteer Regularly:</strong> {selectedVolunteer.volunteerRegularly}</p>
-              <p><strong>Volunteer Options:</strong> {selectedVolunteer.volunteerOptions.join(', ')}</p>
+        {selectedUser && (
+          <div className="volunteer-form-popup">
+            <div className="volunteer-form-content">
+              <button className="close-popup" onClick={() => handleCloseModal()}>X</button>
+              <h4>Volunteer Form</h4>
+              <p>Name: {selectedUser.firstName} {selectedUser.lastName}</p>
+              <p>Email: {selectedUser.email}</p>
+              <p>Age: {selectedUser.age}</p>
+              <p>City: {selectedUser.city}</p>
+              <p>Gender: {selectedUser.gender}</p>
+              <p>Phone: {selectedUser.phone}</p>
+              <p>Has Car: {selectedUser.hasCar ? 'Yes' : 'No'}</p>
+              <p>Comments: {selectedUser.comments}</p>
             </div>
           </div>
         )}

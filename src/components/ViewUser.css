@@ -142,3 +142,36 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.volunteer-form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  border: 1px solid #888;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.volunteer-form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.close-popup {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+  color: black;
+}
