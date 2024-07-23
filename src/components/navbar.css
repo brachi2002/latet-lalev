@@ -1,19 +1,15 @@
 .navbar {
   display: flex;
-  /* justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  padding: 10px 20px;
+  padding: 10px 15px;
   position: sticky;
   top: 0;
-  align-self: center; */
-  /* margin: 40px 40px; */
-
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  font-family: Courier New;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  gap: 10px;
 }
 
 .left-container {
@@ -25,6 +21,7 @@
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .navbar-links {
@@ -36,19 +33,19 @@
 }
 
 .navbar-links li {
-  margin-right: 10px;
+  margin-right: 20px; /* Increase space between categories */
 }
 
 .link-button, .navbar-link {
   text-decoration: none;
   color: black;
-  font-size: 15px;
+  font-size: 14px;
   background: none;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
   transition: color 0.3s;
-  font-family: Courier New;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
 
@@ -60,13 +57,12 @@
   background-color: #8a2f2f;
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
-  margin-left: 20px;
   transition: background-color 0.3s, transform 0.3s;
-  font-family: Courier New;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
 
@@ -78,15 +74,14 @@
 .right-container {
   display: flex;
   align-items: center;
-  gap: 7px; /* Space between elements */
+  gap: 5px; /* Space between elements */
 }
 
 .logo {
   height: auto;
-  width: 100px;
+  width: 80px;
   transition: transform 0.3s;
   cursor: pointer;
-  padding-right: 20px;
 }
 
 .logo:hover {
@@ -95,13 +90,15 @@
 
 .language-selector {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .language-button {
   background-color: transparent;
   color:  #8a2f2f; /* Black color for the language icon */
   border: none;
-  font-size:25px;
+  font-size: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -117,7 +114,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
@@ -131,16 +128,16 @@
   align-items: center; /* Align flag images and text */
   background-color: transparent;
   border: none;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   text-align: left;
   color: #000;
 }
 
 .language-options button img {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px; /* Space between the flag and text */
+  width: 20px;
+  height: 20px;
+  margin-right: 5px; /* Space between the flag and text */
 }
 
 .language-options button:hover {
