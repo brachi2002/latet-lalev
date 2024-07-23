@@ -2,13 +2,14 @@
 body {
     background-color: #f8c5c5; /* צבע רקע אחיד */
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: Courier New;
+    font-weight: bold;
   }
   
 .language-support {
   padding: 20px;
-  background-color: transparent; /* עדכון רקע דף ניהול */
-  font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header {
@@ -43,16 +44,15 @@ body {
 }
 
 .languages-list button {
-  background-color: #8a2f2f; /* Primary color */
-  color: #ffffff; /* Text color */
-  padding: 15px 30px; /* Larger buttons */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between flag and text */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    margin: 10px 0; /* רווח אנכי בין הכפתורים */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .languages-list button img {
@@ -61,9 +61,8 @@ body {
 }
 
 .languages-list button:hover {
-  background-color: #ffffff; /* Background color */
-  color: #8a2f2f; /* Primary color */
-  transform: scale(1.05);
+  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+    transform: scale(1.05);
 }
 
 /* Language form styles */
