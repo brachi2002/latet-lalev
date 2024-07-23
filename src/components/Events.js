@@ -94,15 +94,18 @@ function Events({ isAdmin }) {
           ))}
         </ul>
       </div>
-      <div className="gallery">
-        {events.map((event, index) => (
-          <img
-            key={event.id}
-            src={event.imageUrls && event.imageUrls.length > 0 ? event.imageUrls[0] : 'https://via.placeholder.com/150'}
-            alt={event.name}
-            className={`gallery-image ${index === galleryIndex ? 'active' : ''}`}
-          />
-        ))}
+      <div className="gallery-container">
+        <h2>{t('Event Gallery')}</h2>
+        <div className="gallery">
+          {events.map((event, index) => (
+            <img
+              key={event.id}
+              src={event.imageUrls && event.imageUrls.length > 0 ? event.imageUrls[0] : 'https://via.placeholder.com/150'}
+              alt={event.name}
+              className={`gallery-image ${index === galleryIndex ? 'active' : ''}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
