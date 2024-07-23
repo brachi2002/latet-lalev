@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { Helmet } from 'react-helmet';
 
-
 const AboutUs = ({ isAdmin }) => {
   const { t } = useTranslation();
   const [user] = useAuthState(auth);
@@ -28,7 +27,7 @@ const AboutUs = ({ isAdmin }) => {
         </div>
         <div className="about-us-content">
           <div className="about-us-section">  
-            <img src="./images/your-image2.jpg" alt={t('our_mission')} />
+            <img src="https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fvolentiring.jpg?alt=media&token=d5b4d1b1-7b3e-402c-8a24-aac594c8b260" alt={t('our_mission')} />
             <div className="about-us-text">
               <h2>{t('our_mission')}</h2>
               <p>{t('our_mission_text')}</p>
@@ -36,7 +35,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
 
           <div className="about-us-section">
-            <img src="./images/your-image2.jpg" alt={t('our_team')}/>
+            <img src="https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fvolentiring.jpg?alt=media&token=d5b4d1b1-7b3e-402c-8a24-aac594c8b260" alt={t('our_team')}/>
             <div className="about-us-text">
               <h2>{t('our_team')}</h2>
               <p>{t('our_team_text')}</p>
@@ -44,7 +43,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
 
           <div className="about-us-section">
-            <img src="./images/your-image3.jpg" alt={t('get_involved')} />
+            <img src="https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fdonate.webp?alt=media&token=39d10522-f1d6-4c57-93a0-b02ef2f125c5" alt={t('get_involved')} />
             <div className="about-us-text">
               <h2>{t('get_involved')}</h2>
               <p>{t('get_involved_text')}</p>
