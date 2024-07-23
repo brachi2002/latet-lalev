@@ -9,37 +9,35 @@ import ContactForm from './ContactForm';
 import Donations from './Donations';
 import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
-import { useTranslation } from 'react-i18next';//a
+import { useTranslation } from 'react-i18next'; // a
 import VolunteerPopup from './VolunteerPopup'; // Import VolunteerPopup
 import { Helmet } from 'react-helmet';
 
-
-
 function Homepage() {
-  const { t } = useTranslation(); //a
+  const { t } = useTranslation(); // a
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
   const location = useLocation(); // Correctly assign useLocation to a variable
   const [isAdmin, setIsAdmin] = useState(false);
-
-
   const [isVolunteer, setIsVolunteer] = useState(false); // Add state to track if user is a volunteer
   const [showPopup, setShowPopup] = useState(false); // Add state to control popup visibility
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
 
-  // useEffect(() => {
-  //   const checkAdmin = async () => {
-  //     if (user) {
-  //       const userDoc = await getDoc(doc(db, 'users', user.uid));
-  //       if (userDoc.exists() && userDoc.data().isAdmin) {
-  //         setIsAdmin(true);
-  //       } else {
-  //         setIsAdmin(false);
-  //       }
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchBackgroundImage = async () => {
+      try {
+        const docRef = doc(db, 'settings', 'background');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setBackgroundImageUrl(docSnap.data().backgroundImageUrl);
+        }
+      } catch (error) {
+        console.error('Error fetching background image:', error);
+      }
+    };
 
-  //   checkAdmin();
-  // }, [user]);
+    fetchBackgroundImage();
+  }, []);
 
   useEffect(() => {
     const checkAdminAndVolunteer = async () => {
@@ -64,11 +62,9 @@ function Homepage() {
     }
   }, [location]);
 
-  
   return (
-    
-    <div className="App">
-       <Helmet>
+    <div className="App" >
+      <Helmet>
         <title>Home Page | Latet lalev</title>
       </Helmet>
       <Navbar
@@ -77,11 +73,11 @@ function Homepage() {
       />
       <header className="App-header">
         {!showDonations && (
-          <div className="banner">
+          <div className="banner" style={{ background: `url(${backgroundImageUrl}) no-repeat center center`   , backgroundSize: 'cover' }}>
             <h1>{t('how_can_we_help_you')}</h1>
             <input type="text" placeholder={t('search')} className="search-input" />
             <div className="search-categories">
-            <h2>{t('search_by_community_type')}</h2>
+              <h2>{t('search_by_community_type')}</h2>
               <div className="categories">
                 <button>{t('volunteers')}</button>
                 <button>{t('seniors')}</button>
@@ -94,7 +90,6 @@ function Homepage() {
               <h2>{t('search_by_service_type')}</h2>
               <div className="services">
                 <button>{t('free_ambulance_services')}</button>
-                {/* Add more buttons as needed */}
               </div>
             </div>
           </div>
@@ -111,18 +106,12 @@ function Homepage() {
             </div>
           </>
         )}
-
-
-       {isVolunteer && (
+        {isVolunteer && (
           <button className="show-popup" onClick={() => setShowPopup(true)}>
             View Volunteer Messages
           </button>
-        )
-        }
+        )}
         <VolunteerPopup showPopup={showPopup} setShowPopup={setShowPopup} />
-
-
-
       </main>
     </div>
   );

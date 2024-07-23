@@ -94,3 +94,90 @@ body {
   color: #fee2e2; /* צבע משני */
   text-decoration: none; /* הורדת קו תחתון בעת ריחוף */
 }
+
+
+/* AdminDashboard.css */
+
+/* General styles */
+.admin-dashboard {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.admin-header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  flex: 1 1 calc(33% - 20px);
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.background-image-update {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.background-image-update h2 {
+  margin-bottom: 20px;
+}
+
+.background-image-update input[type="file"] {
+  display: none;
+}
+
+.background-image-update label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.background-image-update label i {
+  margin-right: 8px;
+}
+
+.background-image-update button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.background-image-update button:hover {
+  background-color: #45a049;
+}

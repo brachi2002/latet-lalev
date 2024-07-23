@@ -48,7 +48,8 @@ nav ul li a:hover {
 
 .banner {
     position: relative;
-    background: url('./images/A.jpg') no-repeat center center;
+    /* background: url('./images/A.jpg') no-repeat center center; */
+    
     background-size: cover;
     padding: 60px 20px;
     color: #ffffff; /* צבע טקסט */
