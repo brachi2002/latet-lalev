@@ -114,6 +114,8 @@ const AdminDashboard = () => {
         <Link to="/admin/view-requests" className="card">View contacts requests</Link>
         <Link to="/admin/language-support" className="card">Language Support</Link>
         <Link to="/admin/messages" className="card">Messages</Link>
+        <Link to="/admin/manage-qr" className="card">Manage Qr</Link>
+
       </div>
 
       <div className="background-file-update">
