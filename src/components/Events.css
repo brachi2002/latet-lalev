@@ -1,5 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 .App {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fcd4d4; /* Set the background color of the rest of the page to light pink */
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+}
+
+.title-background {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2FStage.png?alt=media&token=b729413f-6418-4294-9d85-7fb9d805df1e');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0; /* Ensure no margin is applied */
+  padding: 0; /* Ensure no padding is applied */
+}
+
+.title-background h1 {
+  font-size: 45px;
+  color: rgb(47, 15, 15); /* Change text color to black */
+  margin: 0;
+  z-index: 1;
+  position: absolute; /* Make position absolute */
+  top: 20px; /* Adjust this value to move the text higher up */
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700; /* Make the text bold */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6); /* Add text shadow for better visibility */
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  margin: 0; /* Ensure no margin is applied */
+  padding: 0; /* Ensure no padding is applied */
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.carousel-image {
+  max-width: 80%;
+  max-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .events {
@@ -10,6 +70,7 @@
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
+  color: #333;
 }
 
 .event-list {
@@ -17,131 +78,108 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px; /* Reduced gap for smaller cards */
+  gap: 15px;
   justify-content: center;
 }
 
 .event-item {
-  flex: 1 1 calc(25% - 15px); /* Smaller cards */
-  max-width: calc(25% - 15px); /* Smaller cards */
+  flex: 1 1 calc(25% - 15px);
+  max-width: calc(25% - 15px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  background-color: #ffffff;
-  margin-bottom: 15px; /* Reduced margin for smaller cards */
+  background-color: #f9f9f9;
+  margin-bottom: 15px;
   transition: transform 0.3s;
-  border: 1px solid #800020; /* Burgundy border */
+  border: 2px solid #491414; /* Dark border added */
 }
 
 .event-item:hover {
   transform: scale(1.05);
 }
 
+
 .event-card {
-  padding: 10px; /* Reduced padding for smaller cards */
+  padding: 10px;
   text-align: center;
-  background-color: #800020; /* Burgundy background */
-  color: #ffffff; /* White text */
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 16px;
 }
 
 .event-image {
   width: 100%;
-  height: 150px; /* Reduced height for smaller cards */
+  height: 150px;
   object-fit: cover;
+  border-radius: 16px;
 }
 
 .placeholder-image {
   width: 100%;
-  height: 150px; /* Reduced height for smaller cards */
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
+  color: #999;
+  font-size: 14px;
+  border-radius: 16px;
 }
 
 .info-button {
   margin-top: 10px;
-  padding: 8px 12px; /* Smaller button */
-  background-color: #ffffff; /* White button */
-  color: #800020; /* Burgundy text */
-  border: 1px solid #800020; /* Burgundy border */
-  border-radius: 4px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .info-button:hover {
-  background-color: #d9c3c3; /* Light burgundy on hover */
-  transform: scale(1.1);
+  background-color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 .event-details {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-top: 1px solid #ddd;
-  display: none; /* Initially hidden */
+  display: none;
+  border-radius: 16px;
 }
 
 .event-details.expanded {
-  display: block; /* Show when expanded */
+  display: block;
 }
 
-.gallery-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+.loading,
+.error {
+  text-align: center;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
-  margin: 40px auto; /* Center the gallery on the page */
 }
 
 .gallery {
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  margin: 20px 0;
   position: relative;
-  width: 100%;
+  height: 300px; /* Adjust height as needed */
 }
 
-.gallery img {
+.gallery-image {
   max-width: 100%;
-  max-height: 300px;
-  margin: 0 10px;
-  border-radius: 12px; /* Rounded edges */
+  max-height: 100%;
+  border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  border: 2px solid #800020; /* Thin burgundy frame */
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-.arrow {
-  cursor: pointer;
-  font-size: 24px;
-  color: #800020; /* Burgundy arrows */
-  user-select: none;
-  padding: 0 15px;
-  transition: color 0.3s ease;
-}
-
-.arrow:hover {
-  color: #d9c3c3; /* Light burgundy on hover */
-}
-
-.arrow-left {
   position: absolute;
-  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.arrow-right {
-  position: absolute;
-  right: 0;
+.gallery-image.active {
+  opacity: 1;
 }

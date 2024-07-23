@@ -11,6 +11,8 @@ function Events({ isAdmin }) {
   const [events, setEvents] = useState([]);
   const [expandedEventId, setExpandedEventId] = useState(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { t } = useTranslation();
   const [user] = useAuthState(auth);
 
@@ -20,25 +22,38 @@ function Events({ isAdmin }) {
         const querySnapshot = await getDocs(collection(db, 'EventList'));
         const eventsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setEvents(eventsList.reverse());
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching events: ', error);
+        setError('Error fetching events. Please try again later.');
+        setLoading(false);
       }
     };
 
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGalleryIndex((prevIndex) => (prevIndex + 1) % events.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [events]);
+
   const toggleDetails = (id) => {
     setExpandedEventId(expandedEventId === id ? null : id);
   };
 
-  const handleNext = () => {
-    setGalleryIndex((prevIndex) => (prevIndex + 1) % events.length);
-  };
+  if (loading) {
+    return <div className="loading">{t('loading')}</div>;
+  }
 
-  const handlePrev = () => {
-    setGalleryIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
-  };
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
+
+  const currentEvent = events[galleryIndex];
 
   return (
     <div className="App">
@@ -46,6 +61,14 @@ function Events({ isAdmin }) {
         <title>Events | Latet lalev</title>
       </Helmet>
       <Navbar user={user} isAdmin={isAdmin} />
+      <div className="header">
+        <div className="title-background">
+          <h1>{t('Our events')}</h1>
+          <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#fcd4d4" fillOpacity="1" d="M0,224L48,218.7C96,213,192,203,288,208C384,213,480,235,576,229.3C672,224,768,192,864,186.7C960,181,1056,203,1152,224C1248,245,1344,267,1392,277.3L1440,288L1440,320L0,320Z"></path>
+          </svg>
+        </div>
+      </div>
       <div className="events">
         <h2>{t('events')}</h2>
         <ul className="event-list">
@@ -71,14 +94,15 @@ function Events({ isAdmin }) {
           ))}
         </ul>
       </div>
-      <div className="gallery-container">
-        <div className="arrow" onClick={handlePrev}>&#9664;</div>
-        <div className="gallery">
-          {events.length > 0 && events[galleryIndex].imageUrls.map((url, index) => (
-            <img key={index} src={url} alt={`Event ${galleryIndex + 1} image ${index + 1}`} />
-          ))}
-        </div>
-        <div className="arrow" onClick={handleNext}>&#9654;</div>
+      <div className="gallery">
+        {events.map((event, index) => (
+          <img
+            key={event.id}
+            src={event.imageUrls && event.imageUrls.length > 0 ? event.imageUrls[0] : 'https://via.placeholder.com/150'}
+            alt={event.name}
+            className={`gallery-image ${index === galleryIndex ? 'active' : ''}`}
+          />
+        ))}
       </div>
     </div>
   );
