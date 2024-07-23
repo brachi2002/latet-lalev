@@ -23,6 +23,8 @@
   position: relative;
   margin: 0; /* Ensure no margin is applied */
   padding: 0; /* Ensure no padding is applied */
+  margin-top: -150px;
+
 }
 
 .title-background h1 {
