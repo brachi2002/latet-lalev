@@ -14,10 +14,8 @@ import { Helmet } from 'react-helmet';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import logo from './images/2-LOGO-PARA-WEB-SITE.png';
 
-
-
 function Homepage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation(); // הוספת i18n
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
   const location = useLocation();
@@ -85,9 +83,9 @@ function Homepage() {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${i18n.language === 'he' ? 'rtl' : ''}`}>
       <Helmet>
-        <title>Home Page | Latet lalev</title>
+        <title>{t('home_page_title')}</title> {/* עדכון עם פונקציית t */}
       </Helmet>
       <header className="App-header">
         <Navbar user={user} isAdmin={isAdmin} />
@@ -104,7 +102,7 @@ function Homepage() {
                   id="background-video"
                 >
                   <source src={backgroundUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
+                  {t('video_not_supported')}
                 </video>
                 <button className="video-overlay" onClick={togglePlayPause}>
                   {isPlaying ? <FaPause /> : <FaPlay />}
@@ -126,14 +124,14 @@ function Homepage() {
       </header>
       <main>
         <div className="message-text">
-          <img src={logo} alt="Logo" className="logo" /> {/* Update the path to your logo */}
-          <h1>לתת מכל הלב</h1>
-          <h2>הסיפור שלנו</h2>
-          <p>יש לנו הזכות לעזור לעולים חדשים.</p>
-          <p>לתת כח לעולים חדשים ובני משפחותיהם, לסייע להם להתאקלם ולבנות חיים חדשים בישראל. באמצעות מערכת רחבה של שירותים, צוות מקצועי ואלפי מתנדבים ברחבי הארץ, אנו מסייעים ומעניקים תמיכה לעולים מכל הגילאים, ילדים, נשים, גברים ומבוגרים, בכל שנה, כבר עשרות שנים.</p>
-          <p>מייעוץ והכוונה מקצועית, סיוע בלימודים, הכשרה מקצועית ועד עזרה במציאת דיור ותעסוקה.</p>
-          <p>אנחנו איתכם.</p>
-          <button onClick={navigateToAboutUs}>קרא/י עוד</button>
+          <img src={logo} alt="Logo" className="logo" />
+          <h1>{t('title')}</h1>
+          <h2>{t('subtitle')}</h2>
+          <p>{t('paragraph1')}</p>
+          <p>{t('paragraph2 ')}</p>
+          <p>{t('paragraph3')}</p>
+          <p>{t('paragraph4')}</p>
+          <button onClick={navigateToAboutUs}>{t('read_more')}</button>
         </div>
         {showDonations ? (
           <Donations />
@@ -147,7 +145,7 @@ function Homepage() {
         )}
         {isVolunteer && (
           <div className="show-popup" onClick={() => setShowPopup(true)}>
-            <span className="show-popup-text">הודעות המתנדבים</span>
+            <span className="show-popup-text">{t('volunteers_messages')}</span>
           </div>
         )}
         <VolunteerPopup showPopup={showPopup} setShowPopup={setShowPopup} />
@@ -157,3 +155,4 @@ function Homepage() {
 }
 
 export default Homepage;
+
