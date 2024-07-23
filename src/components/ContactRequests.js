@@ -4,13 +4,13 @@ import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './viewContactRequests.css';
-import { useTranslation } from 'react-i18next';
 
 const ContactRequests = () => {
     const [requests, setRequests] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { t } = useTranslation();
+    const Yes = 'Yes';
+    const No = 'No';
 
     useEffect(() => {
         const fetchRequests = async () => {
@@ -53,7 +53,7 @@ const ContactRequests = () => {
     return (
         <div className="view-Requests">
             <header className="admin-header">
-                <h1>{t('contact_requests')}</h1>
+                <h1>Manage contact requests</h1>
                 {user && (
                     <>
                         <span className="user-email">{user.email}</span>
@@ -69,33 +69,33 @@ const ContactRequests = () => {
                             <li key={request.id} className={request.read ? 'read' : 'new'}>
                                 <div className="request-header">
                                     {request.read ? (
-                                        <span className="label read-label">✔ {t('read_message')}</span>
+                                        <span className="label read-label">✔ read message</span>
                                     ) : (
-                                        <span className="label new-label">{t('new_message')}</span>
+                                        <span className="label new-label">new message</span>
                                     )}
                                 </div>
-                                <p><strong>{t('name')}:</strong> {request.name} {request.familyName}</p>
-                                <p><strong>{t('phone_number')}:</strong> {request.phone}</p>
-                                <p><strong>{t('email_address')}:</strong> {request.email}</p>
-                                <p><strong>{t('residential_address')}:</strong> {request.address}</p>
-                                <p><strong>{t('reason_for_contacting')}:</strong> {request.reason}</p>
-                                <p><strong>{t('message')}:</strong> {request.message}</p>
-                                <p><strong>{t('accept_policy')}:</strong> {request.accept ? t('yes') : t('no')}</p>
+                                <p><strong>Name:</strong> {request.name} {request.familyName}</p>
+                                <p><strong>Phone Number:</strong> {request.phone}</p>
+                                <p><strong>Email Address:</strong> {request.email}</p>
+                                <p><strong>Residential Address:</strong> {request.address}</p>
+                                <p><strong>Reason for contacting:</strong> {request.reason}</p>
+                                <p><strong>Message:</strong> {request.message}</p>
+                                <p><strong>I agree to receive newsletters and accept the privacy policy:</strong> {request.accept ? Yes : No}</p>
                                 <div class = "buttons">
                                     {!request.read && (
                                     <button onClick={() => handleMarkAsRead(request.id)} className="mark-read-button">
-                                        {t('mark as read')}
+                                        Mark as read
                                     </button>
                                 )}
                                 <button onClick={() => handleDeleteRequest(request.id)} className="delete-button">
-                                    {t('delete')}
+                                    Delete
                                 </button>
                                 </div>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>{t('no_contact_requests')}</p>
+                    <p>No contact requests</p>
                 )}
             </div>
         </div>

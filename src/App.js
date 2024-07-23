@@ -25,6 +25,7 @@ import './styles.css';
 import VolunteerPopup from './components/VolunteerPopup';
 import Messages from './components/Messages';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ManageQr from './components/ManageQr';
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
+          <Route path="/admin/manage-qr" element={<ProtectedRoute><ManageQr /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
           <Route path="/admin/language-support" element={<ProtectedRoute><LanguageSupport /></ProtectedRoute>} />
           <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />
