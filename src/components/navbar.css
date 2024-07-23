@@ -71,7 +71,7 @@
 .right-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between elements */
+  gap: 7px; /* Space between elements */
 }
 
 .logo {
@@ -94,7 +94,7 @@
   background-color: transparent;
   color:  #8a2f2f; /* Black color for the language icon */
   border: none;
-  font-size:medium;
+  font-size:25px;
   cursor: pointer;
   display: flex;
   align-items: center;
