@@ -1,6 +1,7 @@
 body {
     background-color: #ffe6e6 !important; /* Light pink background color */
-    font-family: 'Arial', sans-serif;
+    font-family: Courier New;
+    font-weight: bold;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,10 +10,14 @@ body {
 .services-container {
     max-width: 1200px;
     margin: 0 auto;
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .services {
     text-align: center;
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .services-icons {
@@ -38,6 +43,8 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     margin: 10px; /* Space around each circle */
     padding: 15px; /* Increased padding inside the circle */
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .service-icon-link:hover {
@@ -72,6 +79,8 @@ body {
     align-items: center; /* Vertically align content */
     padding: 20px; /* Added padding for the card */
     border: 3px solid #800020; /* Burgundy colored frame added to the service card */
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .service-card:hover {
@@ -95,12 +104,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .service-title {
     font-size: 1.8em;
     margin: 0 0 15px;
     color: #4d0e0e;
+    font-family: Courier New;
+    font-weight: bold;
 }
 
 .service-description {
