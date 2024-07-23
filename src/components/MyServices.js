@@ -47,7 +47,7 @@ const servicesData = [
     },
 ];
 
-function Services({ isAdmin }) {
+function MyServices({ isAdmin }) {
     const { t } = useTranslation();
     const [user, loading, error] = useAuthState(auth);
 
@@ -60,11 +60,13 @@ function Services({ isAdmin }) {
     }
 
     return (
+        
         <div className="services-container">
+          <Navbar user={user} isAdmin={isAdmin} />
+
             <Helmet>
                 <title>Services | Latet lalev</title>
             </Helmet>
-            <Navbar user={user} isAdmin={isAdmin} />
             <div className="services">
                 <div className="services-icons">
                     {servicesData.map((service, index) => (
@@ -90,4 +92,4 @@ function Services({ isAdmin }) {
     );
 }
 
-export default Services;
+export default MyServices;

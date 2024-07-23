@@ -1,14 +1,16 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
   padding: 10px 20px;
   position: sticky;
   top: 0;
-  width: 100%;
+  align-self: center; */
+  /* margin: 40px 40px; */
+
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .left-container {
@@ -90,9 +92,9 @@
 
 .language-button {
   background-color: transparent;
-  color: #000; /* Black color for the language icon */
+  color:  #8a2f2f; /* Black color for the language icon */
   border: none;
-  font-size: 30px;
+  font-size:medium;
   cursor: pointer;
   display: flex;
   align-items: center;

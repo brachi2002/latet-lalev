@@ -11,6 +11,8 @@ import en from './images/en.png';
 import iw from './images/iw.png';
 import es from './images/es.png';
 import ru from './images/ru.png';
+import { FaGlobe } from 'react-icons/fa';
+
 
 const Navbar = ({ user, isAdmin }) => {
   const { t, i18n } = useTranslation();
@@ -109,7 +111,7 @@ const Navbar = ({ user, isAdmin }) => {
       </nav>
       <div className="right-container">
         <div className="language-selector">
-          <button className="language-button" onClick={toggleLanguageOptions}>🌐</button>
+          <button className="language-button" onClick={toggleLanguageOptions}><FaGlobe /></button>
           {showLanguageOptions && (
             <div className="language-options">
             <button onClick={() => changeLanguage('en')}>
