@@ -13,12 +13,15 @@ body {
   align-items: center;
   background-color: #ffffff; /* צבע רקע */
   padding: 10px 20px;
-  position:sticky; /* שומר את הניווט בחלק העליון */
+  position: sticky; /* שומר את הניווט בחלק העליון */
   top: 0; /* מצמיד לחלק העליון */
-  width: 100%; /* רוחב מלא */
+  align-self: center;
+  margin: 40px;
   z-index: 1000; /* שומר על העליונות על פני תוכן אחר */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* הוספת צל */
+  border-radius: 10px; /* הוספת פינות מעוגלות */
 }
+
 
 .navbar-logo {
   font-size: 24px;
