@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Endorsement.css';
 import { useTranslation } from 'react-i18next';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Navbar from './Navbar';
-import endorsement1 from './images/recommendation/RAB-BURSTEIN.jpg';
-import endorsement2 from './images/recommendation/RAB-ELBAZ.jpg';
-import endorsement3 from './images/recommendation/recommendation1.jpg';
-import endorsement4 from './images/recommendation/recommendation2.jpg';
 import Modal from 'react-modal';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Endorsement = ({ isAdmin }) => {
   const { t } = useTranslation();
   const [user] = useAuthState(auth);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [endorsementImages, setEndorsementImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const docRef = doc(db, 'aboutUs', 'images');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setEndorsementImages(docSnap.data().agreements || []);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document: ", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -34,18 +50,11 @@ const Endorsement = ({ isAdmin }) => {
           <h1>{t('agreements')}</h1>
         </div>
         <div className="endorsement-content">
-          <div className="endorsement-item" onClick={() => openModal(endorsement1)}>
-            <img src={endorsement1} alt="Endorsement 1" />
-          </div>
-          <div className="endorsement-item" onClick={() => openModal(endorsement2)}>
-            <img src={endorsement2} alt="Endorsement 2" />
-          </div>
-          <div className="endorsement-item" onClick={() => openModal(endorsement3)}>
-            <img src={endorsement3} alt="Endorsement 3" />
-          </div>
-          <div className="endorsement-item" onClick={() => openModal(endorsement4)}>
-            <img src={endorsement4} alt="Endorsement 4" />
-          </div>
+          {endorsementImages.map((imageURL, index) => (
+            <div key={index} className="endorsement-item" onClick={() => openModal(imageURL)}>
+              <img src={imageURL} alt={`Endorsement ${index + 1}`} />
+            </div>
+          ))}
         </div>
         <Modal
           isOpen={modalIsOpen}

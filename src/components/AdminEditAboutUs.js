@@ -1,53 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { collection, getDocs, doc, updateDoc, deleteField } from 'firebase/firestore';
+import { db, auth, storage } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import './AdminEditAboutUs.css';
 
 const AdminEditAboutUs = () => {
   const [user] = useAuthState(auth);
-  const [aboutUs, setAboutUs] = useState({
-    mission: '',
-    team: '',
-    involved: '',
-  });
   const navigate = useNavigate();
+  const [images, setImages] = useState({});
+  const [newImage, setNewImage] = useState(null);
+  const [imageType, setImageType] = useState('');
 
   useEffect(() => {
-    const fetchAboutUs = async () => {
-      const querySnapshot = await getDocs(collection(db, 'aboutUs'));
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))[0];
-      setAboutUs({
-        mission: data.mission,
-        team: data.team,
-        involved: data.involved,
-      });
+    if (!user) {
+      navigate('/login');
+    }
+    const fetchImages = async () => {
+      const aboutUsDoc = await getDocs(collection(db, 'aboutUs'));
+      const data = aboutUsDoc.docs.map(doc => doc.data());
+      setImages(data.reduce((acc, item) => ({ ...acc, ...item }), {}));
     };
+    fetchImages();
+  }, [user, navigate]);
 
-    fetchAboutUs();
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAboutUs((prev) => ({ ...prev, [name]: value }));
+  const handleFileChange = (e) => {
+    if (e.target.files[0]) {
+      setNewImage(e.target.files[0]);
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleUpload = async () => {
+    if (newImage && imageType) {
+      const storageRef = ref(storage, `images/${newImage.name}`);
+      await uploadBytes(storageRef, newImage);
+      const url = await getDownloadURL(storageRef);
 
-    try {
-      const docRef = doc(db, 'aboutUs', 'aboutUsDoc'); // Use your specific document ID
+      const docRef = doc(collection(db, 'aboutUs'));
       await updateDoc(docRef, {
-        mission: aboutUs.mission,
-        team: aboutUs.team,
-        involved: aboutUs.involved,
+        [`${imageType}Image`]: url,
       });
-      alert('About Us updated successfully');
-      navigate('/admin/dashboard'); // Navigate back to admin dashboard
-    } catch (error) {
-      console.error('Error updating About Us: ', error);
-      alert('Failed to update About Us');
+
+      setImages(prev => ({ ...prev, [`${imageType}Image`]: url }));
+      setNewImage(null);
+      setImageType('');
+    }
+  };
+
+  const handleDelete = async (type) => {
+    const docRef = collection(db, 'aboutUs');
+    const imageUrl = images[`${type}Image`];
+
+    if (imageUrl) {
+      await updateDoc(docRef, {
+        [`${type}Image`]: deleteField(),
+      });
+
+      const imageRef = ref(storage, imageUrl);
+      await deleteObject(imageRef);
+
+      setImages(prev => {
+        const newImages = { ...prev };
+        delete newImages[`${type}Image`];
+        return newImages;
+      });
     }
   };
 
@@ -63,21 +80,30 @@ const AdminEditAboutUs = () => {
           </>
         )}
       </header>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Mission:
-          <textarea name="mission" value={aboutUs.mission} onChange={handleChange} />
-        </label>
-        <label>
-          Team:
-          <textarea name="team" value={aboutUs.team} onChange={handleChange} />
-        </label>
-        <label>
-          Get Involved:
-          <textarea name="involved" value={aboutUs.involved} onChange={handleChange} />
-        </label>
-        <button type="submit">Update</button>
-      </form>
+      <div className="image-list">
+        {Object.keys(images).map((key) => (
+          key.endsWith('Image') && images[key] ? (
+            <div key={key} className="image-item">
+              <div className="image-label">{key.replace('Image', '')}</div>
+              <img src={images[key]} alt={key} />
+              <button onClick={() => handleDelete(key.replace('Image', ''))}>Delete</button>
+            </div>
+          ) : null
+        ))}
+        
+      </div>
+      <div className="upload-section">
+        <select value={imageType} onChange={(e) => setImageType(e.target.value)}>
+          <option value="">Select Image Type</option>
+          <option value="mission">Mission</option>
+          <option value="team">Team</option>
+          <option value="involved">Involved</option>
+          <option value="endorsement">Endorsement</option>
+          <option value="rabbi">Rabbi</option>
+        </select>
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleUpload}>Upload</button>
+      </div>
     </div>
   );
 };
