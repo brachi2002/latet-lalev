@@ -6,7 +6,6 @@
   padding: 10px 20px;
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -14,12 +13,20 @@
 .left-container {
   display: flex;
   align-items: center;
+  flex: 1; /* Ensure it takes up equal space */
 }
 
 .center-container {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
+  flex: 2; /* Ensure it takes up more space to center properly */
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+  flex: 1; /* Ensure it takes up equal space */
 }
 
 .navbar-links {
@@ -64,12 +71,6 @@
 .donate-button:hover {
   background-color: #f8c5c5;
   transform: scale(1.1);
-}
-
-.right-container {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between elements */
 }
 
 .logo {
