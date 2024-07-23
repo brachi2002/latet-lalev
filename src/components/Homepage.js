@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { signOut, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
-import Navbar from './Navbar'; // הוספת הניווט
-import { animateScroll as scroll, scroller } from 'react-scroll';
-import { useTranslation } from 'react-i18next'; // a
-import VolunteerPopup from './VolunteerPopup'; // Import VolunteerPopup
+import Navbar from './Navbar';
+import { scroller } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
+import VolunteerPopup from './VolunteerPopup';
 import { Helmet } from 'react-helmet';
 
 function Homepage() {
-  const { t } = useTranslation(); // a
+  const { t } = useTranslation();
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
-  const location = useLocation(); // Correctly assign useLocation to a variable
+  const location = useLocation();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isVolunteer, setIsVolunteer] = useState(false); // Add state to track if user is a volunteer
-  const [showPopup, setShowPopup] = useState(false); // Add state to control popup visibility
+  const [isVolunteer, setIsVolunteer] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [backgroundType, setBackgroundType] = useState('');
   const [backgroundUrl, setBackgroundUrl] = useState('');
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const fetchBackgroundData = async () => {
@@ -47,7 +47,7 @@ function Homepage() {
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists()) {
           setIsAdmin(userDoc.data().isAdmin);
-          setIsVolunteer(userDoc.data().isVolunteer === 'true'); // Check if user is a volunteer
+          setIsVolunteer(userDoc.data().isVolunteer === 'true');
         }
       }
     };
@@ -64,6 +64,17 @@ function Homepage() {
     }
   }, [location]);
 
+  const togglePlayPause = () => {
+    const video = document.getElementById('background-video');
+    if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <div className="App">
       <Helmet>
@@ -74,10 +85,24 @@ function Homepage() {
         {!showDonations && (
           <div className="banner">
             {backgroundType === 'video' && backgroundUrl && (
-              <video autoPlay loop muted className="background-video">
-                <source src={backgroundUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  className="background-video"
+                  id="background-video"
+                >
+                  <source src={backgroundUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <div className="video-overlay" onClick={togglePlayPause}>
+                  <img
+                    src={isPlaying ? 'path-to-pause-icon.png' : 'path-to-play-icon.png'}
+                    alt="Play/Pause"
+                  />
+                </div>
+              </>
             )}
             {backgroundType === 'image' && backgroundUrl && (
               <div
