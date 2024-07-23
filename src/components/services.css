@@ -1,81 +1,78 @@
 body {
-    background-color: #ffe6e6; /* Light pink background color */
-    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Soft light background color */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px; /* Increased padding for the container */
+}
+
 .services {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
-.service-list {
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.services h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 40px; /* Increased margin for the title */
 }
 
-.service-item {
-    padding: 25px;
-    width: 75%; /* 3/4 of the page */
-    margin-bottom: 20px;
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px; /* Increased gap between grid items */
 }
 
 .service-card {
     display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    flex-direction: column;
+    border-radius: 10px;
     overflow: hidden;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px; /* Additional margin at the bottom */
 }
 
 .service-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .service-image {
-    width: 200px; /* Set a fixed width */
-    height: 200px; /* Set a fixed height */
-    object-fit: cover; /* Ensure the image covers the area without stretching */
-    border-radius: 8px; /* Match the card border radius */
-    margin-right: 20px; /* Space between image and content */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .service-content {
-    padding: 20px;
-    flex: 1;
+    padding: 30px; /* Increased padding inside the service card */
 }
 
 .service-title {
     font-size: 1.8em;
-    margin: 0 0 10px;
-    color: #620909;
+    margin: 0 0 15px;
+    color: #333;
 }
 
 .service-description {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #666;
 }
 
 .placeholder-image {
-    width: 200px; /* Match the image size */
-    height: 200px; /* Match the image size */
-    background-color: #ccc;
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #999;
     font-size: 1.2em;
     text-align: center;
-    padding: 20px;
 }

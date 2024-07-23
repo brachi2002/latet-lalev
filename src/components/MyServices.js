@@ -43,35 +43,33 @@ function Services({ isAdmin }) {
     const [user, loading, error] = useAuthState(auth);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div className="error">Error: {error.message}</div>;
     }
 
     return (
-        <div className="App">
+        <div className="services-container">
             <Navbar user={user} isAdmin={isAdmin} />
             <div className="services">
                 <h1>{t('services')}</h1>
-                <ul className="service-list">
+                <div className="service-grid">
                     {servicesData.map((service, index) => (
-                        <li key={index} className="service-item">
-                            <div className="service-card">
-                                {service.imageUrls && service.imageUrls.length > 0 ? (
-                                    <img src={service.imageUrls[0]} alt={service.title} className="service-image" />
-                                ) : (
-                                    <div className="placeholder-image">{t('no_image')}</div>
-                                )}
-                                <div className="service-content">
-                                    <h3 className="service-title">{service.title}</h3>
-                                    <p className="service-description">{service.description}</p>
-                                </div>
+                        <div key={index} className="service-card">
+                            {service.imageUrls && service.imageUrls.length > 0 ? (
+                                <img src={service.imageUrls[0]} alt={service.title} className="service-image" />
+                            ) : (
+                                <div className="placeholder-image">{t('no_image')}</div>
+                            )}
+                            <div className="service-content">
+                                <h3 className="service-title">{service.title}</h3>
+                                <p className="service-description">{service.description}</p>
                             </div>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
         </div>
     );
