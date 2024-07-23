@@ -254,7 +254,7 @@ main {
     max-width: 800px;
     background-color: #ffebee; /* צבע רקע רך */
     color: #5e2222; /* צבע טקסט */
-    font-family: 'Gisha', sans-serif; /* גופן */
+    /* font-family: 'Gisha', sans-serif; גופן */
     font-size: 18px; /* גודל גופן */
     line-height: 1.6; /* גובה שורה */
     border-radius: 12px; /* פינות מעוגלות */
