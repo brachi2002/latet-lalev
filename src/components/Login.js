@@ -6,12 +6,12 @@ import { auth, db } from '../firebase'; // ודא שהייבוא נכון
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.css';
 import GoogleButton from './GoogleButton';
-import { useTranslation } from 'react-i18next';//a
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 
 
 const Login = () => {
-  const { t } = useTranslation();//a
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
