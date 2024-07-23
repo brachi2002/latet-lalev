@@ -1,13 +1,15 @@
 body {
     background-color: #f8c5c5; /* צבע רקע אחיד */
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: Courier New;
+    font-weight: bold;
   }
   
   .admin-add-volunteer-option {
     padding: 20px;
     background-color: transparent; /* עדכון רקע דף ניהול */
-    font-family: 'Arial', sans-serif;
+    font-family: Courier New;
+    font-weight: bold;
   }
   
   .admin-header {
@@ -18,6 +20,8 @@ body {
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    font-family: Courier New;
+    font-weight: bold;
   }
   
   .admin-header h1 {
@@ -45,7 +49,7 @@ body {
   }
   
   .homepage-button:hover, .dashboard-button:hover, .add-option-button:hover {
-    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     transform: scale(1.05);
   }
   
@@ -55,7 +59,7 @@ body {
   }
   
   .add-volunteer-option button {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתור */
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -66,7 +70,7 @@ body {
   }
   
   .add-volunteer-option button:hover {
-    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתור בעת ריחוף */
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     transform: scale(1.05);
   }
   
@@ -128,7 +132,7 @@ body {
   }
   
   .current-volunteer-options button:hover {
-    background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
     transform: scale(1.05);
   }
   
