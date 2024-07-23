@@ -37,3 +37,12 @@
   }
 }
 
+/* styles.css */
+body {
+  direction: ltr; /* כיוון טקסט ברירת מחדל משמאל לימין */
+}
+
+.rtl {
+  direction: rtl; /* כיוון טקסט מימין לשמאל */
+  text-align: right; /* יישור טקסט לימין */
+}

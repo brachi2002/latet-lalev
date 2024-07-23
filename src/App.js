@@ -1,4 +1,5 @@
 import React from 'react';
+import  { useEffect } from 'react'; // ייבוא useEffect יחד עם React
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Login from './components/Login';
@@ -15,7 +16,6 @@ import Events from './components/Events';
 import AboutUs from './components/AboutUs';
 import Donations from './components/Donations';
 import MyServices from './components/MyServices';
-import initTranslations from './i18n';
 import Services from './components/Services';
 import Endorsement from './components/Endorsement';
 import Rabbi from './components/Rabbi';
@@ -25,14 +25,23 @@ import './styles.css';
 import VolunteerPopup from './components/VolunteerPopup';
 import Messages from './components/Messages';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ManageQr from './components/ManageQr';
+import './i18n';
+import { useTranslation } from 'react-i18next';
 
 
 
 
 function App() {
- 
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    if (i18n.language === 'he') {
+      document.body.classList.add('rtl');
+    } else {
+      document.body.classList.remove('rtl');
+    }
+  }, [i18n.language]);
   return (
+    
     <Router>
       <div className="App">
         <Routes>
@@ -58,7 +67,6 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
-          <Route path="/admin/manage-qr" element={<ProtectedRoute><ManageQr /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
           <Route path="/admin/language-support" element={<ProtectedRoute><LanguageSupport /></ProtectedRoute>} />
           <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />

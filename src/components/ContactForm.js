@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { db} from '../firebase'; // Ensure this import is correct
+import { db } from '../firebase'; // Ensure this import is correct
 import { collection, addDoc } from 'firebase/firestore';
 import './ContactForm.css';
 import { useTranslation } from 'react-i18next';
 
-
-
 function ContactForm() {
-  const { t } = useTranslation(); 
+  const { t, i18n } = useTranslation(); 
   const [formData, setFormData] = useState({
     name: '',
     familyName: '',
@@ -51,7 +49,7 @@ function ContactForm() {
   };
 
   return (
-    <div className="contact-form">
+    <div className={`contact-form ${i18n.language === 'he' ? 'rtl' : ''}`}>
       <h2>{t('need_help')}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
