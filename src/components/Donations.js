@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import {auth} from '../firebase';
 import Navbar from './Navbar'; // Import the Navbar component
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
+
 
 
 const Donations = ({isAdmin }) => {
@@ -15,6 +17,9 @@ const Donations = ({isAdmin }) => {
   const [user] = useAuthState(auth);
   return (
     <div>
+      <Helmet>
+        <title>Donations | Latet lalev</title>
+      </Helmet>
       <Navbar user={user} isAdmin={isAdmin} /> {/* Add Navbar here */}
       <div className="donation-container">
         <h1>{t('donate_to_our_association')}</h1>

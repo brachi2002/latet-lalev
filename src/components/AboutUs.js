@@ -5,6 +5,8 @@ import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import { Helmet } from 'react-helmet';
+
 
 const AboutUs = ({ isAdmin }) => {
   const { t } = useTranslation();
@@ -12,6 +14,9 @@ const AboutUs = ({ isAdmin }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>Our story | Latet lalev</title>
+      </Helmet>
       <Navbar
         user={user}
         isAdmin={isAdmin}

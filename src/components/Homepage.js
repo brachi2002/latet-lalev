@@ -11,6 +11,8 @@ import Navbar from './Navbar'; // הוספת הניווט
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';//a
 import VolunteerPopup from './VolunteerPopup'; // Import VolunteerPopup
+import { Helmet } from 'react-helmet';
+
 
 
 function Homepage() {
@@ -64,7 +66,11 @@ function Homepage() {
 
   
   return (
+    
     <div className="App">
+       <Helmet>
+        <title>Home Page | Latet lalev</title>
+      </Helmet>
       <Navbar
         user={user}
         isAdmin={isAdmin}
