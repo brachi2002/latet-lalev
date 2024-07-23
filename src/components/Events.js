@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import {auth, db } from '../firebase';
+import { auth, db } from '../firebase';
 import Navbar from './Navbar';
 import './Events.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 
-
-function Events({isAdmin }) {
+function Events({ isAdmin }) {
   const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [expandedEventId, setExpandedEventId] = useState(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const { t } = useTranslation();
   const [user] = useAuthState(auth);
-
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -29,12 +28,16 @@ function Events({isAdmin }) {
     fetchEvents();
   }, []);
 
-  const handleEventClick = (event) => {
-    setSelectedEvent(event);
+  const toggleDetails = (id) => {
+    setExpandedEventId(expandedEventId === id ? null : id);
   };
 
-  const handleCloseDetails = () => {
-    setSelectedEvent(null);
+  const handleNext = () => {
+    setGalleryIndex((prevIndex) => (prevIndex + 1) % events.length);
+  };
+
+  const handlePrev = () => {
+    setGalleryIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
   };
 
   return (
@@ -42,42 +45,40 @@ function Events({isAdmin }) {
       <Helmet>
         <title>Events | Latet lalev</title>
       </Helmet>
-      <Navbar
-        user={user}
-        isAdmin={isAdmin}
-      />
+      <Navbar user={user} isAdmin={isAdmin} />
       <div className="events">
         <h2>{t('events')}</h2>
-        {selectedEvent ? (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={handleCloseDetails}>&times;</span>
-              <h3>{selectedEvent.name}</h3>
-              <p>{selectedEvent.description}</p>
-              <div className="event-images">
-                {selectedEvent.imageUrls && selectedEvent.imageUrls.map((url, index) => (
-                  <img key={index} src={url} alt={selectedEvent.name} style={{ maxWidth: '200px', margin: '5px' }} />
-                ))}
+        <ul className="event-list">
+          {events.map(event => (
+            <li key={event.id} className="event-item">
+              <div className="event-card">
+                {event.imageUrls && event.imageUrls.length > 0 ? (
+                  <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
+                ) : (
+                  <div className="placeholder-image">{t('no_image')}</div>
+                )}
+                <h3>{event.name}</h3>
               </div>
-            </div>
-          </div>
-        ) : (
-          <ul className="event-list">
-            {events.map(event => (
-              <li key={event.id} className="event-item">
-                <div className="event-card" onClick={() => handleEventClick(event)}>
-                  {event.imageUrls && event.imageUrls.length > 0 ? (
-                    <img src={event.imageUrls[0]} alt={event.name} className="event-image" />
-                  ) : (
-                    <div className="placeholder-image">{t('no_image')}</div>
-                  )}
-                  <h3>{event.name}</h3>
+              <button className="info-button" onClick={() => toggleDetails(event.id)}>
+                {t('more_info')}
+              </button>
+              {expandedEventId === event.id && (
+                <div className="event-details expanded">
+                  <p>{event.description}</p>
                 </div>
-                <button className="info-button" onClick={() => handleEventClick(event)}>{t('more_info')}</button>
-              </li>
-            ))}
-          </ul>
-        )}
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="gallery-container">
+        <div className="arrow" onClick={handlePrev}>&#9664;</div>
+        <div className="gallery">
+          {events.length > 0 && events[galleryIndex].imageUrls.map((url, index) => (
+            <img key={index} src={url} alt={`Event ${galleryIndex + 1} image ${index + 1}`} />
+          ))}
+        </div>
+        <div className="arrow" onClick={handleNext}>&#9654;</div>
       </div>
     </div>
   );
