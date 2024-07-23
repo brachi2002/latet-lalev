@@ -16,7 +16,7 @@ body {
   position: sticky; /* שומר את הניווט בחלק העליון */
   top: 0; /* מצמיד לחלק העליון */
   align-self: center;
-  margin: 40px;
+  margin: 25px;
   z-index: 1000; /* שומר על העליונות על פני תוכן אחר */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* הוספת צל */
   border-radius: 10px; /* הוספת פינות מעוגלות */
