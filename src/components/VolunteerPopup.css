@@ -48,23 +48,8 @@
   background-color: darkred;
 }
 
-.show-popup {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  background: green;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 15px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
 
-.show-popup:hover {
-  background-color: darkgreen;
-}
+
 
 /* Messages list styles */
 .messages-list {
@@ -89,15 +74,17 @@
 }
 
 .accept-button {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  margin-right: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+ }
 
 .accept-button:hover {
-  background-color: #218838;
+  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  transform: scale(1.05);
 }

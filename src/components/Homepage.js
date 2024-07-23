@@ -11,7 +11,7 @@ import { scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
 import VolunteerPopup from './VolunteerPopup';
 import { Helmet } from 'react-helmet';
-import { FaPlay, FaPause } from 'react-icons/fa'; // Importing Play and Pause icons from Font Awesome
+import { FaPlay, FaPause } from 'react-icons/fa';
 
 function Homepage() {
   const { t } = useTranslation();
@@ -82,7 +82,7 @@ function Homepage() {
         <title>Home Page | Latet lalev</title>
       </Helmet>
       <header className="App-header">
-              <Navbar user={user} isAdmin={isAdmin} />
+        <Navbar user={user} isAdmin={isAdmin} />
 
         {!showDonations && (
           <div className="banner">
@@ -99,11 +99,8 @@ function Homepage() {
                   Your browser does not support the video tag.
                 </video>
                 <button className="video-overlay" onClick={togglePlayPause}>
-
-                    {isPlaying ? <FaPause /> : <FaPlay />}
-                 
-                  </button>
-                
+                  {isPlaying ? <FaPause /> : <FaPlay />}
+                </button>
               </>
             )}
             {backgroundType === 'image' && backgroundUrl && (
@@ -116,13 +113,6 @@ function Homepage() {
                 }}
               ></div>
             )}
-           
-                
-                
-              
-                
-             
-            
           </div>
         )}
       </header>
@@ -138,9 +128,9 @@ function Homepage() {
           </>
         )}
         {isVolunteer && (
-          <button className="show-popup" onClick={() => setShowPopup(true)}>
-            View Volunteer Messages
-          </button>
+          <div className="show-popup" onClick={() => setShowPopup(true)}>
+            <span className="show-popup-text">הודעות המתנדבים</span>
+          </div>
         )}
         <VolunteerPopup showPopup={showPopup} setShowPopup={setShowPopup} />
       </main>
