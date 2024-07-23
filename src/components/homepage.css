@@ -63,6 +63,7 @@ nav ul li a:hover {
     padding: 0;
     margin: 0; /* אין צורך במרווחים נוספים */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: -150px;
 }
 
 .banner::before {
@@ -193,3 +194,42 @@ main {
     width: 20px;
     height: 20px;
 }
+
+.show-popup {
+    cursor: pointer;
+    color: #d32f2f; /* צבע אדום */
+    position: fixed;
+    height: 70px;
+    width: 200px;
+    bottom: 20px;
+    right: 0; /* מוודא שאין רווח בצד ימין */
+    z-index: 3;
+    transition: color 0.3s, transform 0.3s;
+    background-color: rgb(123, 17, 17);
+    border-top-left-radius: 50px; /* עיגול קצה עליון שמאלי */
+    border-bottom-left-radius: 50px; /* עיגול קצה תחתון שמאלי */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 70px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .show-popup:hover {
+    color: #b71c1c; /* צבע אדום כהה יותר */
+    transform: scale(1.1);
+  }
+  
+  .show-popup-text {
+    font-size: 25px;
+    color: #fbeaea;
+    margin-top: 5px;
+    font-family: Courier New;
+    font-weight: bold;
+    text-align: right;
+    line-height: 1; /* מקטין את הרווח בין השורות */
+  }
+  
