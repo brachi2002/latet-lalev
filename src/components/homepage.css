@@ -136,3 +136,35 @@ nav ul li a:hover {
 main {
     padding: 20px;
 }
+
+.show-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d32f2f; /* צבע אדום */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.show-popup:hover {
+    background-color: #b71c1c; /* צבע אדום כהה יותר */
+    transform: scale(1.1);
+}
+
+/* סגנונות לוידאו */
+.background-video {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; /* יוודא שהוידאו יתפרש על כל השטח ולא יתעוות */
+}
+
+.background-image {
+    width: 100%;
+    height: 250px;
+}
