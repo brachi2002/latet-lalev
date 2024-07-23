@@ -1,21 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Rabbi.css';
 import { useTranslation } from 'react-i18next';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Navbar from './Navbar';
 import videoThumbnail from './images/rabbi/IMG_0006 (5).JPG';
-import rabbiImage1 from './images/rabbi/1.jpg';
-import rabbiImage2 from './images/rabbi/2.jpg';
-import rabbiImage3 from './images/rabbi/IMG_0001 (2).JPG';
-import rabbiImage4 from './images/rabbi/IMG_0006 (2) (2).JPG';
 import Modal from 'react-modal';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Rabbi = ({ isAdmin }) => {
   const { t } = useTranslation();
   const [user] = useAuthState(auth);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [rabbiImages, setRabbiImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const docRef = doc(db, 'aboutUs', 'images');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setRabbiImages(docSnap.data().rabbi || []);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document: ", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -34,26 +50,19 @@ const Rabbi = ({ isAdmin }) => {
         <div className="rabbi-header">
           <h1>{t('rabbi_of_the_association')}</h1>
         </div>
-        <div className="video-section">
-          <a href="https://drive.google.com/file/d/1jZjksT2RkNNWAjj9wC9h21sDre3Zh7q7/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-            <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
-          </a>
-        </div>
+        {/* <div className="video-section"> */}
+          {/* <a href="https://drive.google.com/file/d/1jZjksT2RkNNWAjj9wC9h21sDre3Zh7q7/view?usp=drive_link" target="_blank" rel="noopener noreferrer"> */}
+            {/* <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" /> */}
+          {/* </a> */}
+        {/* </div> */}
         <div className="rabbi-content">
           <h2>{t('pictures_of_rabbi')}</h2>
           <div className="rabbi-images">
-            <div className="rabbi-image-item" onClick={() => openModal(rabbiImage1)}>
-              <img src={rabbiImage1} alt="Rabbi 1" />
-            </div>
-            <div className="rabbi-image-item" onClick={() => openModal(rabbiImage2)}>
-              <img src={rabbiImage2} alt="Rabbi 2" />
-            </div>
-            <div className="rabbi-image-item" onClick={() => openModal(rabbiImage3)}>
-              <img src={rabbiImage3} alt="Rabbi 3" />
-            </div>
-            <div className="rabbi-image-item" onClick={() => openModal(rabbiImage4)}>
-              <img src={rabbiImage4} alt="Rabbi 4" />
-            </div>
+            {rabbiImages.map((imageURL, index) => (
+              <div key={index} className="rabbi-image-item" onClick={() => openModal(imageURL)}>
+                <img src={imageURL} alt={`Rabbi ${index + 1}`} />
+              </div>
+            ))}
           </div>
         </div>
         <div className="rabbi-lessons">
