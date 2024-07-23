@@ -10,23 +10,26 @@ import { Helmet } from 'react-helmet';
 const AdminDashboard = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
-  const [newBackgroundImage, setNewBackgroundImage] = useState(null);
+  const [backgroundUrl, setBackgroundUrl] = useState('');
+  const [newBackgroundFile, setNewBackgroundFile] = useState(null);
+  const [backgroundType, setBackgroundType] = useState('image'); // Default to image
 
   useEffect(() => {
-    const fetchBackgroundImage = async () => {
+    const fetchBackgroundData = async () => {
       try {
         const docRef = doc(db, 'settings', 'background');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setBackgroundImageUrl(docSnap.data().backgroundImageUrl);
+          const data = docSnap.data();
+          setBackgroundUrl(data.backgroundUrl);
+          setBackgroundType(data.backgroundType);
         }
       } catch (error) {
-        console.error('Error fetching background image:', error);
+        console.error('Error fetching background data:', error);
       }
     };
 
-    fetchBackgroundImage();
+    fetchBackgroundData();
   }, []);
 
   const handleSignOut = () => {
@@ -42,44 +45,48 @@ const AdminDashboard = () => {
     navigate('/'); // Navigate to home page
   };
 
-  const handleImageUpload = (event) => {
+  const handleFileUpload = (event) => {
     if (event.target.files[0]) {
-      setNewBackgroundImage(event.target.files[0]);
+      setNewBackgroundFile(event.target.files[0]);
     }
   };
 
-  const handleChangeBackgroundImage = async () => {
-    if (!newBackgroundImage) {
-      alert('Please select an image first');
+  const handleChangeBackgroundFile = async () => {
+    if (!newBackgroundFile) {
+      alert('Please select a file first');
       return;
     }
 
     try {
       const storage = getStorage();
-      const storageRef = ref(storage, 'background'); // Use 'background' as the path
-      
-      // Upload the image
-      await uploadBytes(storageRef, newBackgroundImage);
-      
+      const storageRef = ref(storage, `background/${newBackgroundFile.name}`); // Use file name as the path
+
+      // Upload the file
+      await uploadBytes(storageRef, newBackgroundFile);
+
       // Get the download URL
       const downloadURL = await getDownloadURL(storageRef);
-      
+
+      // Determine the type of the background (image or video)
+      const fileType = newBackgroundFile.type.startsWith('video') ? 'video' : 'image';
+
       // Update the Firestore document
-      await updateBackgroundImageUrl(downloadURL);
-      setBackgroundImageUrl(downloadURL);
+      await updateBackgroundData(downloadURL, fileType);
+      setBackgroundUrl(downloadURL);
+      setBackgroundType(fileType);
     } catch (error) {
-      console.error('Error updating background image:', error);
+      console.error('Error updating background file:', error);
     }
   };
 
-  const updateBackgroundImageUrl = async (url) => {
+  const updateBackgroundData = async (url, type) => {
     const docRef = doc(db, 'settings', 'background');
-    
+
     try {
-      await setDoc(docRef, { backgroundImageUrl: url });
-      alert('Background image updated successfully');
+      await setDoc(docRef, { backgroundUrl: url, backgroundType: type });
+      alert('Background updated successfully');
     } catch (error) {
-      console.error('Error updating background image:', error);
+      console.error('Error updating background data:', error);
     }
   };
 
@@ -109,12 +116,12 @@ const AdminDashboard = () => {
         <Link to="/admin/messages" className="card">Messages</Link>
       </div>
 
-      <div className="background-image-update">
-        <h2>Change Background Image</h2>
-        <input type="file" accept="image/*" id="background-upload" onChange={handleImageUpload} />
+      <div className="background-file-update">
+        <h2>Change Background</h2>
+        <input type="file" accept="image/*,video/*" id="background-upload" onChange={handleFileUpload} />
         <label htmlFor="background-upload"><i className="fas fa-upload"></i>Upload File</label>
-        {newBackgroundImage && <span>{newBackgroundImage.name}</span>}
-        <button onClick={handleChangeBackgroundImage}>Update Background Image</button>
+        {newBackgroundFile && <span>{newBackgroundFile.name}</span>}
+        <button onClick={handleChangeBackgroundFile}>Update Background</button>
       </div>
     </div>
   );

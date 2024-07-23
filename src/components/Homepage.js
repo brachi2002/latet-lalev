@@ -21,22 +21,24 @@ function Homepage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isVolunteer, setIsVolunteer] = useState(false); // Add state to track if user is a volunteer
   const [showPopup, setShowPopup] = useState(false); // Add state to control popup visibility
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
+  const [backgroundType, setBackgroundType] = useState('');
+  const [backgroundUrl, setBackgroundUrl] = useState('');
 
   useEffect(() => {
-    const fetchBackgroundImage = async () => {
+    const fetchBackgroundData = async () => {
       try {
         const docRef = doc(db, 'settings', 'background');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setBackgroundImageUrl(docSnap.data().backgroundImageUrl);
+          setBackgroundType(docSnap.data().backgroundType);
+          setBackgroundUrl(docSnap.data().backgroundUrl);
         }
       } catch (error) {
-        console.error('Error fetching background image:', error);
+        console.error('Error fetching background data:', error);
       }
     };
 
-    fetchBackgroundImage();
+    fetchBackgroundData();
   }, []);
 
   useEffect(() => {
@@ -63,33 +65,48 @@ function Homepage() {
   }, [location]);
 
   return (
-    <div className="App" >
+    <div className="App">
       <Helmet>
         <title>Home Page | Latet lalev</title>
       </Helmet>
-      <Navbar
-        user={user}
-        isAdmin={isAdmin}
-      />
+      <Navbar user={user} isAdmin={isAdmin} />
       <header className="App-header">
         {!showDonations && (
-          <div className="banner" style={{ background: `url(${backgroundImageUrl}) no-repeat center center`   , backgroundSize: 'cover' }}>
-            <h1>{t('how_can_we_help_you')}</h1>
-            <input type="text" placeholder={t('search')} className="search-input" />
-            <div className="search-categories">
-              <h2>{t('search_by_community_type')}</h2>
-              <div className="categories">
-                <button>{t('volunteers')}</button>
-                <button>{t('seniors')}</button>
-                <button>{t('children')}</button>
-                <button>{t('people_with_disabilities')}</button>
-                <button>{t('families_of_patients')}</button>
-                <button>{t('mental_health')}</button>
-                <button>{t('cancer_patients')}</button>
-              </div>
-              <h2>{t('search_by_service_type')}</h2>
-              <div className="services">
-                <button>{t('free_ambulance_services')}</button>
+          <div className="banner">
+            {backgroundType === 'video' && backgroundUrl && (
+              <video autoPlay loop muted className="background-video">
+                <source src={backgroundUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+            {backgroundType === 'image' && backgroundUrl && (
+              <div
+                className="background-image"
+                style={{
+                  backgroundImage: `url(${backgroundUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center center'
+                }}
+              ></div>
+            )}
+            <div className="banner-content">
+              <h1>{t('how_can_we_help_you')}</h1>
+              <input type="text" placeholder={t('search')} className="search-input" />
+              <div className="search-categories">
+                <h2>{t('search_by_community_type')}</h2>
+                <div className="categories">
+                  <button>{t('volunteers')}</button>
+                  <button>{t('seniors')}</button>
+                  <button>{t('children')}</button>
+                  <button>{t('people_with_disabilities')}</button>
+                  <button>{t('families_of_patients')}</button>
+                  <button>{t('mental_health')}</button>
+                  <button>{t('cancer_patients')}</button>
+                </div>
+                <h2>{t('search_by_service_type')}</h2>
+                <div className="services">
+                  <button>{t('free_ambulance_services')}</button>
+                </div>
               </div>
             </div>
           </div>
