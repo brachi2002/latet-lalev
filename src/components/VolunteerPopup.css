@@ -40,12 +40,12 @@
   right: 10px;
   height: 3px;
   width: 30px;
-  background-color: red;
+  background-color: #8a2f2f;
   transition: background-color 0.3s ease;
 }
 
 .close-popup:hover {
-  background-color: darkred;
+  background-color: #f8c5c5;
 }
 
 

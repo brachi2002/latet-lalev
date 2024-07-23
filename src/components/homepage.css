@@ -198,7 +198,7 @@ main {
 
 .show-popup {
     cursor: pointer;
-    color: #d32f2f; /* צבע אדום */
+    color: #8a2f2f; /* צבע אדום */
     position: fixed;
     height: 70px;
     width: 200px;
@@ -220,7 +220,7 @@ main {
   }
   
   .show-popup:hover {
-    color: #b71c1c; /* צבע אדום כהה יותר */
+    color: #f8c5c5; /* צבע אדום כהה יותר */
     transform: scale(1.1);
   }
   
