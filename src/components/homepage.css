@@ -5,6 +5,7 @@ body {
     background-color: #f4f4f9; /* צבע רקע */
     color: #333; /* צבע טקסט */
     direction: ltr;
+    
 }
 
 .App-header {
@@ -231,5 +232,18 @@ main {
     font-weight: bold;
     text-align: right;
     line-height: 1; /* מקטין את הרווח בין השורות */
+  }
+  .message-text {
+    margin-top: 20px;
+    color: #333;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Courier New;
+    z-index: 4;
+    font-weight: bold;
   }
   
