@@ -6,6 +6,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './ManageQr.css';
 import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const ManageQr = () => {
   const [user] = useAuthState(auth);
@@ -39,14 +41,14 @@ const ManageQr = () => {
     let qrPicUrl = selectedMethod.pic;
 
     if (selectedFile) {
-      const storageRef = ref(storage, `qr-pic/${selectedMethod.id}.jpg`);
+      const storageRef = ref(storage, `qr-pic/${selectedFile.name}`);
       await uploadBytes(storageRef, selectedFile);
       qrPicUrl = await getDownloadURL(storageRef);
     }
 
     await setDoc(methodRef, { ...selectedMethod, url: newUrl || selectedMethod.url, pic: qrPicUrl });
     alert('Donation method updated successfully');
-    
+    navigate('/donations');
   };
 
   return (
@@ -65,26 +67,29 @@ const ManageQr = () => {
         )}
       </header>
       <div className="manage-qr-container">
+        <h2>Select Donation Method</h2>
         <div className="form-group">
-          <label>Select Donation Method</label>
           <select onChange={(e) => setSelectedMethod(donationMethods.find(m => m.id === e.target.value))}>
             <option value="">Select a method</option>
             {donationMethods.map(method => (
-              <option key={method.id} value={method.id}>{method.name || 'Unnamed Method'}</option>
+              <option key={method.id} value={method.id}>{method.name}</option>
             ))}
           </select>
         </div>
         {selectedMethod && (
           <>
             <div className="form-group">
-              <label>New QR Code Image</label>
-              <input type="file" accept="image/*" onChange={handleFileUpload} />
+              <label htmlFor="file-upload" className="custom-file-upload">
+                <FontAwesomeIcon icon={faUpload} /> Choose File
+              </label>
+              <input id="file-upload" type="file" accept="image/*" onChange={handleFileUpload} />
+              {selectedFile && <span>{selectedFile.name}</span>}
             </div>
             <div className="form-group">
               <label>New URL</label>
               <input type="text" value={newUrl} onChange={(e) => setNewUrl(e.target.value)} placeholder="Enter new URL" />
             </div>
-            <button className = "updateButton" onClick={handleUpdate}>Update</button>
+            <button className="update-button" onClick={handleUpdate}>Update</button>
           </>
         )}
       </div>

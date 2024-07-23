@@ -1,41 +1,96 @@
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #8a2f2f;
+}
+
+.admin-header .user-email {
+  margin-right: 20px;
+  font-size: 16px;
+  color: #8a2f2f;
+}
+
+.admin-header .homepage-button,
+.admin-header .dashboard-button {
+  background: linear-gradient(to right, #e53935, #e35d5b);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.admin-header .homepage-button:hover,
+.admin-header .dashboard-button:hover {
+  background: linear-gradient(to right, #d32f2f, #d34848);
+  transform: scale(1.05);
+}
+
 .manage-qr-container {
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  .updateButton {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  updateButton:hover {
-    background-color: #45a049;
-  }
-  
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manage-qr-container h1 {
+  text-align: center;
+  color: #8a2f2f;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #8a2f2f;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+#file-upload {
+  display: none;
+}
+
+.update-button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.update-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
