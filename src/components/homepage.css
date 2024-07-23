@@ -11,7 +11,6 @@ body {
     text-align: center;
     width: 100%;
     height: 100vh; /* יגרום ל-header להתפרש על כל הגובה של חלון הדפדפן */
-   
     position: relative; /* Relative position for the header to contain the absolute position elements */
 }
 
@@ -171,6 +170,7 @@ main {
     height: 100%;
     object-fit: cover; /* יוודא שהוידאו יתפרש על כל השטח ולא יתעוות */
     z-index: 0; /* Make sure it's behind other content */
+    border-radius: 15px; /* עיגול הקצוות של הוידאו */
 }
 
 /* Play/Pause Button */
@@ -180,13 +180,13 @@ main {
     left: 20px;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.8); /* צבע רקע עם שקיפות */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 2; /* Ensure it is above the video */
+    background-color: transparent; /* הסרת הרקע */
+    border-radius: 50%;
 }
 
 .video-overlay img {
