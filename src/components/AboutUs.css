@@ -1,12 +1,13 @@
 body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+    font-weight: bold;
 }
 
 .about-us {
-  font-family: Arial, sans-serif;
-  color: #333;
+  font-family: Courier New;
+    font-weight: bold;
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
 }
