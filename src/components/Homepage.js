@@ -128,7 +128,7 @@ function Homepage() {
           <h1>{t('title')}</h1>
           <h2>{t('subtitle')}</h2>
           <p>{t('paragraph1')}</p>
-          <p>{t('paragraph2 ')}</p>
+          <p>{t('paragraph2')}</p>
           <p>{t('paragraph3')}</p>
           <p>{t('paragraph4')}</p>
           <button onClick={navigateToAboutUs}>{t('read_more')}</button>
