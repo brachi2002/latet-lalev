@@ -69,7 +69,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* שכבת הכהיה */
+    /* background-color: rgba(0, 0, 0, 0.5); שכבת הכהיה */
     z-index: 1;
 }
 
@@ -128,7 +128,7 @@ nav ul li a:hover {
 }
 
 .categories button:hover, .services button:hover {
-    background-color:  #ffffff; /* צבע משני */
+    background-color: #ffffff; /* צבע משני */
     transform: scale(1.1);
     color: #f8c5c5;
 }
@@ -162,6 +162,18 @@ main {
     width: 100%;
     height: 500px;
     object-fit: cover; /* יוודא שהוידאו יתפרש על כל השטח ולא יתעוות */
+}
+
+/* סגנונות לוידאו עגול */
+.background-video-round {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; /* עיגול הוידאו */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .background-image {
