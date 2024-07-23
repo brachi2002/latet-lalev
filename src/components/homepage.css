@@ -8,6 +8,8 @@ body {
 
 .App-header {
     text-align: center;
+    width: 100%;
+    height: 100vh; /* יגרום ל-header להתפרש על כל הגובה של חלון הדפדפן */
 }
 
 .top-bar {
@@ -48,14 +50,15 @@ nav ul li a:hover {
 
 .banner {
     position: relative;
-    /* background: url('./images/A.jpg') no-repeat center center; */
-    
+    width: 100%;
+    height: 100%; /* יגרום ל-banner להתפרש על כל הגובה של ה-header */
     background-size: cover;
+    background-position: center; /* יוודא שהתמונה תתמקד במרכז ותתפרש על כל השטח */
     padding: 60px 20px;
     color: #ffffff; /* צבע טקסט */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-    margin: 20px;
+    margin: 0; /* אין צורך במרווחים נוספים */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -67,7 +70,6 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* שכבת הכהיה */
-    border-radius: 8px;
     z-index: 1;
 }
 
