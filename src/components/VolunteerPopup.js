@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, getDocs, addDoc, getDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, getDoc, doc, query, where } from 'firebase/firestore';
 import './VolunteerPopup.css';
 
 const VolunteerPopup = ({ showPopup, setShowPopup }) => {
@@ -21,7 +21,15 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
 
     const fetchMessages = async () => {
       const querySnapshot = await getDocs(collection(db, 'messages'));
-      setMessages(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      const allMessages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      
+      // Filter out messages that have been accepted by the current user
+      const acceptedMessagesQuery = query(collection(db, 'missions'), where('userId', '==', authUser.uid));
+      const acceptedMessagesSnapshot = await getDocs(acceptedMessagesQuery);
+      const acceptedMessageIds = acceptedMessagesSnapshot.docs.map(doc => doc.data().messageId);
+
+      const filteredMessages = allMessages.filter(msg => !acceptedMessageIds.includes(msg.id));
+      setMessages(filteredMessages);
     };
 
     if (authUser) {
@@ -39,8 +47,20 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
         status: 'pending',
         createdAt: new Date(),
       });
+
       alert('You have accepted the mission. Await admin approval.');
+
+      // Remove the accepted message from the list
+      setMessages(messages.filter(msg => msg.id !== messageId));
     }
+  };
+
+  const formatDate = (timestamp) => {
+    if (timestamp && timestamp.seconds) {
+      const date = new Date(timestamp.seconds * 1000);
+      return date.toLocaleString();
+    }
+    return '';
   };
 
   if (loading) return <div>Loading...</div>;
@@ -52,13 +72,14 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <button className="close-popup" onClick={() => setShowPopup(false)}>X</button>
+            <button className="close-popup" onClick={() => setShowPopup(false)}></button>
             <h3>Volunteer Messages</h3>
-            <ul>
+            <ul className="messages-list">
               {messages.map(msg => (
-                <li key={msg.id}>
+                <li key={msg.id} className="message-item">
                   <p>{msg.content}</p>
-                  <button onClick={() => handleAcceptMission(msg.id)}>Accept Mission</button>
+                  <p><small>{formatDate(msg.createdAt)}</small></p>
+                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>Accept Mission</button>
                 </li>
               ))}
             </ul>

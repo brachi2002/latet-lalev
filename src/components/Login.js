@@ -49,6 +49,7 @@ const Login = () => {
           email: user.email,
           isAdmin: false,
           isVolunteer: 'notVolunteering',
+          uid: user.uid,
         });
       } else {
         if (userDoc.data().isAdmin) {

@@ -27,6 +27,7 @@ const Signup = () => {
         name,
         isAdmin: false,
         isVolunteer: 'notVolunteering',
+        uid: user.uid,
       });
       navigate('/');
     } catch (error) {
@@ -43,6 +44,7 @@ const Signup = () => {
         name: user.displayName,
         isAdmin: false,
         isVolunteer: 'notVolunteering',
+        uid: user.uid,
       });
       navigate('/');
     } catch (error) {

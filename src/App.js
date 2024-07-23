@@ -24,6 +24,8 @@ import Popup from './components/VolunteerPopup'; // Import the ProtectedRoute co
 import './styles.css';
 import VolunteerPopup from './components/VolunteerPopup';
 import Messages from './components/Messages';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 

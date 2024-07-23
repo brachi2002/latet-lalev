@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, addDoc, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './VolunteerForm.css';
 import MultiSelectComponent from './MultiSelectComponent';
@@ -50,8 +50,8 @@ const VolunteerForm = ({ isAdmin }) => {
     try {
       console.log('Adding volunteer details to the database');
 
-      // Add volunteer details to the 'volunteers' collection
-      await addDoc(collection(db, 'volunteers'), {
+      // Add volunteer details to the 'volunteers' collection with the user's UID as the document ID
+      await setDoc(doc(db, 'volunteers', authUser.uid), {
         firstName,
         lastName,
         email,

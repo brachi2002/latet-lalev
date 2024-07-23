@@ -53,6 +53,9 @@ const AdminDashboard = () => {
         <Link to="/admin/language-support" className="card">
         language support
         </Link>
+        <Link to="/admin/messages" className="card">
+        messeges
+        </Link>
       </div>
     </div>
   );

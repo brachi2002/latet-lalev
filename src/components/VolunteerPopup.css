@@ -1,35 +1,103 @@
+/* Popup styles */
 .popup {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 300px;
+  max-width: 90%;
+  background: white;
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .popup-content {
-    max-height: 400px;
-    overflow-y: auto;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .close-popup {
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-  }
-  
-  .show-popup {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: green;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
+}
+
+.popup-content {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.close-popup {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 3px;
+  width: 30px;
+  background-color: red;
+  transition: background-color 0.3s ease;
+}
+
+.close-popup:hover {
+  background-color: darkred;
+}
+
+.show-popup {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.show-popup:hover {
+  background-color: darkgreen;
+}
+
+/* Messages list styles */
+.messages-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.message-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.accept-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+  background-color: #218838;
+}
