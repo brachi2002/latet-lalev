@@ -55,7 +55,7 @@ const AboutUs = ({ isAdmin }) => {
           <div className="image-item">
             <Link to="/endorsement">
               <button style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fdocument.jpg?alt=media&token=948d8039-8d56-4647-9824-fc76babc0015')" }}>
-                <span>{t('endorsement')}</span>
+                <span>{t('agreements')}</span>
               </button>
             </Link>
           </div>
