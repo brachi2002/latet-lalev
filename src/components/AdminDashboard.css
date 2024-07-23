@@ -24,6 +24,9 @@ body {
   border-radius: 5px;
   font-family: Courier New;
   font-weight: bold;
+  color: #8a2f2f; /* צבע ראשי */
+
+  
 }
 
 .admin-header h1 {
@@ -58,7 +61,7 @@ body {
 
 .admin-header .logout-button:hover,
 .admin-header .homepage-button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   transform: scale(1.05);
   font-family: Courier New;
   font-weight: bold;
