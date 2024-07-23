@@ -7,7 +7,7 @@
   margin: 20px auto;
     box-shadow: 0 0 10px #f8c5c5;
     border-radius: 25px;
-
+    font-family: Courier New;
 
 }
 
@@ -39,6 +39,8 @@
   box-sizing: border-box;
   transition: box-shadow 0.3s, border-color 0.3s;
   border-radius: 25px;
+  font-family: Courier New;
+
 
 }
 
@@ -47,6 +49,8 @@
 .form-group input[type="email"] {
   border: 2px solid #f8c5c5; /* צבע משני */
   border-radius: 25px;
+  font-family: Courier New;
+
 
 }
 
@@ -57,6 +61,8 @@
   border-color: #8a2f2f; /* צבע ראשי */
   border-radius: 25px;
   border: 2px solid #f8c5c5; /* צבע משני */
+  font-family: Courier New;
+
   
 }
 
@@ -65,6 +71,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-color: #8a2f2f; /* צבע ראשי */
   border-radius: 25px;
+  font-family: Courier New;
+
   
 }
 
@@ -72,12 +80,16 @@
   flex: 1 1 100%;
   height: 100px;
   border-radius: 25px;
+  font-family: Courier New;
+
 }
 
 .form-group input[type="checkbox"] {
   flex: 0 0 auto;
   margin-left: 10px;
   border-radius: 25px;
+  font-family: Courier New;
+
 }
 
 .form-group label {
@@ -87,6 +99,8 @@
   font-size: 0.9rem;
   color: #333;
   border-radius: 25px;
+  font-family: Courier New;
+
 }
 
 .submit-button {
@@ -98,6 +112,7 @@
   border-radius: 25px; /* עיגול פינות הכפתור */
   margin-right: 10px;
   transition: background-color 0.3s, transform 0.3s;
+  font-family: Courier New;
 }
 
 .submit-button:hover {
