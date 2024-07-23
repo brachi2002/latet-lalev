@@ -128,9 +128,9 @@ body {
 }
 
 .event-list button {
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-  color: #ffffff;
-  border: none;
+  background: linear-gradient(to right, #eebab9, #f3b1b0); /* גרדיאנט לכפתורים */
+  color: #351818;
+  border: 2px solid #461f1f; /* הוספת מסגרת ירוקה */
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
@@ -141,7 +141,7 @@ body {
 }
 
 .event-list button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  background: linear-gradient(to right, #bf5b5b, #914747); /* צבע כפתורים בעת ריחוף */
   transform: scale(1.05);
 }
 

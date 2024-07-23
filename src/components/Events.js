@@ -65,7 +65,7 @@ function Events({ isAdmin }) {
       <Navbar user={user} isAdmin={isAdmin} />
       <div className="header">
         <div className="title-background">
-          <h1>{t('האירועים שלנו')}</h1>
+          <h1>{t('our_event')}</h1>
           <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#fcd4d4" fillOpacity="1" d="M0,224L48,218.7C96,213,192,203,288,208C384,213,480,235,576,229.3C672,224,768,192,864,186.7C960,181,1056,203,1152,224C1248,245,1344,267,1392,277.3L1440,288L1440,320L0,320Z"></path>
           </svg>
