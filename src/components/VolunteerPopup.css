@@ -76,7 +76,7 @@
 .accept-button {
   display: inline-block;
   cursor: pointer;
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  background: linear-gradient(to right, #8a2f2f, #e35d5b); /* גרדיאנט לכפתורים */
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 25px; /* עיגול פינות הכפתור */
@@ -85,6 +85,6 @@
  }
 
 .accept-button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  background: linear-gradient(to right, #8a2f2f, #d34848); /* צבע כפתורים בעת ריחוף */
   transform: scale(1.05);
 }

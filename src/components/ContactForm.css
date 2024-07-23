@@ -106,7 +106,7 @@
 .submit-button {
   display: inline-block;
   cursor: pointer;
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  background: linear-gradient(to right, #8a2f2f, #8a2f2f); /* גרדיאנט לכפתורים */
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 25px; /* עיגול פינות הכפתור */
@@ -116,6 +116,6 @@
 }
 
 .submit-button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתור בעת ריחוף */
+  background: linear-gradient(to right, #8a2f2f, #8a2f2f); /* צבע כפתור בעת ריחוף */
     transform: scale(1.05);
 }
