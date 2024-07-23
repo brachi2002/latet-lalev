@@ -16,7 +16,7 @@
   background-image: url('https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2FStage.png?alt=media&token=b729413f-6418-4294-9d85-7fb9d805df1e');
   background-size: cover;
   background-position: center;
-  height: 60vh; /* Adjust this value as needed */
+  height: 80vh; /* Adjust this value as needed to make the image larger */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,20 +24,29 @@
   margin: 0; /* Ensure no margin is applied */
   padding: 0; /* Ensure no padding is applied */
   margin-top: -150px;
+}
 
+.title-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3); /* White overlay with 60% opacity */
 }
 
 .title-background h1 {
-  font-size: 45px;
+  font-size: 50px;
   color: rgb(47, 15, 15); /* Change text color to black */
   margin: 0;
   z-index: 1;
   position: absolute; /* Make position absolute */
-  top: 20px; /* Adjust this value to move the text higher up */
+  top: 150px; /* Adjust this value to move the text higher up */
   left: 50%;
   transform: translateX(-50%);
   font-weight: 700; /* Make the text bold */
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6); /* Add text shadow for better visibility */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);    /*60% opacity white text */
 }
 
 .wave {
@@ -153,13 +162,14 @@
   text-align: center;
   padding: 20px;
 }
-
 .gallery-container {
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #edcccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  margin: 20px;
+  margin: 20px auto; /* Center the gallery container */
+  width: 50%; /* Set the width to be narrower */
+  border: 2px solid rgb(45, 17, 17); /* Add black frame */
 }
 
 .gallery-container h2 {
@@ -171,23 +181,40 @@
 
 .gallery {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin: 20px 0;
-  position: relative;
-  height: 300px; /* Adjust height as needed */
 }
 
-.gallery-image {
+.current-image {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 400px;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  margin-bottom: 20px;
 }
 
-.gallery-image.active {
-  opacity: 1;
+.thumbnail-container {
+  display: flex;
+  gap: 5px; /* Reduced gap between thumbnails */
+  justify-content: center;
+  flex-wrap: wrap; /* Allow thumbnails to wrap to the next line */
+  max-width: 60%; /* Make the container narrower */
+}
+
+.thumbnail-image {
+  width: 65px; /* Increased width */
+  height: 65px; /* Increased height */
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.thumbnail-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-image.active {
+  border: 2px solid #333;
 }
