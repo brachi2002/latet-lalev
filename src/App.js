@@ -23,6 +23,7 @@ import ProtectedRoute from './components/ProtectedRoute'; // Import the Protecte
 import Popup from './components/VolunteerPopup'; // Import the ProtectedRoute component
 import './styles.css';
 import VolunteerPopup from './components/VolunteerPopup';
+import ManageQr from './components/ManageQr';
 import Messages from './components/Messages';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './i18n';
@@ -67,6 +68,7 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
+          <Route path="/admin/manage-qr" element={<ProtectedRoute><ManageQr /></ProtectedRoute>} />
           <Route path="/admin/add-volunteer-option" element={<ProtectedRoute><AdminAddVolunteerOption /></ProtectedRoute>} />
           <Route path="/admin/language-support" element={<ProtectedRoute><LanguageSupport /></ProtectedRoute>} />
           <Route path="/admin/edit-about-us" element={<ProtectedRoute><AdminEditAboutUs /></ProtectedRoute>} />
