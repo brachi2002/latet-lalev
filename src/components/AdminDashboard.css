@@ -1,13 +1,17 @@
 body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+  font-weight: bold;
+
 }
 
 .admin-dashboard {
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
   font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header {
@@ -18,18 +22,24 @@ body {
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header h1 {
   margin: 0;
   font-size: 24px;
   color: #8a2f2f; /* צבע ראשי */
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header .user-email {
   margin-right: 20px;
   font-size: 16px;
   color: #8a2f2f; /* צבע ראשי */
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header .logout-button,
@@ -42,12 +52,16 @@ body {
   font-size: 16px;
   border-radius: 25px; /* עיגול פינות הכפתור */
   transition: background-color 0.3s, transform 0.3s;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .admin-header .logout-button:hover,
 .admin-header .homepage-button:hover {
   background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
   transform: scale(1.05);
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .cards-container {
@@ -57,6 +71,8 @@ body {
   margin-top: 20px;
   justify-content: center;
   width: 100%;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .card {
@@ -75,6 +91,10 @@ body {
   box-shadow: 0 4px 8px rgba(188, 183, 183, 0.1);
   transition: transform 0.3s;
   text-decoration: none; /* הורדת קו תחתון לטקסט */
+  font-family: Courier New;
+  font-weight: bold;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .card:hover {
@@ -88,6 +108,10 @@ body {
   font-size: 18px;
   text-align: center;
   display: block;
+  font-family: Courier New;
+  font-weight: bold;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .card a:hover {
@@ -96,13 +120,7 @@ body {
 }
 
 
-/* AdminDashboard.css */
 
-/* General styles */
-.admin-dashboard {
-  padding: 20px;
-  background-color: #f9f9f9;
-}
 
 .admin-header {
   background-color: #4CAF50;
@@ -111,30 +129,34 @@ body {
   text-align: center;
   border-radius: 8px;
   margin-bottom: 20px;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .card {
-  flex: 1 1 calc(33% - 20px);
-  box-sizing: border-box;
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+  cursor: pointer;
+  background: linear-gradient(to right, #8a2f2f, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  margin-right: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #8a2f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  transform: scale(1.05);
 }
 
 /* Updated styles for the "Change Background" section */
@@ -143,18 +165,25 @@ body {
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #ddd;
+
   border-radius: 5px;
   text-align: center;
+  font-family: Courier New;
+  font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .background-file-update h2 {
   margin-bottom: 20px;
   color: #8a2f2f;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .background-file-update input[type="file"] {
   display: none;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .background-file-update label {
@@ -164,10 +193,14 @@ body {
   color: white;
   border: none;
   border-radius: 5px;
+  background: linear-gradient(to right, #8a2f2f, #e35d5b); /* גרדיאנט לכפתורים */
+
   cursor: pointer;
   margin-right: 10px;
   font-size: 16px;
   transition: background-color 0.3s, transform 0.3s;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .background-file-update label:hover {
@@ -183,11 +216,15 @@ body {
   padding: 10px 20px;
   background-color: #e53935;
   color: white;
+  background: linear-gradient(to right, #8a2f2f, #e35d5b); /* גרדיאנט לכפתורים */
+
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s, transform 0.3s;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
 .background-file-update button:hover {
