@@ -11,6 +11,7 @@ import { scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
 import VolunteerPopup from './VolunteerPopup';
 import { Helmet } from 'react-helmet';
+import { FaPlay, FaPause } from 'react-icons/fa'; // Importing Play and Pause icons from Font Awesome
 
 function Homepage() {
   const { t } = useTranslation();
@@ -80,8 +81,9 @@ function Homepage() {
       <Helmet>
         <title>Home Page | Latet lalev</title>
       </Helmet>
-      <Navbar user={user} isAdmin={isAdmin} />
       <header className="App-header">
+              <Navbar user={user} isAdmin={isAdmin} />
+
         {!showDonations && (
           <div className="banner">
             {backgroundType === 'video' && backgroundUrl && (
@@ -96,12 +98,12 @@ function Homepage() {
                   <source src={backgroundUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <div className="video-overlay" onClick={togglePlayPause}>
-                  <img
-                    src={isPlaying ? 'path-to-pause-icon.png' : 'path-to-play-icon.png'}
-                    alt="Play/Pause"
-                  />
-                </div>
+                <button className="video-overlay" onClick={togglePlayPause}>
+
+                    {isPlaying ? <FaPause /> : <FaPlay />}
+                 
+                  </button>
+                
               </>
             )}
             {backgroundType === 'image' && backgroundUrl && (
@@ -114,26 +116,13 @@ function Homepage() {
                 }}
               ></div>
             )}
-            <div className="banner-content">
-              <h1>{t('how_can_we_help_you')}</h1>
-              <input type="text" placeholder={t('search')} className="search-input" />
-              <div className="search-categories">
-                <h2>{t('search_by_community_type')}</h2>
-                <div className="categories">
-                  <button>{t('volunteers')}</button>
-                  <button>{t('seniors')}</button>
-                  <button>{t('children')}</button>
-                  <button>{t('people_with_disabilities')}</button>
-                  <button>{t('families_of_patients')}</button>
-                  <button>{t('mental_health')}</button>
-                  <button>{t('cancer_patients')}</button>
-                </div>
-                <h2>{t('search_by_service_type')}</h2>
-                <div className="services">
-                  <button>{t('free_ambulance_services')}</button>
-                </div>
-              </div>
-            </div>
+           
+                
+                
+              
+                
+             
+            
           </div>
         )}
       </header>

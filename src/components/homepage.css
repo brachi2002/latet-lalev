@@ -60,6 +60,7 @@ nav ul li a:hover {
     color: #ffffff; /* צבע טקסט */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
+    padding: 0;
     margin: 0; /* אין צורך במרווחים נוספים */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -169,6 +170,7 @@ main {
     height: 100%;
     object-fit: cover; /* יוודא שהוידאו יתפרש על כל השטח ולא יתעוות */
     z-index: 0; /* Make sure it's behind other content */
+    border-radius: 15px; /* עיגול הקצוות של הוידאו */
 }
 
 /* Play/Pause Button */
@@ -178,13 +180,13 @@ main {
     left: 20px;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.8); /* צבע רקע עם שקיפות */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 2; /* Ensure it is above the video */
+    background-color: transparent; /* הסרת הרקע */
+    border-radius: 50%;
 }
 
 .video-overlay img {
