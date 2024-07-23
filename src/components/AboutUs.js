@@ -35,7 +35,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
 
           <div className="about-us-section">
-            <img src="https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fvolentiring.jpg?alt=media&token=d5b4d1b1-7b3e-402c-8a24-aac594c8b260" alt={t('our_team')}/>
+            <img src="https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fmisions.jpg?alt=media&token=b1fdb1fd-0960-465a-b2fc-93385f014c22" alt={t('our_team')}/>
             <div className="about-us-text">
               <h2>{t('our_team')}</h2>
               <p>{t('our_team_text')}</p>
