@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, getDocs, addDoc, getDoc, doc, query, where } from 'firebase/firestore';
+import { updateDoc, collection, getDocs, arrayUnion, getDoc, doc } from 'firebase/firestore';
 import './VolunteerPopup.css';
 
 const VolunteerPopup = ({ showPopup, setShowPopup }) => {
@@ -20,16 +20,16 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
     };
 
     const fetchMessages = async () => {
-      const querySnapshot = await getDocs(collection(db, 'messages'));
-      const allMessages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      
-      // Filter out messages that have been accepted by the current user
-      const acceptedMessagesQuery = query(collection(db, 'missions'), where('userId', '==', authUser.uid));
-      const acceptedMessagesSnapshot = await getDocs(acceptedMessagesQuery);
-      const acceptedMessageIds = acceptedMessagesSnapshot.docs.map(doc => doc.data().messageId);
-
-      const filteredMessages = allMessages.filter(msg => !acceptedMessageIds.includes(msg.id));
-      setMessages(filteredMessages);
+      if (authUser) {
+        const querySnapshot = await getDocs(collection(db, 'messages'));
+        const allMessages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        
+        // Filter out messages that have been accepted by the current user
+        const filteredMessages = allMessages.filter(msg => 
+          !msg.acceptedBy?.some(accepted => accepted.authorEmail === authUser.email)
+        );
+        setMessages(filteredMessages);
+      }
     };
 
     if (authUser) {
@@ -40,12 +40,17 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
 
   const handleAcceptMission = async (messageId) => {
     if (authUser) {
-      await addDoc(collection(db, 'missions'), {
-        messageId,
-        userId: authUser.uid,
-        userEmail: authUser.email,
-        status: 'pending',
-        createdAt: new Date(),
+      const { email, displayName, uid } = authUser;
+      const authorName = displayName || "Unnamed User"; // Fallback to a default value if displayName is not available
+
+      const messageRef = doc(db, 'messages', messageId);
+      await updateDoc(messageRef, {
+        acceptedBy: arrayUnion({
+          authorEmail: email,
+          authorName: authorName,
+          userId: uid,
+          acceptedAt: new Date(),
+        }),
       });
 
       alert('You have accepted the mission. Await admin approval.');

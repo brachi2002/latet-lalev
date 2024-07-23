@@ -55,6 +55,11 @@ const Messages = () => {
   };
 
   const handleSelectUser = async (userId) => {
+    if (!userId) {
+      console.error('Invalid userId:', userId);
+      return;
+    }
+
     try {
       const userDoc = await getDoc(doc(db, 'volunteers', userId));
       if (userDoc.exists()) {
@@ -80,7 +85,7 @@ const Messages = () => {
   return (
     <div className="messages">
       <header className="admin-header">
-        <h1>messages Support</h1>
+        <h1>Messages Support</h1>
         {authUser && (
           <>
             <span className="user-email">{authUser.email}</span>
@@ -104,7 +109,7 @@ const Messages = () => {
             <div className="message-content">
               <p>{msg.content}</p>
               <p><small>{formatDate(msg.createdAt)}</small></p>
-              <p><small>Sent by:  ({msg.authorEmail})</small></p>
+              <p><small>Sent by: ({msg.authorEmail})</small></p>
               <div className="message-actions">
                 <button className="delete-button" onClick={() => handleDeleteMessage(msg.id)}>Delete</button>
                 <button className="expand-button" onClick={() => handleToggleExpand(msg.id)}>
@@ -119,7 +124,8 @@ const Messages = () => {
                   {msg.acceptedBy && msg.acceptedBy.length > 0 ? (
                     msg.acceptedBy.map(user => (
                       <li key={user.userId}>
-                        <p>{user.userEmail}</p>
+                        <p>{user.authorName}</p>
+                        <p>{user.authorEmail}</p>
                         <p><small>{formatDate(user.acceptedAt)}</small></p>
                         <button className="view-form-button" onClick={() => handleSelectUser(user.userId)}>View Volunteer Form</button>
                       </li>
