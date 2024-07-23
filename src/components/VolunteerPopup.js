@@ -3,11 +3,13 @@ import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { updateDoc, collection, getDocs, arrayUnion, getDoc, doc } from 'firebase/firestore';
 import './VolunteerPopup.css';
+import { useTranslation } from 'react-i18next'; 
 
 const VolunteerPopup = ({ showPopup, setShowPopup }) => {
   const [authUser, loading, error] = useAuthState(auth);
   const [isVolunteer, setIsVolunteer] = useState(false);
   const [messages, setMessages] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -78,13 +80,13 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
         <div className="popup">
           <div className="popup-content">
             <button className="close-popup" onClick={() => setShowPopup(false)}></button>
-            <h3>Volunteers Messages</h3>
+            <h3>{t('volunteers_messages')}</h3>
             <ul className="messages-list">
               {messages.map(msg => (
                 <li key={msg.id} className="message-item">
                   <p>{msg.content}</p>
                   <p><small>{formatDate(msg.createdAt)}</small></p>
-                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>I want to volunteer</button>
+                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>{t('I_want_to_volunteer')}</button>
                 </li>
               ))}
             </ul>
