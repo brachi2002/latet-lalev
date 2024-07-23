@@ -24,7 +24,6 @@ body {
 
 .service-item {
     padding: 25px;
-
     width: 75%; /* 3/4 of the page */
     margin-bottom: 20px;
 }
@@ -45,8 +44,11 @@ body {
 }
 
 .service-image {
-    width: 30%; /* Adjust as needed */
-    object-fit: cover;
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensure the image covers the area without stretching */
+    border-radius: 8px; /* Match the card border radius */
+    margin-right: 20px; /* Space between image and content */
 }
 
 .service-content {
@@ -66,8 +68,8 @@ body {
 }
 
 .placeholder-image {
-    width: 30%;
-    height: 100%;
+    width: 200px; /* Match the image size */
+    height: 200px; /* Match the image size */
     background-color: #ccc;
     display: flex;
     align-items: center;
