@@ -1,13 +1,15 @@
 body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+    font-weight: bold;
 }
 
 .view-user {
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
-  font-family: 'Arial', sans-serif;
+  font-family: Courier New;
+    font-weight: bold;
 }
 
 .admin-header {
@@ -34,19 +36,18 @@ body {
 
 .button {
   background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 25px; /* עיגול פינות הכפתור */
-  margin: 10px 0; /* רווח אנכי בין הכפתורים */
-  transition: background-color 0.3s, transform 0.3s;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
-  transform: scale(1.05);
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    transform: scale(1.05);
 }
 
 .view-user ul {

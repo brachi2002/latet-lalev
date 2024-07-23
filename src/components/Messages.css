@@ -1,6 +1,7 @@
 .messages {
     margin: 40px;
-    font-family: Arial, sans-serif;
+    font-family: Courier New;
+    font-weight: bold;
   }
   
 
@@ -75,12 +76,14 @@
   
   .delete-button,
   .expand-button {
-    background-color: #dc3545;
-    color: white;
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    color: #ffffff;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    transition: background-color 0.3s, transform 0.3s;
   }
   
   .expand-button {
@@ -88,7 +91,8 @@
   }
   
   .delete-button:hover {
-    background-color: #c82333;
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    transform: scale(1.05);
   }
   
   .expand-button:hover {
@@ -114,16 +118,19 @@
   }
   
   .view-form-button {
-    background-color: #28a745;
-    color: white;
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    color: #ffffff;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px; /* עיגול פינות הכפתור */
+    transition: background-color 0.3s, transform 0.3s;
   }
   
   .view-form-button:hover {
-    background-color: #218838;
+    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+    transform: scale(1.05);
   }
   
   .volunteer-form-popup {
