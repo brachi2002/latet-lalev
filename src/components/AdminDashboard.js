@@ -59,7 +59,7 @@ const AdminDashboard = () => {
 
     try {
       const storage = getStorage();
-      const storageRef = ref(storage, `background/${newBackgroundFile.name}`); // Use file name as the path
+      const storageRef = ref(storage, 'background'); // Always use the same path to replace the file
 
       // Upload the file
       await uploadBytes(storageRef, newBackgroundFile);
