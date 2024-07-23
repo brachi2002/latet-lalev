@@ -2,7 +2,7 @@
   background: linear-gradient(135deg, #f8c5c5, #e0f7fa); /* עדכון הצבעים לגרדיאנט */
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(215, 156, 156, 0.2); /* צבע משני */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   max-width: 800px;
   margin: 20px auto;
   font-family: Courier New;
@@ -13,7 +13,7 @@
 .contact-form h2 {
   margin-bottom: 20px;
   font-size: 1.8rem;
-  color: #8a2f2f; /* צבע ראשי */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   border-radius: 25px
 }
 
@@ -36,6 +36,7 @@
   box-sizing: border-box;
   transition: box-shadow 0.3s, border-color 0.3s;
   border-radius: 25px
+  
 }
 
 .form-group input[type="text"],
@@ -49,27 +50,31 @@
 .form-group input[type="tel"]:focus,
 .form-group input[type="email"]:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-color: #8a2f2f; /* צבע ראשי */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   border-radius: 25px
 }
 
 .form-group select:focus,
 .form-group textarea:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-color: #8a2f2f; /* צבע ראשי */
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
   border-radius: 25px
+  
 }
 
 .form-group textarea {
   flex: 1 1 100%;
   height: 100px;
   border-radius: 25px
+  
+  
 }
 
 .form-group input[type="checkbox"] {
   flex: 0 0 auto;
   margin-left: 10px;
   border-radius: 25px
+  
 }
 
 .form-group label {
@@ -79,11 +84,11 @@
   font-size: 0.9rem;
   color: #333;
   border-radius: 25px
+  
 }
 
 .submit-button {
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-  color: #ffffff;
+  background: linear-gradient(to right, #e53935, #e35d5b);  color: #ffffff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
