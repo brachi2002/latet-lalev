@@ -73,13 +73,13 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
         <div className="popup">
           <div className="popup-content">
             <button className="close-popup" onClick={() => setShowPopup(false)}></button>
-            <h3>Volunteer Messages</h3>
+            <h3>Volunteers Messages</h3>
             <ul className="messages-list">
               {messages.map(msg => (
                 <li key={msg.id} className="message-item">
                   <p>{msg.content}</p>
                   <p><small>{formatDate(msg.createdAt)}</small></p>
-                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>Accept Mission</button>
+                  <button className="accept-button" onClick={() => handleAcceptMission(msg.id)}>I want to volunteer</button>
                 </li>
               ))}
             </ul>
