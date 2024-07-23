@@ -247,3 +247,69 @@ main {
     font-weight: bold;
   }
   
+  .message-text {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #ffebee; /* צבע רקע רך */
+    color: #5e2222; /* צבע טקסט */
+    font-family: 'Gisha', sans-serif; /* גופן */
+    font-size: 18px; /* גודל גופן */
+    line-height: 1.6; /* גובה שורה */
+    border-radius: 12px; /* פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל לתיבה */
+    position: relative; /* כדי שהאלמנטים המוחלטים יהיו ממוקמים יחסית */
+  }
+  
+  .message-text p {
+    margin: 10px 0;
+  }
+  
+  .message-text h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #d32f2f; /* צבע כותרת */
+  }
+  
+  .message-text h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #d32f2f; /* צבע תת-כותרת */
+  }
+  
+  .message-text button {
+    background-color: #e74c3c; /* צבע כפתור */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+  }
+  
+  .message-text button:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+  }
+  
+  .message-text .logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 120px; /* התאמת גודל הלוגו */
+  }
+  
+  .message-text::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background-color: #d32f2f; /* צבע קו עליון */
+    border-radius: 5px;
+  }
+  

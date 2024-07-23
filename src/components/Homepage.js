@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
@@ -12,12 +12,16 @@ import { useTranslation } from 'react-i18next';
 import VolunteerPopup from './VolunteerPopup';
 import { Helmet } from 'react-helmet';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import logo from './images/2-LOGO-PARA-WEB-SITE.png';
+
+
 
 function Homepage() {
   const { t } = useTranslation();
   const [showDonations, setShowDonations] = useState(false);
   const [user] = useAuthState(auth);
   const location = useLocation();
+  const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isVolunteer, setIsVolunteer] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -76,6 +80,10 @@ function Homepage() {
     }
   };
 
+  const navigateToAboutUs = () => {
+    navigate('/ourStory');
+  };
+
   return (
     <div className="App">
       <Helmet>
@@ -118,9 +126,14 @@ function Homepage() {
       </header>
       <main>
         <div className="message-text">
-          <p>כל השנה אנחנו כאן למען למשפחות נזקקות</p>
-          <p>אנו מזמינים אתכם להיות שותפים בשמירה על בריאותם ורווחתם של משפחות רבות, באמצעות תרומה כפי יכולתכם לאפיקי הסיוע השונים. בזכותכם, נמשיך לסייע למשפחות נזקקות בישראל לחיות בכבוד וברווחה.</p>
-          <p>אנחנו מודים לכם בשמם מראש על תרומתכם ובזכותכם נסייע לעוד משפחות בישראל לחיות בכבוד וברווחה.</p>
+          <img src={logo} alt="Logo" className="logo" /> {/* Update the path to your logo */}
+          <h1>לתת מכל הלב</h1>
+          <h2>הסיפור שלנו</h2>
+          <p>יש לנו הזכות לעזור לעולים חדשים.</p>
+          <p>לתת כח לעולים חדשים ובני משפחותיהם, לסייע להם להתאקלם ולבנות חיים חדשים בישראל. באמצעות מערכת רחבה של שירותים, צוות מקצועי ואלפי מתנדבים ברחבי הארץ, אנו מסייעים ומעניקים תמיכה לעולים מכל הגילאים, ילדים, נשים, גברים ומבוגרים, בכל שנה, כבר עשרות שנים.</p>
+          <p>מייעוץ והכוונה מקצועית, סיוע בלימודים, הכשרה מקצועית ועד עזרה במציאת דיור ותעסוקה.</p>
+          <p>אנחנו איתכם.</p>
+          <button onClick={navigateToAboutUs}>קרא/י עוד</button>
         </div>
         {showDonations ? (
           <Donations />

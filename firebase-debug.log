@@ -1,295 +1,69 @@
-[debug] [2024-07-22T20:31:42.817Z] ----------------------------------------------------------------------
-[debug] [2024-07-22T20:31:42.820Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\brachi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2024-07-22T20:31:42.820Z] CLI Version:   13.13.3
-[debug] [2024-07-22T20:31:42.820Z] Platform:      win32
-[debug] [2024-07-22T20:31:42.820Z] Node Version:  v20.15.0
-[debug] [2024-07-22T20:31:42.821Z] Time:          Mon Jul 22 2024 23:31:42 GMT+0300 (שעון ישראל (קיץ))
-[debug] [2024-07-22T20:31:42.821Z] ----------------------------------------------------------------------
+[debug] [2024-07-23T21:29:49.452Z] ----------------------------------------------------------------------
+[debug] [2024-07-23T21:29:49.455Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\brachi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init functions
+[debug] [2024-07-23T21:29:49.455Z] CLI Version:   13.13.3
+[debug] [2024-07-23T21:29:49.456Z] Platform:      win32
+[debug] [2024-07-23T21:29:49.456Z] Node Version:  v20.15.0
+[debug] [2024-07-23T21:29:49.456Z] Time:          Wed Jul 24 2024 00:29:49 GMT+0300 (שעון ישראל (קיץ))
+[debug] [2024-07-23T21:29:49.456Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2024-07-22T20:31:42.923Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-07-22T20:31:42.923Z] > authorizing via signed-in user (brachi3272@gmail.com)
-[debug] [2024-07-22T20:31:43.213Z] java version "19.0.1" 2022-10-18
-
-[debug] [2024-07-22T20:31:43.214Z] Java(TM) SE Runtime Environment (build 19.0.1+10-21)
-Java HotSpot(TM) 64-Bit Server VM (build 19.0.1+10-21, mixed mode, sharing)
-
-[debug] [2024-07-22T20:31:43.240Z] Parsed Java major version: 19
-[info] i  emulators: Starting emulators: functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore"}}
-[debug] [2024-07-22T20:31:43.248Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-07-22T20:31:43.248Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-07-22T20:31:43.248Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-07-22T20:31:43.249Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2024-07-22T20:31:43.252Z] [hub] writing locator at C:\Users\brachi\AppData\Local\Temp\hub-project-d56a6.json
-[debug] [2024-07-22T20:31:43.258Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-07-22T20:31:43.258Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-07-22T20:31:43.258Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
-[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
-[debug] [2024-07-22T20:31:43.263Z] defaultcredentials: writing to file C:\Users\brachi\AppData\Roaming\firebase\brachi3272_gmail_com_application_default_credentials.json
-[debug] [2024-07-22T20:31:43.265Z] Setting GAC to C:\Users\brachi\AppData\Roaming\firebase\brachi3272_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\brachi\\AppData\\Roaming\\firebase\\brachi3272_gmail_com_application_default_credentials.json"}}
-[debug] [2024-07-22T20:31:43.267Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6/adminSdkConfig [none]
-[debug] [2024-07-22T20:31:47.795Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6/adminSdkConfig 200
-[debug] [2024-07-22T20:31:47.795Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6/adminSdkConfig {"projectId":"project-d56a6","storageBucket":"project-d56a6.appspot.com","locationId":"europe-west"}
-[warn] !  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
-[warn] !  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
-[warn] !  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
-[debug] [2024-07-22T20:31:47.815Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-07-22T20:31:47.815Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2024-07-22T20:31:47.815Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\brachi\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.7.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","project-d56a6","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\brachi\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.7.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"project-d56a6\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false}"}}
-[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
-[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[info] i  ui: downloading ui-v1.12.1.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.12.1.zip..."}}
-[debug] [2024-07-22T20:31:49.518Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.12.1.zip 
-[debug] [2024-07-22T20:31:49.715Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.12.1.zip 200
-[debug] [2024-07-22T20:31:49.715Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.12.1.zip [stream]
-[debug] [2024-07-22T20:31:51.303Z] Data is 3498269
-[debug] [2024-07-22T20:31:51.303Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.304Z] [unzip] Processing entry: client\
-[debug] [2024-07-22T20:31:51.304Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\
-[debug] [2024-07-22T20:31:51.316Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
-[debug] [2024-07-22T20:31:51.316Z] [unzip] Processing entry: client\favicon.ico
-[debug] [2024-07-22T20:31:51.316Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.317Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\favicon.ico
-[debug] [2024-07-22T20:31:51.320Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
-[debug] [2024-07-22T20:31:51.320Z] [unzip] Processing entry: client\mstile-150x150.png
-[debug] [2024-07-22T20:31:51.321Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.321Z] [unzip] Writing file: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\mstile-150x150.png
-[debug] [2024-07-22T20:31:51.322Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
-[debug] [2024-07-22T20:31:51.322Z] [unzip] Processing entry: client\favicon-16x16.png
-[debug] [2024-07-22T20:31:51.322Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.323Z] [unzip] Writing file: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\favicon-16x16.png
-[debug] [2024-07-22T20:31:51.323Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
-[debug] [2024-07-22T20:31:51.323Z] [unzip] Processing entry: client\favicon-32x32.png
-[debug] [2024-07-22T20:31:51.323Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.324Z] [unzip] Writing file: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\favicon-32x32.png
-[debug] [2024-07-22T20:31:51.325Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
-[debug] [2024-07-22T20:31:51.325Z] [unzip] Processing entry: client\manifest.json
-[debug] [2024-07-22T20:31:51.325Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.325Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\manifest.json
-[debug] [2024-07-22T20:31:51.326Z] [unzip] Entry: client/index.html (compressed_size=1365 bytes, uncompressed_size=3071 bytes)
-[debug] [2024-07-22T20:31:51.326Z] [unzip] Processing entry: client\index.html
-[debug] [2024-07-22T20:31:51.326Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.327Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\index.html
-[debug] [2024-07-22T20:31:51.328Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
-[debug] [2024-07-22T20:31:51.328Z] [unzip] Processing entry: client\robots.txt
-[debug] [2024-07-22T20:31:51.328Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.328Z] [unzip] Writing file: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\robots.txt
-[debug] [2024-07-22T20:31:51.330Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
-[debug] [2024-07-22T20:31:51.330Z] [unzip] Processing entry: client\android-chrome-512x512.png
-[debug] [2024-07-22T20:31:51.330Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.331Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\android-chrome-512x512.png
-[debug] [2024-07-22T20:31:51.332Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.332Z] [unzip] Processing entry: client\assets\
-[debug] [2024-07-22T20:31:51.332Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\
-[debug] [2024-07-22T20:31:51.332Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.332Z] [unzip] Processing entry: client\assets\img\
-[debug] [2024-07-22T20:31:51.332Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\img\
-[debug] [2024-07-22T20:31:51.333Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
-[debug] [2024-07-22T20:31:51.333Z] [unzip] Processing entry: client\assets\img\database.png
-[debug] [2024-07-22T20:31:51.333Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\img
-[debug] [2024-07-22T20:31:51.333Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\img\database.png
-[debug] [2024-07-22T20:31:51.334Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.334Z] [unzip] Processing entry: client\assets\provider-icons\
-[debug] [2024-07-22T20:31:51.334Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\
-[debug] [2024-07-22T20:31:51.335Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
-[debug] [2024-07-22T20:31:51.335Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_play_games.svg
-[debug] [2024-07-22T20:31:51.335Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.335Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_play_games.svg
-[debug] [2024-07-22T20:31:51.336Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
-[debug] [2024-07-22T20:31:51.337Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_game_center.svg
-[debug] [2024-07-22T20:31:51.337Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.337Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_game_center.svg
-[debug] [2024-07-22T20:31:51.338Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
-[debug] [2024-07-22T20:31:51.338Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_google.svg
-[debug] [2024-07-22T20:31:51.338Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.338Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_google.svg
-[debug] [2024-07-22T20:31:51.339Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
-[debug] [2024-07-22T20:31:51.339Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_yahoo.svg
-[debug] [2024-07-22T20:31:51.339Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.339Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_yahoo.svg
-[debug] [2024-07-22T20:31:51.340Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
-[debug] [2024-07-22T20:31:51.340Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_email.svg
-[debug] [2024-07-22T20:31:51.340Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.340Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_email.svg
-[debug] [2024-07-22T20:31:51.341Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
-[debug] [2024-07-22T20:31:51.341Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_saml.svg
-[debug] [2024-07-22T20:31:51.341Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.341Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_saml.svg
-[debug] [2024-07-22T20:31:51.342Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
-[debug] [2024-07-22T20:31:51.342Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_oidc.svg
-[debug] [2024-07-22T20:31:51.342Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.342Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_oidc.svg
-[debug] [2024-07-22T20:31:51.343Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
-[debug] [2024-07-22T20:31:51.343Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_facebook.svg
-[debug] [2024-07-22T20:31:51.343Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.343Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_facebook.svg
-[debug] [2024-07-22T20:31:51.344Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
-[debug] [2024-07-22T20:31:51.344Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_github.svg
-[debug] [2024-07-22T20:31:51.344Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.345Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_github.svg
-[debug] [2024-07-22T20:31:51.347Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
-[debug] [2024-07-22T20:31:51.347Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_phone.svg
-[debug] [2024-07-22T20:31:51.347Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.347Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_phone.svg
-[debug] [2024-07-22T20:31:51.348Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
-[debug] [2024-07-22T20:31:51.348Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_apple.svg
-[debug] [2024-07-22T20:31:51.348Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.348Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_apple.svg
-[debug] [2024-07-22T20:31:51.349Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
-[debug] [2024-07-22T20:31:51.349Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_twitter.svg
-[debug] [2024-07-22T20:31:51.349Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.350Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_twitter.svg
-[debug] [2024-07-22T20:31:51.350Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
-[debug] [2024-07-22T20:31:51.350Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_mslive.svg
-[debug] [2024-07-22T20:31:51.350Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons
-[debug] [2024-07-22T20:31:51.351Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\provider-icons\auth_service_mslive.svg
-[debug] [2024-07-22T20:31:51.351Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.351Z] [unzip] Processing entry: client\assets\extensions\
-[debug] [2024-07-22T20:31:51.351Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\extensions\
-[debug] [2024-07-22T20:31:51.352Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
-[debug] [2024-07-22T20:31:51.352Z] [unzip] Processing entry: client\assets\extensions\default-extension.png
-[debug] [2024-07-22T20:31:51.352Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\extensions
-[debug] [2024-07-22T20:31:51.352Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\extensions\default-extension.png
-[debug] [2024-07-22T20:31:51.353Z] [unzip] Entry: client/assets/index-Cj5I7867.css (compressed_size=35786 bytes, uncompressed_size=297937 bytes)
-[debug] [2024-07-22T20:31:51.353Z] [unzip] Processing entry: client\assets\index-Cj5I7867.css
-[debug] [2024-07-22T20:31:51.353Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets
-[debug] [2024-07-22T20:31:51.353Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\index-Cj5I7867.css
-[debug] [2024-07-22T20:31:51.355Z] [unzip] Entry: client/assets/index-JXEx31eZ.js (compressed_size=563896 bytes, uncompressed_size=2020866 bytes)
-[debug] [2024-07-22T20:31:51.355Z] [unzip] Processing entry: client\assets\index-JXEx31eZ.js
-[debug] [2024-07-22T20:31:51.355Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets
-[debug] [2024-07-22T20:31:51.355Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\index-JXEx31eZ.js
-[debug] [2024-07-22T20:31:51.365Z] [unzip] Entry: client/assets/index-JXEx31eZ.js.map (compressed_size=2229196 bytes, uncompressed_size=9596104 bytes)
-[debug] [2024-07-22T20:31:51.365Z] [unzip] Processing entry: client\assets\index-JXEx31eZ.js.map
-[debug] [2024-07-22T20:31:51.365Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets
-[debug] [2024-07-22T20:31:51.365Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\assets\index-JXEx31eZ.js.map
-[debug] [2024-07-22T20:31:51.404Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
-[debug] [2024-07-22T20:31:51.405Z] [unzip] Processing entry: client\safari-pinned-tab.svg
-[debug] [2024-07-22T20:31:51.405Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.405Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\safari-pinned-tab.svg
-[debug] [2024-07-22T20:31:51.406Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
-[debug] [2024-07-22T20:31:51.406Z] [unzip] Processing entry: client\browserconfig.xml
-[debug] [2024-07-22T20:31:51.406Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.406Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\browserconfig.xml
-[debug] [2024-07-22T20:31:51.407Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
-[debug] [2024-07-22T20:31:51.407Z] [unzip] Processing entry: client\android-chrome-192x192.png
-[debug] [2024-07-22T20:31:51.407Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.407Z] [unzip] Writing file: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\android-chrome-192x192.png
-[debug] [2024-07-22T20:31:51.408Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
-[debug] [2024-07-22T20:31:51.408Z] [unzip] Processing entry: client\apple-touch-icon.png
-[debug] [2024-07-22T20:31:51.408Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client
-[debug] [2024-07-22T20:31:51.408Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\client\apple-touch-icon.png
-[debug] [2024-07-22T20:31:51.409Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.409Z] [unzip] Processing entry: server\
-[debug] [2024-07-22T20:31:51.409Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\
-[debug] [2024-07-22T20:31:51.409Z] [unzip] Entry: server/server.mjs.map (compressed_size=286219 bytes, uncompressed_size=1310517 bytes)
-[debug] [2024-07-22T20:31:51.409Z] [unzip] Processing entry: server\server.mjs.map
-[debug] [2024-07-22T20:31:51.409Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server
-[debug] [2024-07-22T20:31:51.410Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\server.mjs.map
-[debug] [2024-07-22T20:31:51.416Z] [unzip] Entry: server/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
-[debug] [2024-07-22T20:31:51.416Z] [unzip] Processing entry: server\assets\
-[debug] [2024-07-22T20:31:51.416Z] [unzip] mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\assets\
-[debug] [2024-07-22T20:31:51.416Z] [unzip] Entry: server/assets/multipart-parser-n20ATYm_.mjs.map (compressed_size=4790 bytes, uncompressed_size=17920 bytes)
-[debug] [2024-07-22T20:31:51.416Z] [unzip] Processing entry: server\assets\multipart-parser-n20ATYm_.mjs.map
-[debug] [2024-07-22T20:31:51.416Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\assets
-[debug] [2024-07-22T20:31:51.416Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\assets\multipart-parser-n20ATYm_.mjs.map
-[debug] [2024-07-22T20:31:51.417Z] [unzip] Entry: server/assets/multipart-parser-n20ATYm_.mjs (compressed_size=2625 bytes, uncompressed_size=10428 bytes)
-[debug] [2024-07-22T20:31:51.417Z] [unzip] Processing entry: server\assets\multipart-parser-n20ATYm_.mjs
-[debug] [2024-07-22T20:31:51.417Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\assets
-[debug] [2024-07-22T20:31:51.418Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\assets\multipart-parser-n20ATYm_.mjs
-[debug] [2024-07-22T20:31:51.418Z] [unzip] Entry: server/server.mjs (compressed_size=311497 bytes, uncompressed_size=1147307 bytes)
-[debug] [2024-07-22T20:31:51.418Z] [unzip] Processing entry: server\server.mjs
-[debug] [2024-07-22T20:31:51.418Z] [unzip] else mkdir: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server
-[debug] [2024-07-22T20:31:51.419Z] [unzip] deflating: C:\Users\brachi\.cache\firebase\emulators\ui-v1.12.1\server\server.mjs
-[debug] [2024-07-22T20:31:51.427Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-07-22T20:31:51.428Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2024-07-22T20:31:51.428Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\brachi\\.cache\\firebase\\emulators\\ui-v1.12.1\\server\\server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\brachi\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.12.1\\\\server\\\\server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false}"}}
-[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2024-07-22T20:31:51.561Z] Web / API server started at 127.0.0.1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
-[debug] [2024-07-22T20:31:51.562Z] Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
-[info] i  functions: Watching "C:\Users\brachi\OneDrive\שולחן העבודה\project\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\brachi\\OneDrive\\שולחן העבודה\\project\\functions\" for Cloud Functions..."}}
-[debug] [2024-07-22T20:31:51.665Z] Validating nodejs source
-[debug] [2024-07-22T20:31:53.290Z] > [functions] package.json contents: {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "18"
-  },
-  "main": "index.js",
-  "dependencies": {
-    "firebase-admin": "^12.1.0",
-    "firebase-functions": "^5.0.0"
-  },
-  "devDependencies": {
-    "firebase-functions-test": "^3.1.0"
-  },
-  "private": true
-}
-[debug] [2024-07-22T20:31:53.290Z] Building nodejs source
-[debug] [2024-07-22T20:31:53.290Z] Failed to find version of module node: reached end of search path C:\Users\brachi\OneDrive\שולחן העבודה\project\functions\node_modules
-[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
-[debug] [2024-07-22T20:31:53.294Z] Could not find functions.yaml. Must use http discovery
-[debug] [2024-07-22T20:31:53.305Z] Found firebase-functions binary at 'C:\Users\brachi\OneDrive\שולחן העבודה\project\functions\node_modules\.bin\firebase-functions'
-[info] Serving at port 8820
-
-[debug] [2024-07-22T20:31:53.936Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[]}
-[info] +  functions: Loaded functions definitions from source: . {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ."}}
-[info] i  functions: Watching "C:\Users\brachi\OneDrive\שולחן העבודה\project\functions-codebase" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\brachi\\OneDrive\\שולחן העבודה\\project\\functions-codebase\" for Cloud Functions..."}}
-[debug] [2024-07-22T20:31:58.986Z] Validating nodejs source
-[debug] [2024-07-22T20:31:59.910Z] > [functions] package.json contents: {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "18"
-  },
-  "main": "index.js",
-  "dependencies": {
-    "firebase-admin": "^12.1.0",
-    "firebase-functions": "^5.0.0"
-  },
-  "devDependencies": {
-    "firebase-functions-test": "^3.1.0"
-  },
-  "private": true
-}
-[debug] [2024-07-22T20:31:59.911Z] Building nodejs source
-[debug] [2024-07-22T20:31:59.911Z] Failed to find version of module node: reached end of search path C:\Users\brachi\OneDrive\שולחן העבודה\project\functions-codebase\node_modules
-[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
-[debug] [2024-07-22T20:31:59.912Z] Could not find functions.yaml. Must use http discovery
-[debug] [2024-07-22T20:31:59.920Z] Found firebase-functions binary at 'C:\Users\brachi\OneDrive\שולחן העבודה\project\functions-codebase\node_modules\.bin\firebase-functions'
-[info] Serving at port 8590
-
-[debug] [2024-07-22T20:32:00.540Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[]}
-[info] +  functions: Loaded functions definitions from source: . {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ."}}
+[debug] [2024-07-23T21:29:49.521Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-23T21:29:49.522Z] > authorizing via signed-in user (brachi3272@gmail.com)
 [info] 
-┌─────────────────────────────────────────────────────────────┐
-│ ✔  All emulators ready! It is now safe to connect your app. │
-│ i  View Emulator UI at http://127.0.0.1:4000/               │
-└─────────────────────────────────────────────────────────────┘
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
 
-┌───────────┬────────────────┬─────────────────────────────────┐
-│ Emulator  │ Host:Port      │ View in Emulator UI             │
-├───────────┼────────────────┼─────────────────────────────────┤
-│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
-├───────────┼────────────────┼─────────────────────────────────┤
-│ Firestore │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
-└───────────┴────────────────┴─────────────────────────────────┘
-  Emulator Hub running at 127.0.0.1:4400
-  Other reserved ports: 4500, 9150
+You're about to initialize a Firebase project in this directory:
 
-Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
- 
+  C:\Users\brachi\OneDrive\שולחן העבודה\project
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-07-23T21:29:57.130Z] Using project from CLI flag: project-d56a6
+[debug] [2024-07-23T21:29:57.132Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6 [none]
+[debug] [2024-07-23T21:29:57.687Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6 200
+[debug] [2024-07-23T21:29:57.687Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/project-d56a6 {"projectId":"project-d56a6","projectNumber":"759765952973","displayName":" Latet Lalev","name":"projects/project-d56a6","resources":{"hostingSite":"project-d56a6","storageBucket":"project-d56a6.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_9fad16a3-7135-4045-a503-e218d369696c"}
+[info] i  Using project project-d56a6 ( Latet Lalev) 
+[info] 
+=== Functions Setup
+[debug] [2024-07-23T21:29:57.703Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-23T21:29:57.703Z] > authorizing via signed-in user (brachi3272@gmail.com)
+[debug] [2024-07-23T21:29:57.703Z] [iam] checking project project-d56a6 for permissions ["firebase.projects.get"]
+[debug] [2024-07-23T21:29:57.704Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/project-d56a6:testIamPermissions [none]
+[debug] [2024-07-23T21:29:57.704Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/project-d56a6:testIamPermissions x-goog-quota-user=projects/project-d56a6
+[debug] [2024-07-23T21:29:57.704Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/project-d56a6:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-07-23T21:29:58.847Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/project-d56a6:testIamPermissions 200
+[debug] [2024-07-23T21:29:58.847Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/project-d56a6:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-07-23T21:29:58.848Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-23T21:29:58.848Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/project-d56a6
+[debug] [2024-07-23T21:29:58.849Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-23T21:29:58.849Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/project-d56a6
+[debug] [2024-07-23T21:30:00.209Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-23T21:30:00.209Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-23T21:30:00.225Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-23T21:30:00.226Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/project-d56a6/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default, functions, mail_functions
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[error] functions.codebase must be unique but 'mail_functions' was used more than once.
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
