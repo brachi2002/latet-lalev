@@ -1,5 +1,5 @@
 body {
-    background-color: #f9f9f9; /* Soft light background color */
+    background-color: #ffe6e6 !important; /* Light pink background color */
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -25,13 +25,34 @@ body {
 
 .service-icon-link {
     text-decoration: none;
-    color: #333;
+    color: #4e1f1f;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px; /* Increased width */
+    height: 150px; /* Increased height */
+    border-radius: 50%;
+    background-color: #fff; /* Background color for the circle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 10px; /* Space around each circle */
+    padding: 15px; /* Increased padding inside the circle */
+}
+
+.service-icon-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    margin-bottom: 10px; /* Space between icon and text */
 }
 
 .service-icon-link p {
-    margin-top: 10px;
-    font-size: 1em;
+    margin: 0;
+    font-size: 0.9em;
 }
 
 .service-grid {
@@ -51,6 +72,7 @@ body {
     margin-bottom: 20px; /* Additional margin at the bottom */
     align-items: center; /* Vertically align content */
     padding: 20px; /* Added padding for the card */
+    border: 3px solid #800020; /* Burgundy colored frame added to the service card */
 }
 
 .service-card:hover {
@@ -79,7 +101,7 @@ body {
 .service-title {
     font-size: 1.8em;
     margin: 0 0 15px;
-    color: #333;
+    color: #4d0e0e;
 }
 
 .service-description {
