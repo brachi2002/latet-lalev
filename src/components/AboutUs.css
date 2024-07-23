@@ -74,10 +74,11 @@ body {
 
 .image-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* מרכז את הכפתורים */
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px; /* רווח בין הכפתורים */
+  gap: 300px; /* רווח בין הכפתורים */
+  margin-right: 10%;
 }
 
 .image-item {
@@ -86,40 +87,46 @@ body {
   max-width: 300px;
 }
 
-.image-item img {
-  width: 100%;
-  border-radius: 25px; /* עיגול פינות כמו הכפתורים */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.image-item h3 {
-  font-size: 1.2rem;
-  color: #8a2f2f; /* צבע ראשי */
-  margin-bottom: 10px;
-}
-
 .image-item button {
-  background-color: #8a2f2f; /* צבע ראשי */
+  background-size: cover;
+  background-position: center;
   color: #ffffff;
   border: none;
-  padding: 20px 40px; /* גודל הכפתורים */
+  padding: 20px 40px;
   cursor: pointer;
-  font-size: 25px; /* גודל הטקסט */
+  font-size: 25px;
   border-radius: 8px;
-  transition: background-color 0.3s, transform 0.3s;
-  margin: 0px; /* מרווח בין הכפתורים */
-  width: 400px; /* רוחב אחיד */
-  height: 100px; /* גובה אחיד */
+  transition: background-color 0.3s, transform 0.3s, filter 0.3s;
+  margin: 0px;
+  width: 400px;
+  height: 125px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  filter: blur(0.0px); /* טשטוש התמונה */
+  position: relative;
 }
 
 .image-item button:hover {
-  background-color: #f8c5c5; /* צבע משני */
   transform: scale(1.1);
+  filter: blur(0); /* הסרת הטשטוש בעת ריחוף */
+}
+
+.image-item button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background-color: red; /* פס מתחת לכיתוב */
+}
+
+.image-item button span {
+  z-index: 1; /* מבטיח שהכיתוב יהיה מעל התמונה */
+  filter: none; /* הסרת הטשטוש מהכיתוב */
 }
 
 .image-item a {

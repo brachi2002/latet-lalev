@@ -54,12 +54,16 @@ const AboutUs = ({ isAdmin }) => {
         <section className="image-section">
           <div className="image-item">
             <Link to="/endorsement">
-              <button>{t('agreements')}</button>
+              <button style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Fdocument.jpg?alt=media&token=948d8039-8d56-4647-9824-fc76babc0015')" }}>
+                <span>{t('endorsement')}</span>
+              </button>
             </Link>
           </div>
           <div className="image-item">
             <Link to="/rabbi">
-              <button>{t('rabbi_of_the_association')}</button>
+              <button style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/project-d56a6.appspot.com/o/images%2Frabbai.jpg?alt=media&token=2327efc9-29bd-43bf-a1f6-6007d210dbd2')" }}>
+                <span>{t('rabbi_of_the_association')}</span>
+              </button>
             </Link>
           </div>
         </section>
