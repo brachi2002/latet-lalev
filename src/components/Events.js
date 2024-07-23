@@ -96,7 +96,7 @@ function Events({ isAdmin }) {
         </ul>
       </div>
       <div className="gallery-container">
-        <h2>{t('Event Gallery')}</h2>
+        <h2>{t('event_gallery')}</h2>
         <div className="gallery">
           <img
             src={currentEventImage}
