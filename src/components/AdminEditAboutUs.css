@@ -23,7 +23,7 @@
 
 .homepage-button,
 .dashboard-button {
-  background-color: #00796b;
+  background-color: #ff5e57;
   color: #ffffff;
   border: none;
   padding: 12px 24px;
@@ -36,7 +36,7 @@
 
 .homepage-button:hover,
 .dashboard-button:hover {
-  background-color: #004d40;
+  background-color: #ff5e57;
   transform: scale(1.05);
 }
 
@@ -101,10 +101,10 @@
   background: #ff5e57; /* background */
   color: #ffffff;
   border: none;
-  padding: 2px 9px; /* Adjusted padding */
+  padding: 3px 10px; /* Adjusted padding */
   cursor: pointer;
   font-size: 2px; /* Adjusted font size */
-  /* /* border-radius: 12px; */
+   border-radius: 12px;
    /* More rounded corners */
   transition: background-color 0.3s, transform 0.3s;
   position: absolute;
@@ -114,7 +114,7 @@
   /* width: 100%; */
 /* height: 10%; */
   max-width: 70%; 
-  max-height: 5%;
+  max-height: 20%;
   box-sizing: border-box; 
   /* Include padding in width calculation */
 }
@@ -147,7 +147,7 @@
 }
 
 .upload-section button {
-  background-color: #00796b;
+  background-color: #ff5e57;
   color: #ffffff;
   border: none;
   cursor: pointer;
@@ -156,6 +156,6 @@
 }
 
 .upload-section button:hover {
-  background-color: #004d40;
+  background-color: #e34c44;
   transform: scale(1.05);
 }
