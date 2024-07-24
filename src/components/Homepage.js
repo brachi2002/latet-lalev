@@ -85,7 +85,7 @@ function Homepage() {
   return (
     <div className={`App ${i18n.language === 'he' ? 'rtl' : ''}`}>
       <Helmet>
-        <title>{t('home_page_title')}</title> {/* עדכון עם פונקציית t */}
+        <title>Home Page | Latet lalev</title> 
       </Helmet>
       <header className="App-header">
         <Navbar user={user} isAdmin={isAdmin} />
