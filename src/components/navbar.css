@@ -61,7 +61,7 @@
   cursor: pointer;
   font-size: 14px;
   border-radius: 5px;
-
+  margin-left: 10px;
   transition: background-color 0.3s, transform 0.3s;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;/*  */
