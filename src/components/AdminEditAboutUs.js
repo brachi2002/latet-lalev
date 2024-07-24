@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, updateDoc, deleteField } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, deleteField, getDoc } from 'firebase/firestore';
 import { db, auth, storage } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -18,10 +18,19 @@ const AdminEditAboutUs = () => {
       navigate('/login');
     }
     const fetchImages = async () => {
-      const aboutUsDoc = await getDocs(collection(db, 'aboutUs'));
-      const data = aboutUsDoc.docs.map(doc => doc.data());
-      setImages(data.reduce((acc, item) => ({ ...acc, ...item }), {}));
+      try {
+        const docRef = doc(db, 'aboutUs', 'images');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setImages(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document: ", error);
+      }
     };
+
     fetchImages();
   }, [user, navigate]);
 
@@ -37,7 +46,7 @@ const AdminEditAboutUs = () => {
       await uploadBytes(storageRef, newImage);
       const url = await getDownloadURL(storageRef);
 
-      const docRef = doc(collection(db, 'aboutUs'));
+      const docRef = doc(db, 'aboutUs', 'images');
       await updateDoc(docRef, {
         [`${imageType}Image`]: url,
       });
@@ -49,7 +58,7 @@ const AdminEditAboutUs = () => {
   };
 
   const handleDelete = async (type) => {
-    const docRef = collection(db, 'aboutUs');
+    const docRef = doc(db, 'aboutUs', 'images');
     const imageUrl = images[`${type}Image`];
 
     if (imageUrl) {
@@ -90,7 +99,6 @@ const AdminEditAboutUs = () => {
             </div>
           ) : null
         ))}
-        
       </div>
       <div className="upload-section">
         <select value={imageType} onChange={(e) => setImageType(e.target.value)}>
