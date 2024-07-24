@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Navbar from './Navbar';
-import videoThumbnail from './images/rabbi/IMG_0006 (5).JPG';
+import videoThumbnail1 from './images/rabbi/IMG_0006 (5).JPG';
+import videoThumbnail2 from './images/rabbi/2.jpg';
+import videoThumbnail3 from './images/rabbi/IMG_0085-2.jpg';
+
 import Modal from 'react-modal';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -62,29 +65,27 @@ const Rabbi = ({ isAdmin }) => {
         </div>
         <div className="video-section">
           <h2>{t('rabbi_lessons')}</h2>
-          {/* <ul> */}
           <a href="https://drive.google.com/file/d/1_J136jUQOYtiqyvsAAQLzpzH_lMjWMV4/view?usp=drive_link" target="_blank"
         rel="noopener noreferrer">
         <div className="video-thumbnail-container">
-          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <img src={videoThumbnail1} alt="Video Thumbnail" className="video-thumbnail" />
           <div className="play-button-overlay"></div>
         </div>
       </a>
       <a href="https://drive.google.com/file/d/1_TfDfqrS8SRs8rLpqKxGKwezcnqU1HLA/view?usp=drive_link" target="_blank"
         rel="noopener noreferrer">
         <div className="video-thumbnail-container">
-          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <img src={videoThumbnail2} alt="Video Thumbnail" className="video-thumbnail" />
           <div className="play-button-overlay"></div>
         </div>
       </a>
       <a href="https://drive.google.com/file/d/1jZjksT2RkNNWAjj9wC9h21sDre3Zh7q7/view?usp=drive_link" target="_blank"
         rel="noopener noreferrer">
         <div className="video-thumbnail-container">
-          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <img src={videoThumbnail3} alt="Video Thumbnail" className="video-thumbnail" />
           <div className="play-button-overlay"></div>
            </div>
           </a>
-          {/* </ul> */}
         </div>
         <Modal
           isOpen={modalIsOpen}
