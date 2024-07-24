@@ -13,6 +13,7 @@
   z-index: 1000;
   animation: slideIn 0.3s ease-in-out;
   overflow: hidden;
+  
 }
 
 @keyframes slideIn {
@@ -82,6 +83,11 @@
   border-radius: 25px; /* עיגול פינות הכפתור */
   margin-right: 10px;
   transition: background-color 0.3s, transform 0.3s;
+  height: 60px;
+  text-align: center;
+  width: 200px;
+  
+
  }
 
 .accept-button:hover {
