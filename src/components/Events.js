@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import Navbar from './Navbar';
+import Footer from './Footer'; // Import the Footer component
 import './Events.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useTranslation } from 'react-i18next';
@@ -116,6 +117,7 @@ function Events({ isAdmin }) {
           </div>
         </div>
       </div>
+      <Footer /> {/* Add Footer component here */}
     </div>
   );
 }
