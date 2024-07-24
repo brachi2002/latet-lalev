@@ -74,6 +74,7 @@
 }
 
 .right-container {
+  margin-right: 10px;
   display: flex;
   align-items: center;
   gap: 5px; /* Space between elements */

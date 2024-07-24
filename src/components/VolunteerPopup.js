@@ -80,7 +80,7 @@ const VolunteerPopup = ({ showPopup, setShowPopup }) => {
         <div className="popup">
           <div className="popup-content">
             <button className="close-popup" onClick={() => setShowPopup(false)}></button>
-            <h3>{t('volunteers_messages')}</h3>
+            <h3 className='tytle_messages'>{t('volunteers_messages')}</h3>
             <ul className="messages-list">
               {messages.map(msg => (
                 <li key={msg.id} className="message-item">

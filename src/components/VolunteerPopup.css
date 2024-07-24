@@ -75,17 +75,18 @@
 }
 
 .accept-button {
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
   background: linear-gradient(to right, #8a2f2f, #e35d5b); /* גרדיאנט לכפתורים */
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 25px; /* עיגול פינות הכפתור */
   margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
-  height: 60px;
+  /* transition: background-color 0.3s, transform 0.3s; */
   text-align: center;
-  width: 200px;
+  width: auto;
+  height: 40px;
+  /* text-align: center; */
   
 
  }
@@ -93,4 +94,10 @@
 .accept-button:hover {
   background: linear-gradient(to right, #8a2f2f, #d34848); /* צבע כפתורים בעת ריחוף */
   transform: scale(1.05);
+}
+
+.tytle_messages{
+  font-size: 17px;
+  font-weight: bold;
+  color: #8a2f2f;
 }
