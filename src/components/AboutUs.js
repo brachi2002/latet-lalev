@@ -77,7 +77,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
           <div className="image-item">
             <Link to="/rabbi">
-              <button style={{ backgroundImage: `url(${images.rabbibackgroundImage })` }}>
+              <button style={{ backgroundImage: `url(${images.rabbiBackgroundImage })` }}>
                 <span>{t('rabbi_of_the_association')}</span>
               </button>
             </Link>

@@ -10,6 +10,8 @@ const AdminEditAboutUs = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [images, setImages] = useState({});
+  const [rabbiImages, setRabbiImages] = useState([]);
+  const [endorsementImages, setEndorsementImages] = useState([]);
   const [newImage, setNewImage] = useState(null);
   const [imageType, setImageType] = useState('');
 
@@ -22,7 +24,10 @@ const AdminEditAboutUs = () => {
         const docRef = doc(db, 'aboutUs', 'images');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setImages(docSnap.data());
+          const data = docSnap.data();
+          setImages(data);
+          setRabbiImages(data.rabbi || []);
+          setEndorsementImages(data.agreements || []);
         } else {
           console.log("No such document!");
         }
@@ -42,38 +47,63 @@ const AdminEditAboutUs = () => {
 
   const handleUpload = async () => {
     if (newImage && imageType) {
-      const storageRef = ref(storage, `images/${newImage.name}`);
+      const storageRef = ref(storage, `${imageType}/${newImage.name}`);
       await uploadBytes(storageRef, newImage);
       const url = await getDownloadURL(storageRef);
 
       const docRef = doc(db, 'aboutUs', 'images');
-      await updateDoc(docRef, {
-        [`${imageType}Image`]: url,
-      });
+      const docSnap = await getDoc(docRef);
+      let updatedImages;
 
-      setImages(prev => ({ ...prev, [`${imageType}Image`]: url }));
+      if (docSnap.exists()) {
+        updatedImages = { ...docSnap.data() };
+        if (Array.isArray(updatedImages[imageType])) {
+          updatedImages[imageType].push(url);
+        } else {
+          updatedImages[imageType] = url;
+        }
+      } else {
+        updatedImages = { [imageType]: Array.isArray(updatedImages[imageType]) ? [url] : url };
+      }
+
+      await updateDoc(docRef, updatedImages);
+
+      if (imageType === 'rabbi') {
+        setRabbiImages((prevImages) => [...prevImages, url]);
+      } else if (imageType === 'agreements') {
+        setEndorsementImages((prevImages) => [...prevImages, url]);
+      } else {
+        setImages((prevImages) => ({ ...prevImages, [imageType]: url }));
+      }
+
       setNewImage(null);
       setImageType('');
     }
   };
 
-  const handleDelete = async (type) => {
+  const handleDelete = async (imageUrl, type) => {
+    const storageRef = ref(storage, imageUrl);
+    await deleteObject(storageRef);
+
     const docRef = doc(db, 'aboutUs', 'images');
-    const imageUrl = images[`${type}Image`];
+    const docSnap = await getDoc(docRef);
 
-    if (imageUrl) {
-      await updateDoc(docRef, {
-        [`${type}Image`]: deleteField(),
-      });
+    if (docSnap.exists()) {
+      const updatedImages = { ...docSnap.data() };
+      if (Array.isArray(updatedImages[type])) {
+        updatedImages[type] = updatedImages[type].filter((url) => url !== imageUrl);
+      } else {
+        delete updatedImages[type];
+      }
+      await updateDoc(docRef, updatedImages);
 
-      const imageRef = ref(storage, imageUrl);
-      await deleteObject(imageRef);
-
-      setImages(prev => {
-        const newImages = { ...prev };
-        delete newImages[`${type}Image`];
-        return newImages;
-      });
+      if (type === 'rabbi') {
+        setRabbiImages(updatedImages.rabbi || []);
+      } else if (type === 'agreements') {
+        setEndorsementImages(updatedImages.agreements || []);
+      } else {
+        setImages(updatedImages);
+      }
     }
   };
 
@@ -91,14 +121,34 @@ const AdminEditAboutUs = () => {
       </header>
       <div className="image-list">
         {Object.keys(images).map((key) => (
-          key.endsWith('Image') && images[key] ? (
+          !Array.isArray(images[key]) && images[key] ? (
             <div key={key} className="image-item">
-              <div className="image-label">{key.replace('Image', '')}</div>
+              <div className="image-label">{key}</div>
               <img src={images[key]} alt={key} />
-              <button onClick={() => handleDelete(key.replace('Image', ''))}>Delete</button>
+              <button onClick={() => handleDelete(images[key], key)}>Delete</button>
             </div>
           ) : null
         ))}
+      </div>
+      <div className="array-image-list">
+        <h2>Rabbi Images</h2>
+        <div className="scroll-container">
+          {rabbiImages.map((url, index) => (
+            <div key={index} className="image-item">
+              <img src={url} alt={`Rabbi ${index + 1}`} />
+              <button onClick={() => handleDelete(url, 'rabbi')}>Delete</button>
+            </div>
+          ))}
+        </div>
+        <h2>Agreements Images</h2>
+        <div className="scroll-container">
+          {endorsementImages.map((url, index) => (
+            <div key={index} className="image-item">
+              <img src={url} alt={`Endorsement ${index + 1}`} />
+              <button onClick={() => handleDelete(url, 'agreements')}>Delete</button>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="upload-section">
         <select value={imageType} onChange={(e) => setImageType(e.target.value)}>
@@ -106,8 +156,10 @@ const AdminEditAboutUs = () => {
           <option value="mission">Mission</option>
           <option value="team">Team</option>
           <option value="involved">Involved</option>
-          <option value="endorsement">Endorsement</option>
+          <option value="agreements">Agreements</option>
+          <option value="agreements-background">Agreements Background</option>
           <option value="rabbi">Rabbi</option>
+          <option value="rabbi-background">Rabbi Background</option>
         </select>
         <input type="file" onChange={handleFileChange} />
         <button onClick={handleUpload}>Upload</button>
