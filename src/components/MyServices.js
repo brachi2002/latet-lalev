@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer'; // Import the Footer component
 import './services.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
@@ -60,10 +61,8 @@ function MyServices({ isAdmin }) {
     }
 
     return (
-        
         <div className="services-container">
-          <Navbar user={user} isAdmin={isAdmin} />
-
+            <Navbar user={user} isAdmin={isAdmin} />
             <Helmet>
                 <title>Services | Latet lalev</title>
             </Helmet>
@@ -88,6 +87,7 @@ function MyServices({ isAdmin }) {
                     ))}
                 </div>
             </div>
+            <Footer /> {/* Add Footer component here */}
         </div>
     );
 }

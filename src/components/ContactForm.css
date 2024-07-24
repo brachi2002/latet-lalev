@@ -52,14 +52,14 @@
 .form-group input[type="tel"]:focus,
 .form-group input[type="email"]:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  background: linear-gradient(to right, #6b0505, #e35d5b); /* גרדיאנט לכפתורים */
   border-radius: 25px
 }
 
 .form-group select:focus,
 .form-group textarea:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  background: linear-gradient(to right, #6b0505, #e35d5b); /* גרדיאנט לכפתורים */
   border-radius: 25px
   
 }
@@ -90,7 +90,7 @@
 }
 
 .submit-button {
-  background: linear-gradient(to right, #e53935, #e35d5b);  color: #ffffff;
+  background: linear-gradient(to right, #6b0505, #e35d5b);  color: #ffffff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -101,7 +101,7 @@
 }
 
 .submit-button:hover {
-  background: linear-gradient(to right, #d32f2f, #d34848); /* צבע כפתורים בעת ריחוף */
+  background: linear-gradient(to right, #6b0505, #d34848); /* צבע כפתורים בעת ריחוף */
   transform: scale(1.05);
 }
 /* יישור טקסט לימין בשדות טופס כאשר השפה היא עברית */

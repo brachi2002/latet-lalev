@@ -99,7 +99,7 @@ nav ul li a:hover {
     width: 80%;
     max-width: 400px;
     margin-bottom: 20px;
-    border: 2px solid #8a2f2f; /* צבע ראשי */
+    border: 2px solid #6b0505; /* צבע ראשי */
     border-radius: 5px;
     transition: box-shadow 0.3s;
 }
@@ -146,7 +146,7 @@ main {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #d32f2f; /* צבע אדום */
+    background-color: #6b0505; /* צבע אדום */
     color: white;
     border: none;
     padding: 15px 30px;
@@ -159,7 +159,7 @@ main {
 }
 
 .show-popup:hover {
-    background-color: #b71c1c; /* צבע אדום כהה יותר */
+    background-color: #6b0505; /* צבע אדום כהה יותר */
     transform: scale(1.1);
 }
 
@@ -269,17 +269,17 @@ main {
   .message-text h1 {
     font-size: 32px;
     margin-bottom: 10px;
-    color: #d32f2f; /* צבע כותרת */
+    color: #6b0505; /* צבע כותרת */
   }
   
   .message-text h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #d32f2f; /* צבע תת-כותרת */
+    color: #6b0505; /* צבע תת-כותרת */
   }
   
   .message-text button {
-    background-color: #e74c3c; /* צבע כפתור */
+    background-color: #6b0505; /* צבע כפתור */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -291,7 +291,7 @@ main {
   }
   
   .message-text button:hover {
-    background-color: #c0392b;
+    background-color: #6b0505;
     transform: scale(1.1);
   }
   
@@ -309,7 +309,7 @@ main {
     transform: translateX(-50%);
     width: 80%;
     height: 5px;
-    background-color: #d32f2f; /* צבע קו עליון */
+    background-color: #6b0505; /* צבע קו עליון */
     border-radius: 5px;
   }
   
