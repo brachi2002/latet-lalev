@@ -2,12 +2,12 @@ body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
   font-family: Courier New;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .about-us {
   font-family: Courier New;
-    font-weight: bold;
+  font-weight: bold;
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
 }
@@ -96,20 +96,19 @@ body {
   background-position: center;
   color: #ffffff;
   border: none;
-  padding: 20px 40px;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 30px;
   border-radius: 8px;
-  transition: background-color 0.3s, transform 0.3s, filter 0.3s;
-  margin: 0px;
-  width: 400px;
-  height: 125px;
-  display: inline-flex;
+  transition: transform 0.3s, filter 0.3s;
+  width: 450px; /* Make button width 100% of the container */
+  height: 300px; /* Set a fixed height for the buttons */
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  filter: blur(0.0px); /* טשטוש התמונה */
   position: relative;
+  margin: 0; /* Remove margins */
+  padding: 0; /* Remove padding */
 }
 
 .image-item button:hover {
