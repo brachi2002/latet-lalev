@@ -7,6 +7,7 @@ import './homepage.css';
 import ContactForm from './ContactForm';
 import Donations from './Donations';
 import Navbar from './Navbar';
+import Footer from './Footer'; // Import the Footer component
 import { scroller } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
 import VolunteerPopup from './VolunteerPopup';
@@ -150,9 +151,9 @@ function Homepage() {
         )}
         <VolunteerPopup showPopup={showPopup} setShowPopup={setShowPopup} />
       </main>
+      <Footer /> {/* Add Footer component here */}
     </div>
   );
 }
 
 export default Homepage;
-

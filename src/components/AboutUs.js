@@ -5,6 +5,7 @@ import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer'; // Import the Footer component
 import { Helmet } from 'react-helmet';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -28,7 +29,6 @@ const AboutUs = ({ isAdmin }) => {
     };
     fetchImages();
   }, []);  
-  
 
   return (
     <div>
@@ -43,7 +43,7 @@ const AboutUs = ({ isAdmin }) => {
         </div>
         <div className="about-us-content">
           <div className="about-us-section">
-            <img src={images.missionImage } alt={t('our_mission')} />
+            <img src={images.missionImage} alt={t('our_mission')} />
             <div className="about-us-text">
               <h2>{t('our_mission')}</h2>
               <p>{t('our_mission_text')}</p>
@@ -51,7 +51,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
 
           <div className="about-us-section">
-            <img src={images.teamImage } alt={t('our_team')} />
+            <img src={images.teamImage} alt={t('our_team')} />
             <div className="about-us-text">
               <h2>{t('our_team')}</h2>
               <p>{t('our_team_text')}</p>
@@ -59,7 +59,7 @@ const AboutUs = ({ isAdmin }) => {
           </div>
 
           <div className="about-us-section">
-            <img src={images.involvedImage } alt={t('get_involved')} />
+            <img src={images.involvedImage} alt={t('get_involved')} />
             <div className="about-us-text">
               <h2>{t('get_involved')}</h2>
               <p>{t('get_involved_text')}</p>
@@ -70,20 +70,21 @@ const AboutUs = ({ isAdmin }) => {
         <section className="image-section">
           <div className="image-item">
             <Link to="/endorsement">
-              <button style={{ backgroundImage: `url(${images.agreementsBackgroundImage })` }}>
+              <button style={{ backgroundImage: `url(${images.agreementsBackgroundImage})` }}>
                 <span>{t('agreements')}</span>
               </button>
             </Link>
           </div>
           <div className="image-item">
             <Link to="/rabbi">
-              <button style={{ backgroundImage: `url(${images.rabbiBackgroundImage })` }}>
+              <button style={{ backgroundImage: `url(${images.rabbiBackgroundImage})` }}>
                 <span>{t('rabbi_of_the_association')}</span>
               </button>
             </Link>
           </div>
         </section>
       </div>
+      <Footer /> {/* Add Footer component here */}
     </div>
   );
 };
