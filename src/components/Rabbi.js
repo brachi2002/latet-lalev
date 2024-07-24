@@ -50,11 +50,6 @@ const Rabbi = ({ isAdmin }) => {
         <div className="rabbi-header">
           <h1>{t('rabbi_of_the_association')}</h1>
         </div>
-        {/* <div className="video-section"> */}
-          {/* <a href="https://drive.google.com/file/d/1jZjksT2RkNNWAjj9wC9h21sDre3Zh7q7/view?usp=drive_link" target="_blank" rel="noopener noreferrer"> */}
-            {/* <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" /> */}
-          {/* </a> */}
-        {/* </div> */}
         <div className="rabbi-content">
           <h2>{t('pictures_of_rabbi')}</h2>
           <div className="rabbi-images">
@@ -65,12 +60,31 @@ const Rabbi = ({ isAdmin }) => {
             ))}
           </div>
         </div>
-        <div className="rabbi-lessons">
+        <div className="video-section">
           <h2>{t('rabbi_lessons')}</h2>
-          <ul>
-            <li><a href="https://drive.google.com/file/d/1_J136jUQOYtiqyvsAAQLzpzH_lMjWMV4/view?usp=drive_link" target="_blank" rel="noopener noreferrer">{t('lesson')} 1</a></li>
-            <li><a href="https://drive.google.com/file/d/1_TfDfqrS8SRs8rLpqKxGKwezcnqU1HLA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">{t('lesson')} 2</a></li>
-          </ul>
+          {/* <ul> */}
+          <a href="https://drive.google.com/file/d/1_J136jUQOYtiqyvsAAQLzpzH_lMjWMV4/view?usp=drive_link" target="_blank"
+        rel="noopener noreferrer">
+        <div className="video-thumbnail-container">
+          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <div className="play-button-overlay"></div>
+        </div>
+      </a>
+      <a href="https://drive.google.com/file/d/1_TfDfqrS8SRs8rLpqKxGKwezcnqU1HLA/view?usp=drive_link" target="_blank"
+        rel="noopener noreferrer">
+        <div className="video-thumbnail-container">
+          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <div className="play-button-overlay"></div>
+        </div>
+      </a>
+      <a href="https://drive.google.com/file/d/1jZjksT2RkNNWAjj9wC9h21sDre3Zh7q7/view?usp=drive_link" target="_blank"
+        rel="noopener noreferrer">
+        <div className="video-thumbnail-container">
+          <img src={videoThumbnail} alt="Video Thumbnail" className="video-thumbnail" />
+          <div className="play-button-overlay"></div>
+           </div>
+          </a>
+          {/* </ul> */}
         </div>
         <Modal
           isOpen={modalIsOpen}
