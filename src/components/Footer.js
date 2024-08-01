@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './footer.css'; // Ensure this path is correct
 
 const Footer = () => {
-    const { t, i18n } = useTranslation(); 
+    const { t } = useTranslation();
     return (
         <footer className="footer">
             <div className="footer-content">
