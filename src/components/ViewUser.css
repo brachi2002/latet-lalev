@@ -2,14 +2,14 @@ body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
   font-family: Courier New;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .view-user {
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
   font-family: Courier New;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .admin-header {
@@ -36,59 +36,47 @@ body {
 
 .button {
   background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 25px; /* עיגול פינות הכפתור */
-    transition: background-color 0.3s, transform 0.3s;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .button:hover {
   background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-.view-user ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.view-user li {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 25px; /* עיגול פינות */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  flex: 1 1 calc(33.333% - 20px); /* Adjust for three items per row with gap */
-  max-width: calc(33.333% - 20px); /* Adjust for three items per row with gap */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.view-user li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.view-user .user-info {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.view-user .volunteer-form {
+.view-user table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
+}
+
+.view-user th, .view-user td {
   padding: 15px;
-  background-color: #f6d9d9; /* צבע משני */
-  border-radius: 25px; /* עיגול פינות */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.view-user th {
+  background-color: #ffffff;
+  color: #8a2f2f; /* צבע ראשי */
+  font-size: 18px;
+}
+
+.view-user td {
+  background-color: #ffffff;
+  color: #000;
+  font-size: 16px;
+  position: relative; /* Added to position buttons correctly */
+}
+
+.view-user td .button {
+  margin-left: 10px;
 }
 
 .button-container {
