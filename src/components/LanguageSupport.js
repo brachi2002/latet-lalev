@@ -6,7 +6,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './LanguageSupport.css';
 
-
 const LanguageSupport = () => {
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
@@ -14,6 +13,7 @@ const LanguageSupport = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const checkAdmin = async () => {
@@ -61,6 +61,15 @@ const LanguageSupport = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredValues = Object.keys(selectedValues).filter(key => 
+    key.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    selectedValues[key].toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (!isAdmin) {
     return <p>You do not have permission to view this page</p>;
   }
@@ -72,37 +81,51 @@ const LanguageSupport = () => {
         {user && (
           <>
             <span className="user-email">{user.email}</span>
-            <button onClick={() => navigate('/')} className="homepage-button">Go to Homepage</button>
-            <button onClick={() => navigate('/admin/dashboard')} className="dashboard-button">Go to Admin Home</button>
+            <button onClick={() => navigate('/')} className="button">Go to Homepage</button>
+            <button onClick={() => navigate('/admin/dashboard')} className="button">Go to Admin Home</button>
           </>
         )}
       </header>
       <div className="languages-list">
         {languages.map(lang => (
-          <button key={lang.id} onClick={() => handleSelectLanguage(lang)}>
+          <button key={lang.id} onClick={() => handleSelectLanguage(lang)} className="language-button">
             {lang.language.toUpperCase()}
           </button>
         ))}
       </div>
       {selectedLanguage && (
-        <form onSubmit={handleSubmit} className="language-form">
-          <h2>Edit {selectedLanguage.language.toUpperCase()}</h2>
-          {Object.keys(selectedValues).map((key) => (
-            key !== 'id' && key !== 'language' && (
-              <label key={key}>
-                {key}:
-                <input
-                  type="text"
-                  name={key}
-                  value={selectedValues[key]}
-                  onChange={handleChange}
-                />
-              </label>
-            )
-          ))}
-          <button type="submit">Update</button>
-          <button type="button" onClick={() => setSelectedLanguage(null)}>Cancel</button>
-        </form>
+        <>
+          <div className="search-container">
+            <input 
+              type="text"
+              placeholder="Search word..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="search-input"
+            />
+          </div>
+          <form onSubmit={handleSubmit} className="language-form">
+            <h2>Edit {selectedLanguage.language.toUpperCase()}</h2>
+            {filteredValues.map((key) => (
+              key !== 'id' && key !== 'language' && (
+                <label key={key}>
+                  {key}:
+                  <input
+                    type="text"
+                    name={key}
+                    value={selectedValues[key]}
+                    onChange={handleChange}
+                    className="input-field"
+                  />
+                </label>
+              )
+            ))}
+            <div className="form-buttons">
+              <button type="submit" className="button">Update</button>
+              <button type="button" onClick={() => setSelectedLanguage(null)} className="button">Cancel</button>
+            </div>
+          </form>
+        </>
       )}
     </div>
   );
