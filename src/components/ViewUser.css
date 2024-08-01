@@ -75,15 +75,12 @@ body {
   position: relative; /* Added to position buttons correctly */
 }
 
-.view-user td .button {
-  margin-left: 10px;
-}
-
 .button-container {
+  margin-top: 10px; /* רווח מעל הכפתורים */
   display: flex;
   gap: 10px; /* רווח בין הכפתורים */
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start; /* יישור הכפתורים לשמאל */
 }
 
 /* Modal styles */

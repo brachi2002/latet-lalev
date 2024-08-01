@@ -162,7 +162,7 @@ const ViewUser = () => {
               <th>Email</th>
               <th>Admin Status</th>
               <th>Volunteer Status</th>
-              <th>Delete User</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -171,19 +171,25 @@ const ViewUser = () => {
                 <td>{u.email}</td>
                 <td>
                   {u.isAdmin ? "Admin" : "Not Admin"}
-                  <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
-                    {u.isAdmin ? "Cancel Admin" : "Make Admin"}
-                  </button>
+                  <div className="button-container">
+                    <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
+                      {u.isAdmin ? "Cancel Admin" : "Make Admin"}
+                    </button>
+                  </div>
                 </td>
                 <td>
                   {u.isVolunteer}
                   {u.isVolunteer !== 'notVolunteering' && (
-                    <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
-                      {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Reject volunteer" : "Approve volunteer"}
-                    </button>
+                    <div className="button-container">
+                      <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
+                        {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Reject volunteer" : "Approve volunteer"}
+                      </button>
+                    </div>
                   )}
                   {volunteerForms[u.id] && (
-                    <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
+                    <div className="button-container">
+                      <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
+                    </div>
                   )}
                 </td>
                 <td>
