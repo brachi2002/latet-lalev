@@ -1,138 +1,175 @@
 body {
-    background-color: #f8c5c5; /* צבע רקע אחיד */
-    margin: 0;
-    font-family: Courier New;
-    font-weight: bold;
-  }
-  
-  .admin-add-volunteer-option {
-    padding: 20px;
-    background-color: transparent; /* עדכון רקע דף ניהול */
-    font-family: Courier New;
-    font-weight: bold;
-  }
-  
-  .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff; /* צבע רקע לבן */
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    font-family: Courier New;
-    font-weight: bold;
-  }
-  
-  .admin-header h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #8a2f2f; /* צבע ראשי */
-  }
-  
-  .admin-header .user-email {
-    margin-right: 20px;
-    font-size: 16px;
-    color: #8a2f2f; /* צבע ראשי */
-  }
-  
-  .homepage-button, .dashboard-button, .add-option-button {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 25px; /* עיגול פינות הכפתור */
-    margin-left: 20px;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .homepage-button:hover, .dashboard-button:hover, .add-option-button:hover {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    transform: scale(1.05);
-  }
-  
-  .add-volunteer-option {
-    margin-top: 20px;
-    text-align: center; /* מרכז את הכפתור */
-  }
-  
-  .add-volunteer-option button {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 25px; /* עיגול פינות הכפתור */
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .add-volunteer-option button:hover {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    transform: scale(1.05);
-  }
-  
-  .current-volunteer-options {
-    margin-top: 40px; /* Increased margin to add more space above the title */
-    text-align: center; /* Center align the title */
-  }
-  
-  .current-volunteer-options h2 {
-    margin-bottom: 20px; /* Optional: Adjust the space below the title if needed */
-  }
-  
-  .current-volunteer-options ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center; /* Center the list items */
-  }
-  
-  .current-volunteer-options li {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    flex: 1 1 calc(33.333% - 20px); /* Adjust for three items per row with gap */
-    max-width: calc(33.333% - 20px); /* Adjust for three items per row with gap */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Add space between rows */
-  }
-  
-  .current-volunteer-options li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .current-volunteer-options span {
-    font-size: 16px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .current-volunteer-options button {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 25px; /* עיגול פינות הכפתור */
-    transition: background-color 0.3s, transform 0.3s;
-    width: 100%;
-  }
-  
-  .current-volunteer-options button:hover {
-    background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
-    transform: scale(1.05);
-  }
-  
+  background-color: #f8c5c5; /* צבע רקע אחיד */
+  margin: 0;
+  font-family: Courier New;
+  font-weight: bold;
+}
+
+.admin-add-volunteer-option {
+  padding: 20px;
+  background-color: transparent; /* עדכון רקע דף ניהול */
+  font-family: Courier New;
+  font-weight: bold;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* צבע רקע לבן */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-family: Courier New;
+  font-weight: bold;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #8a2f2f; /* צבע ראשי */
+}
+
+.admin-header .user-email {
+  margin-right: 20px;
+  font-size: 16px;
+  color: #8a2f2f; /* צבע ראשי */
+}
+
+.homepage-button, .dashboard-button, .add-option-button {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  margin-left: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.homepage-button:hover, .dashboard-button:hover, .add-option-button:hover {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  transform: scale(1.05);
+}
+
+.add-volunteer-option {
+  margin-top: 20px;
+  text-align: center; /* מרכז את הכפתור */
+}
+
+.add-volunteer-option button {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-volunteer-option button:hover {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  transform: scale(1.05);
+}
+
+.current-volunteer-options {
+  margin-top: 40px; /* Increased margin to add more space above the title */
+  text-align: center; /* Center align the title */
+}
+
+.current-volunteer-options h2 {
+  margin-bottom: 20px; /* Optional: Adjust the space below the title if needed */
+}
+
+.current-volunteer-options table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.current-volunteer-options th, .current-volunteer-options td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.current-volunteer-options th {
+  background-color: #ffffff;
+  color: #8a2f2f; /* צבע ראשי */
+  font-size: 18px;
+}
+
+.current-volunteer-options td {
+  background-color: #ffffff;
+  color: #000;
+  font-size: 16px;
+}
+
+.current-volunteer-options td .button {
+  margin-left: 10px;
+}
+
+.current-volunteer-options button {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 25px; /* עיגול פינות הכפתור */
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+}
+
+.current-volunteer-options button:hover {
+  background: linear-gradient(to right, #e53935, #e35d5b); /* גרדיאנט לכפתורים */
+  transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 25px; /* עיגול פינות */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: animatetop 0.4s;
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

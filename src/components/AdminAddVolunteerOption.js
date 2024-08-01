@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, doc, getDoc, deleteDoc, getDocs } from 'firebase/firestore'; // Updated imports
+import { collection, addDoc, doc, getDoc, deleteDoc, getDocs } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ const AdminAddVolunteerOption = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const [options, setOptions] = useState([]); // State to store the volunteer options
+    const [options, setOptions] = useState([]);
 
     useEffect(() => {
         const checkAdmin = async () => {
@@ -102,18 +102,28 @@ const AdminAddVolunteerOption = () => {
                                 placeholder="Add Volunteer Option"
                                 required
                             />
-                            <button type="submit">Add Option</button>
+                            <button type="submit" className="add-option-button">Add Option</button>
                         </form>
                         <h2>Current Volunteer Options</h2>
                         <div className="current-volunteer-options">
-                            <ul>
-                                {options.map(opt => (
-                                    <li key={opt.id}>
-                                        <span>{opt.option}</span>
-                                        <button onClick={() => handleDelete(opt.id)}>Delete</button>
-                                    </li>
-                                ))}
-                            </ul>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Option</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {options.map(opt => (
+                                        <tr key={opt.id}>
+                                            <td>{opt.option}</td>
+                                            <td>
+                                                <button onClick={() => handleDelete(opt.id)}>Delete</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </>
                 ) : (
