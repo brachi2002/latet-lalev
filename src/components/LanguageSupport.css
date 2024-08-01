@@ -129,3 +129,33 @@ body {
   margin-bottom: 15px;
   text-align: center;
 }
+
+/* Search input styles */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px 15px;
+  border: 2px solid #8a2f2f; /* Border with primary color */
+  border-radius: 25px; /* Rounded corners */
+  width: 300px;
+  text-align: center;
+  font-size: 16px;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  direction: ltr;
+}
+
+.search-input::placeholder {
+  color: #d84835; /* Placeholder color */
+  opacity: 0.7; /* Placeholder opacity */
+  font-size: 16px; /* Ensure placeholder font size matches input font size */
+  text-align: left; /* Align placeholder text to the left */
+}
+.search-input:focus {
+  border-color: #e53935; /* Border color on focus */
+}

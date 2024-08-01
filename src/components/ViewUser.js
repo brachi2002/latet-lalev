@@ -137,27 +137,45 @@ const ViewUser = () => {
       </header>
       <div>
         <p>Here you can see your users.</p>
-        <ul>
-          {users.map(u => (
-            <li key={u.id}>
-              {u.email} - {u.isAdmin ? "Admin" : "Not Admin"} - {u.isVolunteer}
-              <div className="button-container">
-                <button onClick={() => handleDeleteUser(u.id)} className="button delete-button">Delete</button>
-                <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
-                  {u.isAdmin ? "Revoke Admin" : "Make Admin"}
-                </button>
-                {volunteerForms[u.id] && (
-                  <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
-                )}
-                {u.isVolunteer !== 'notVolunteering' && (
-                  <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
-                    {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Approve volunteer" : "Reject a volunteer"}
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Admin Status</th>
+              <th>Volunteer Status</th>
+              <th>Delete User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(u => (
+              <tr key={u.id}>
+                <td>{u.email}</td>
+                <td>
+                  {u.isAdmin ? "Admin" : "Not Admin"}
+                  <button onClick={() => handleToggleAdmin(u.id, u.isAdmin)} className="button action-button">
+                    {u.isAdmin ? "Cancel Admin" : "Make Admin"}
                   </button>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+                </td>
+                <td>
+                  {u.isVolunteer}
+                  {u.isVolunteer !== 'notVolunteering' && (
+                    <button onClick={() => handleToggleVolunteerStatus(u.id, u.isVolunteer)} className="button action-button">
+                      {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Reject volunteer" : "Approve volunteer"}
+                    </button>
+                  )}
+                   {volunteerForms[u.id] && (
+   <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
+ )}
+                </td>
+                <td>
+                  <div className="button-container">
+                    <button onClick={() => handleDeleteUser(u.id)} className="button delete-button">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         {selectedUser && (
           <div className="volunteer-form-popup">
             <div className="volunteer-form-content">
