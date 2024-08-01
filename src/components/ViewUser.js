@@ -10,6 +10,7 @@ const ViewUser = () => {
   const [user] = useAuthState(auth);
   const [volunteerForms, setVolunteerForms] = useState({});
   const [selectedUser, setSelectedUser] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -99,6 +100,10 @@ const ViewUser = () => {
     navigate('/admin/dashboard'); // Navigate to admin dashboard page
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   const handleSelectUser = async (userId) => {
     if (!userId) {
       console.error('Invalid userId:', userId);
@@ -123,6 +128,11 @@ const ViewUser = () => {
     setSelectedUser(null);
   };
 
+  const filteredUsers = users.filter(user =>
+    `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="view-user">
       <header className="admin-header">
@@ -137,6 +147,15 @@ const ViewUser = () => {
       </header>
       <div>
         <p>Here you can see your users.</p>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search by name or email..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+        </div>
         <table>
           <thead>
             <tr>
@@ -147,7 +166,7 @@ const ViewUser = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(u => (
+            {filteredUsers.map(u => (
               <tr key={u.id}>
                 <td>{u.email}</td>
                 <td>
@@ -163,9 +182,9 @@ const ViewUser = () => {
                       {u.isVolunteer === 'signed' ? "Accept Volunteer" : u.isVolunteer === 'true' ? "Reject volunteer" : "Approve volunteer"}
                     </button>
                   )}
-                   {volunteerForms[u.id] && (
-   <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
- )}
+                  {volunteerForms[u.id] && (
+                    <button className="view-form-button" onClick={() => handleSelectUser(u.id)}>View Volunteer Form</button>
+                  )}
                 </td>
                 <td>
                   <div className="button-container">
