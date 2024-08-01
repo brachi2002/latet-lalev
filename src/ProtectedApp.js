@@ -37,21 +37,22 @@ const ProtectedApp = () => {
   }, []);
 
   if (isAuthenticated === null || !translationsLoaded) {
-    return<div className="loading-container">
-      <div className="loading-arrow"></div>
-      
-  </div>;
+    console.log("Loading state: isAuthenticated =", isAuthenticated, "translationsLoaded =", translationsLoaded);
+    return <div className="loading-container"><div className="loading-arrow"></div></div>;
   }
-
+  
   if (!isAuthenticated) {
+    console.log("User is not authenticated");
     return <div>User is not authenticated</div>;
   }
-
+  
+  console.log("Rendering App");
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <App />
     </Suspense>
   );
+  
 };
 
 export default ProtectedApp;
