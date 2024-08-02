@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/latet-lalev/static/css/main.fc1500e0.css",
+    "main.css": "/latet-lalev/static/css/main.4b7cc4b8.css",
     "main.js": "/latet-lalev/static/js/main.be50d027.js",
     "static/media/IMG_0006 (5).JPG": "/latet-lalev/static/media/IMG_0006 (5).1b991b432caa452099c7.JPG",
     "static/media/2.jpg": "/latet-lalev/static/media/2.42a94296d7b955617d72.jpg",
@@ -17,11 +17,11 @@
     "static/media/fa-v4compatibility.ttf": "/latet-lalev/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/latet-lalev/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/latet-lalev/index.html",
-    "main.fc1500e0.css.map": "/latet-lalev/static/css/main.fc1500e0.css.map",
+    "main.4b7cc4b8.css.map": "/latet-lalev/static/css/main.4b7cc4b8.css.map",
     "main.be50d027.js.map": "/latet-lalev/static/js/main.be50d027.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc1500e0.css",
+    "static/css/main.4b7cc4b8.css",
     "static/js/main.be50d027.js"
   ]
 }
