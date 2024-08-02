@@ -1,14 +1,14 @@
 body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
-  font-family: Courier New;
+  font-family: 'Heebo', sans-serif;
   font-weight: bold;
 }
 
 .view-user {
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
-  font-family: Courier New;
+  font-family: 'Heebo', sans-serif;
   font-weight: bold;
 }
 
