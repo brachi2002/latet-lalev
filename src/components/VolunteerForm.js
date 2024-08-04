@@ -55,17 +55,17 @@ const VolunteerForm = ({ isAdmin }) => {
     console.log('Selected options:', selectedOptions);
 
     if (selectedOptions.length === 0) {
-      setFormError('You must select at least one field of volunteering.');
+      setFormError(t('error_select_volunteering'));
       return;
     }
-
+    
     if (!validatePhoneNumber(phone)) {
-      setFormError('Please enter a valid phone number.');
+      setFormError(t('error_invalid_phone'));
       return;
     }
-
+    
     if (!validateCityName(city)) {
-      setFormError('Please enter a valid city name.');
+      setFormError(t('error_invalid_city'));
       return;
     }
 
@@ -74,7 +74,7 @@ const VolunteerForm = ({ isAdmin }) => {
       const volunteerDoc = await getDoc(volunteerDocRef);
 
       if (volunteerDoc.exists()) {
-        if (!window.confirm('קיים כבר טופס התנדבות במערכת האם אתה בטוח שאתה רוצה לשנות אותו?')) {
+        if (!window.confirm(t('confirm_change_volunteer_form'))) {
           return;
         }
       }
