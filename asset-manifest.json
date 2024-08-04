@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/latet-lalev/static/css/main.4b7cc4b8.css",
-    "main.js": "/latet-lalev/static/js/main.c5bcd748.js",
+    "main.css": "/latet-lalev/static/css/main.94c7cdc5.css",
+    "main.js": "/latet-lalev/static/js/main.0c1ed784.js",
     "static/media/IMG_0006 (5).JPG": "/latet-lalev/static/media/IMG_0006 (5).1b991b432caa452099c7.JPG",
     "static/media/2.jpg": "/latet-lalev/static/media/2.42a94296d7b955617d72.jpg",
     "static/media/fa-solid-900.ttf": "/latet-lalev/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
@@ -17,11 +17,11 @@
     "static/media/fa-v4compatibility.ttf": "/latet-lalev/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/latet-lalev/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/latet-lalev/index.html",
-    "main.4b7cc4b8.css.map": "/latet-lalev/static/css/main.4b7cc4b8.css.map",
-    "main.c5bcd748.js.map": "/latet-lalev/static/js/main.c5bcd748.js.map"
+    "main.94c7cdc5.css.map": "/latet-lalev/static/css/main.94c7cdc5.css.map",
+    "main.0c1ed784.js.map": "/latet-lalev/static/js/main.0c1ed784.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b7cc4b8.css",
-    "static/js/main.c5bcd748.js"
+    "static/css/main.94c7cdc5.css",
+    "static/js/main.0c1ed784.js"
   ]
 }
