@@ -1,12 +1,13 @@
-// LanguageSupport.js
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import './LanguageSupport.css';
+import { useTranslation } from 'react-i18next';
 
 const LanguageSupport = () => {
+  const { i18n } = useTranslation();
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [selectedValues, setSelectedValues] = useState({});
@@ -75,7 +76,7 @@ const LanguageSupport = () => {
   }
 
   return (
-    <div className="language-support">
+    <div className={`language-support ${i18n.language === 'he' ? 'ltr-only' : ''}`}>
       <header className="admin-header">
         <h1>Language Support</h1>
         {user && (
@@ -101,7 +102,7 @@ const LanguageSupport = () => {
               placeholder="Search word..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="search-input"
+              className={`search-input ${i18n.language === 'he' ? 'ltr-only' : ''}`}
             />
           </div>
           <form onSubmit={handleSubmit} className="language-form">
@@ -115,7 +116,7 @@ const LanguageSupport = () => {
                     name={key}
                     value={selectedValues[key]}
                     onChange={handleChange}
-                    className="input-field"
+                    className={`input-field ${i18n.language === 'he' ? 'ltr-only' : ''}`}
                   />
                 </label>
               )
