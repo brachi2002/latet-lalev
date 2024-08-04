@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './footer.css'; // Ensure this path is correct
 
 const Footer = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation(); 
     return (
         <footer className="footer">
             <div className="footer-content">
@@ -11,6 +11,7 @@ const Footer = () => {
                     <h4>{t('latat_balev')}</h4>
                     <p>{t('em1')}</p>
                     <p>{t('phone3')}</p>
+                    <p>{t('jerusalem')}</p>
                 </div>
             </div>
             <div className="footer-bottom">
