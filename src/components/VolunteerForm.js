@@ -221,7 +221,7 @@ const VolunteerForm = ({ isAdmin }) => {
             />
           </div>
         </div>
-        {formError && <p className="error-message">{formError}</p>}
+        
         <div className="checkbox-container">
           <label>
             <input
@@ -247,6 +247,7 @@ const VolunteerForm = ({ isAdmin }) => {
           />
           {t('agree_to_receive_newsletters')}
         </label>
+        {formError && <p className="error-message">{formError}</p>}
         <button type="submit">{t('submit')}</button>
       </form>
     </div>
