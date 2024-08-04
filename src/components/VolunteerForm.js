@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { collection, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './VolunteerForm.css';
 import MultiSelectComponent from './MultiSelectComponent';
@@ -9,14 +9,13 @@ import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
 import { Helmet } from 'react-helmet';
 
-
 const VolunteerForm = ({ isAdmin }) => {
   const { t } = useTranslation();
-  const [authUser, loading, error] = useAuthState(auth);
+  const [authUser, loading] = useAuthState(auth);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [age, setAge] = useState('');
-  const [gender, setGender] = useState(''); 
+  const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -40,20 +39,50 @@ const VolunteerForm = ({ isAdmin }) => {
     }
   }, [authUser, loading, navigate]);
 
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^[0-9]{7,10}$/; // Example for 7 or 10 digit phone number
+    return phoneRegex.test(phone);
+  };
+
+  const validateCityName = (city) => {
+    const cityRegex = /^[a-zA-Z\u0590-\u05FF\s]+$/; // Allows only letters and Hebrew characters
+    return cityRegex.test(city);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submitted');
     console.log('Selected options:', selectedOptions);
+
     if (selectedOptions.length === 0) {
       setFormError('You must select at least one field of volunteering.');
       return;
     }
 
+    if (!validatePhoneNumber(phone)) {
+      setFormError('Please enter a valid phone number.');
+      return;
+    }
+
+    if (!validateCityName(city)) {
+      setFormError('Please enter a valid city name.');
+      return;
+    }
+
     try {
+      const volunteerDocRef = doc(db, 'volunteers', authUser.uid);
+      const volunteerDoc = await getDoc(volunteerDocRef);
+
+      if (volunteerDoc.exists()) {
+        if (!window.confirm('קיים כבר טופס התנדבות במערכת האם אתה בטוח שאתה רוצה לשנות אותו?')) {
+          return;
+        }
+      }
+
       console.log('Adding volunteer details to the database');
 
-      // Add volunteer details to the 'volunteers' collection with the user's UID as the document ID
-      await setDoc(doc(db, 'volunteers', authUser.uid), {
+      // Add or update volunteer details in the 'volunteers' collection with the user's UID as the document ID
+      await setDoc(volunteerDocRef, {
         firstName,
         lastName,
         email,
@@ -90,7 +119,7 @@ const VolunteerForm = ({ isAdmin }) => {
       <Helmet>
         <title>Volunteer | Latet lalev</title>
       </Helmet>
-       <Navbar user={authUser} isAdmin={isAdmin} />
+      <Navbar user={authUser} isAdmin={isAdmin} />
       <form onSubmit={handleSubmit}>
         <h2>{t('want_to_join_us')}</h2>
         <h3>{t('fill_out_the_form')}</h3>

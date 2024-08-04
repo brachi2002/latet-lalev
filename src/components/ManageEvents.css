@@ -1,15 +1,15 @@
 body {
   background-color: #f8c5c5; /* צבע רקע אחיד */
   margin: 0;
-  font-family: Courier New;
-    font-weight: bold;
+  font-family: 'Heebo', sans-serif;
+  font-weight: bold;
 }
 
 .manage-events {
   padding: 20px;
   background-color: transparent; /* עדכון רקע דף ניהול */
-  font-family: Courier New;
-    font-weight: bold;
+  font-family: 'Heebo', sans-serif;
+  font-weight: bold;
 }
 
 .admin-header {
